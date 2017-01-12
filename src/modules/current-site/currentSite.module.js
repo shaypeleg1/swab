@@ -1,6 +1,15 @@
-const ADD_COMP = 'ADD_COMP';
 
-const compsTemplatesInterfaces = {
+
+export const CHANGE_NAME = 'current-site/CHANGE_NAME'
+export const CHANGE_URL = 'current-site/CHANGE_URL'
+const ADD_COMP = 'ADD_COMP';
+const state = {
+  toolBarData: {
+    siteUrl: 'MY-First-SWAB',
+    siteName: 'first swab',
+  },
+
+  const compsTemplatesInterfaces = {
     mainArticlePreview : {
         name: "component-template1",
         type: "mainArticlePreview",
@@ -12,9 +21,7 @@ const compsTemplatesInterfaces = {
         }
     }
 }
-
-
-const state = {
+  const state = {
     components: [{
         name: "component-template1",
         type: "mainArticlePreview",
@@ -43,7 +50,20 @@ const state = {
         }
     },
     ]
+
+const mutations = {
+    [CHANGE_NAME](state, payload){
+        console.log('payload',state);
+        state.toolBarData.siteName = payload;
+    },
+    [CHANGE_URL](state, payload){
+        state.toolBarData.siteUrl = payload;
+    },
+   [ADD_COMP] (state, { newCompData }) {
+    state.components.push(newCompData)
+  }
 }
+
 
 const actions  ={
     addComp({ commit }, type){
@@ -52,15 +72,11 @@ const actions  ={
     }
 }
 
-const mutations = {
-  [ADD_COMP] (state, { newCompData }) {
-    state.components.push(newCompData)
-  }
-}
-
 
 export default {
+
     state,
     actions,
     mutations
 }
+
