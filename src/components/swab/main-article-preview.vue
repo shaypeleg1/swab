@@ -2,15 +2,12 @@
     <section id="mainArticlePreview" class="flex">
         <div class="content">
             <header>
-                <h1>{{item.value}}<br> by Vue.js</h1>
-                The type of thie component: {{item.type}}
-                <p>A free and fully responsive site template</p>
+                <h1>{{item.props.title}}</h1>
+                <p>{{item.props.subtitle}}</p>
             </header>
-            <p class="txt-section">Aenean ornare velit lacus, ac varius enim ullamcorper eu. Proin aliquam facilisis ante interdum congue. Integer
-                mollis, nisl amet convallis, porttitor magna ullamcorper, amet egestas mauris. Ut magna finibus nisi nec
-                lacinia. Nam maximus erat id euismod egestas. Pellentesque sapien ac quam. Lorem ipsum dolor sit nullam.</p>
+            <p class="txt-section">{{item.props.content}}</p>
             <ul class="btn-on-list">
-                <li><a href="#" class="button-orange button-text">Learn More</a></li>
+                <li><a href="#" class="button-orange button-text">{{item.props.button}}</a></li>
             </ul>
         </div>
         <span class="image-container">
@@ -28,6 +25,11 @@
         required: true
         }
     }
+    }
+    computed: {
+        function imgSrc() {
+            return item.props.img_src;
+        }
     }
 </script>
 
