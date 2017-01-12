@@ -1,18 +1,14 @@
 <div class="container below-nav">
   <div class="row">
     <p>List of component-templates</p>
-    <ul>
-      <li v-for="component in components">
-        <!--<component is="main-article-preview"></component>-->
-        <button type="button" class="btn btn-danger btn-delete glyphicon glyphicon-remove"></button>
-        <!--<main-article-preview v-if="component.type === 'mainArticlePreview'" :component="component"></main-article-preview>
-        <circle-preview v-if="component.type === 'circlePreview'" :component="component"></circle-preview>
-        <short-article-preview v-if="component.type === 'shortArticlePreview'" :component="component"></short-article-preview>-->
-        <main-article-preview :component="component"></main-article-preview>
-        <!--<circle-preview :component="component"></circle-preview>-->
-        <!--<short-article-preview :component="component"></short-article-preview>-->
-      </li>
-    </ul>
+      <div v-for="component in components">
+         <component :is="component.type" :dataProps="component.props"></component>
+         <button v-on:click="addSingleComp">add comp</button>
+         <!--<button type="button" @click=$emit(eventName) class="btn btn-danger btn-delete glyphicon glyphicon-remove"></button>-->
+        <!--<main-article-preview v-if="component.type === 'mainArticlePreview'" :component="component"></main-article-preview>-->
+        <!--<circle-preview v-if="component.type === 'circlePreview'" :component="component"></circle-preview>-->
+        <!--<short-article-preview v-if="component.type === 'shortArticlePreview'" :component="component"></short-article-preview>-->
+      </div>
     <div>
     </div>
   </div>

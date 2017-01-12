@@ -13,7 +13,10 @@ export default {
 
   },
   methods   : {
-
+    addSingleComp(){
+      let type = 'mainArticlePreview';
+      this.$store.dispatch('addComp', type);
+    }
   },
   computed  : {
 
