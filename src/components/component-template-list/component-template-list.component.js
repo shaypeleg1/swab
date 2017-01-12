@@ -13,9 +13,11 @@ export default {
 
   },
   methods   : {
-    addSingleComp(){
+    addSingleComp(event){
+      let indexToInsert = +event.target.value + 1;
+      console.log(indexToInsert);
       let type = 'mainArticlePreview';
-      this.$store.dispatch('addComp', type);
+      this.$store.dispatch('addComp', {type,indexToInsert});
     }
   },
   computed  : {
