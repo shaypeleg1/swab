@@ -1,4 +1,5 @@
-import Swab from '../swab';
+import MainArticlePreview from '../swab/main-article-preview';
+import CirclePreview from '../swab/circle-preview';
 
 export default {
   props: {
@@ -17,7 +18,8 @@ export default {
 
   },
   components: {
-    Swab
+    MainArticlePreview,
+    CirclePreview,
   }
 
 }
