@@ -1,20 +1,34 @@
 <template>
-  <section id="shortArticlePreview">
-    <a href="#" class="image-container"><img src="../../assets/images/pic02.jpg" alt=""></a>
-    <h3>{{dataProps.title}}</h3>
-    <p>{{dataProps.content}}</p>
-    <ul class="btn-on-list">
-      <li><a href="#" class="button-orange button-text">{{dataProps.button}}</a></li>
-    </ul>
-  </section>
+    <div>
+        <button type="button" @click="deleteSingleComp" class="btn btn-danger btn-delete glyphicon glyphicon-remove"></button>
+        <section id="shortArticlePreview">
+            <a href="#" class="image-container"><img src="../../assets/images/pic02.jpg" alt=""></a>
+            <h3>{{dataProps.title}}</h3>
+            <p>{{dataProps.content}}</p>
+            {{componentIdx}}
+            <ul class="btn-on-list">
+            <li><a href="#" class="button-orange button-text">{{dataProps.button}}</a></li>
+            </ul>
+        </section>
+    </div>
 </template>
 <script>
     export default  {
     name    : 'shortArticlePreview',
     props   : {
+        componentIdx: {
+            require: true,
+            type:Number
+        },
         dataProps: {
         type    : Object,
         required: true
+        }
+    },
+    methods: {
+        deleteSingleComp() {
+            console.log('delete pressed');
+
         }
     }
     }
@@ -74,4 +88,12 @@
         background-color: rgba(245, 106, 106, 0.05);
     }
   }
+  .btn-delete {
+    border-radius: 30%;
+    float: right;
+    &:focus,
+    &.focus {
+    outline: 0;
+  }
+} 
 </style>

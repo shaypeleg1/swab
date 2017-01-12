@@ -1,6 +1,7 @@
 export const CHANGE_NAME = 'current-site/CHANGE_NAME'
 export const CHANGE_URL = 'current-site/CHANGE_URL'
 const ADD_COMP = 'ADD_COMP';
+const DELETE_COMP = 'DELETE_COMP';
 
 const compsTemplatesInterfaces = {
   mainArticlePreview: {
@@ -16,7 +17,7 @@ const compsTemplatesInterfaces = {
   }
 }
 const state = {
-  toolBarData: {
+    toolBarData: {
     siteUrl: 'MY-First-SWAB',
     siteName: 'first swab',
   },
@@ -50,55 +51,49 @@ const state = {
   }, ]
 }
 
-const mutations = {
-  [CHANGE_NAME](state, payload) {
-    console.log('payload', state);
-    state.toolBarData.siteName = payload.name;
-  },
-  [CHANGE_URL](state, payload) {
-    state.toolBarData.siteUrl = payload.url;
-  },
-  [ADD_COMP](state, {
-    newCompData,indexToInsert
-  }) {
-    state.components.splice(indexToInsert,0,newCompData)
+  const mutations = {
+    [CHANGE_NAME](state, payload) {
+      console.log('payload', state);
+      state.toolBarData.siteName = payload;
+    },
+    [CHANGE_URL](state, payload) {
+      state.toolBarData.siteUrl = payload;
+    },
+    [ADD_COMP](state, {
+      newCompData
+    }) {
+      state.components.push(newCompData)
+    },
+    [DELETE_COMP](state, {
+      type
+    }) {
+      console.log('active delete mutation');
+      console.log('delete mutation on comp idx: ',type);
+      state.components.splice(Number(type),1);
+    }
   }
-}
 
 
-const actions = {
-  // recive data from toolbar in the html
-  updateName({
-    commit
-  }, name) {
-    console.log('updating url from currentSite', name)
-    commit(CHANGE_NAME, {
-      name
-    })
-  },
-  // recive data from toolbar in the html  
-  updateUrl({commit}, url) {
-    commit(CHANGE_URL, {
-      url
-    })
-  },
-  // recive data from components-template-list
-  addComp({
-    commit
-  }, compData) {
-      console.log('comp data',compData);
-    let newCompData = (JSON.parse(JSON.stringify(compsTemplatesInterfaces[compData.type]))); // Deep cloning
-    let indexToInsert = compData.indexToInsert;
-    commit(ADD_COMP, {
-      newCompData,indexToInsert
-    });
+  const actions = {
+    addComp({commit}, type) {
+      let newCompData = (JSON.parse(JSON.stringify(compsTemplatesInterfaces[type]))); // Deep cloning
+      commit(ADD_COMP, {
+        newCompData
+      });
+    },
+    deleteComp({commit}, type) {
+      commit(DELETE_COMP, {
+        type
+      });
+    }
+
   }
-}
 
+//  this.$store.dispatch('deleteComp', type);
+  export default {
 
-export default {
+    state,
+    actions,
+    mutations
+  }
 
-  state,
-  actions,
-  mutations
-}

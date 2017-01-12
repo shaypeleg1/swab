@@ -1,19 +1,32 @@
 <template>
-    <section id="circlePreview" class="flex">
-        <header>
-            <h2>{{dataProps.title}}</h2>
-            <p>{{dataProps.content}}</p>
-        </header>
-        <span class="image-container"><img src="../../assets/images/pic01.jpg" alt=""></span>
-    </section>
+    <div>
+        <button type="button" @click="deleteSingleComp" class="btn btn-danger btn-delete glyphicon glyphicon-remove"></button>
+        <section id="circlePreview" class="flex">
+            <header>
+                <h2>{{dataProps.title}}</h2>
+                <p>{{dataProps.content}}</p>
+                {{componentIdx}}
+            </header>
+            <span class="image-container"><img src="../../assets/images/pic01.jpg" alt=""></span>
+        </section>
+    </div>
 </template>
 <script>
     export default  {
     name    : 'circlePreview',
     props   : {
+        componentIdx: {
+            require: true,
+            type:Number
+        },
         dataProps: {
         type    : Object,
         required: true
+        }
+    },
+    methods: {
+        deleteSingleComp() {
+            console.log('delete pressed');
         }
     }
     }
@@ -35,6 +48,14 @@
             border-bottom-right-radius: 100%;
             border-bottom-left-radius: 100%; 
         }
-}
+    }
+    .btn-delete {
+        border-radius: 30%;
+        float: right;
+    &:focus,
+    &.focus {
+        outline: 0;
+    }
+    } 
 </style>
 
