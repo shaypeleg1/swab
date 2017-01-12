@@ -1,3 +1,11 @@
 toolbar {
-    color:red;
+  color: red;
+}
+
+
+section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 10px;
 }

@@ -1,4 +1,16 @@
 <section>
-    <br>
-    <h1>This is a toolbar</h1>
+  <br>
+  <!--<div>-->
+  <!--<h1>This is a toolbar</h1>-->
+  <section>
+    <div>
+      <label for="">Site URL: </label>
+      <input type="text" @input="updateURL" :placeholder="toolBarData.siteUrl">
+    </div>
+    <div>
+      <label for="">Site Title: </label>
+      <input type="text" @input="updateName" :placeholder="toolBarData.siteName" value="">
+    </div>
+  </section>
+  <!--</div>-->
 </section>
