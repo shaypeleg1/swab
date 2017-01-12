@@ -1,10 +1,10 @@
 <template>
   <section id="shortArticlePreview">
     <a href="#" class="image-container"><img src="../../assets/images/pic02.jpg" alt=""></a>
-    <h3>{{component.props.title}}</h3>
-    <p>{{component.props.content}}</p>
+    <h3>{{dataProps.title}}</h3>
+    <p>{{dataProps.content}}</p>
     <ul class="btn-on-list">
-      <li><a href="#" class="button-orange button-text">{{component.props.button}}</a></li>
+      <li><a href="#" class="button-orange button-text">{{dataProps.button}}</a></li>
     </ul>
   </section>
 </template>
@@ -12,7 +12,7 @@
     export default  {
     name    : 'shortArticlePreview',
     props   : {
-        component: {
+        dataProps: {
         type    : Object,
         required: true
         }

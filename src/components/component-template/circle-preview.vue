@@ -1,8 +1,8 @@
 <template>
     <section id="circlePreview" class="flex">
         <header>
-            <h2>{{component.props.title}}</h2>
-            <p>{{component.props.content}}</p>
+            <h2>{{dataProps.title}}</h2>
+            <p>{{dataProps.content}}</p>
         </header>
         <span class="image-container"><img src="../../assets/images/pic01.jpg" alt=""></span>
     </section>
@@ -11,7 +11,7 @@
     export default  {
     name    : 'circlePreview',
     props   : {
-        component: {
+        dataProps: {
         type    : Object,
         required: true
         }
@@ -20,14 +20,13 @@
 </script>
 
 <style scoped lang="scss">
-#circlePreview {
-    text-align: right;
-    .image-container {
-        margin-left: 2em;
-        position: relative;
-    overflow: hidden;
-
-        width: 50%;
+    #circlePreview {
+        text-align: right;
+        .image-container {
+            margin-left: 2em;
+            position: relative;
+            overflow: hidden;
+            width: 50%;
         } img {
             overflow: hidden;
             border-radius: 100%;
