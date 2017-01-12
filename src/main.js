@@ -3,6 +3,7 @@ import './vendor';
 import './vue-plugins';
 
 import Vue from 'vue';
+import Vuex from 'vuex' // not sure this is required here
 import store from './store';
 import router from './routes';
 // import MainNav from './components/main-nav';
