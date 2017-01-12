@@ -1,35 +1,44 @@
 <template>
-    <section id="mainArticlePreview" class="flex">
-        <div class="content">
-            <header>
-                <h1>{{dataProps.title}}</h1>
-                <p>{{dataProps.subtitle}}</p>
-            </header>
-            <p class="txt-section">{{dataProps.content}}</p>
-            <ul class="btn-on-list">
-                <li><a href="#" class="button-orange button-text">{{dataProps.button}}</a></li>
-            </ul>
-        </div>
-        <span class="image-container">
-            <img src="../../assets/images/pic10.jpg" alt="">
-        </span>
-    </section>
+    <div>
+        <button type="button" @click="deleteSingleComp" class="btn btn-danger btn-delete glyphicon glyphicon-remove"></button>
+        <section id="mainArticlePreview" class="flex">
+            <div class="content">
+                <header>
+                    <h1>{{dataProps.title}}</h1>
+                    <p>{{dataProps.subtitle}}</p>
+                    {{componentIdx}}
+                </header>
+                <p class="txt-section">{{dataProps.content}}</p>
+                <ul class="btn-on-list">
+                    <li><a href="#" class="button-orange button-text">{{dataProps.button}}</a></li>
+                </ul>
+            </div>
+            <span class="image-container">
+                <img src="../../assets/images/pic10.jpg" alt="">
+            </span>
+        </section>
+    </div>
 </template>
 
 <script>
     export default  {
     name    : 'mainArticlePreview',
     props   : {
+        componentIdx: {
+            require: true,
+            type:Number
+        },
         dataProps: {
         type    : Object,
         required: true
         }
-    }
-    }
-    computed: {
-        function imgSrc() {
-            return dataProps.props.img_src;
+    },
+    methods: {
+        deleteSingleComp() {
+            let type = this.componentIdx;
+            this.$store.dispatch('deleteComp', type);
         }
+    }
     }
 </script>
 
@@ -90,5 +99,13 @@
     .txt-section {
         margin-bottom: 26px;
     }
-    </style>
+    .btn-delete {
+        border-radius: 30%;
+        float: right;
+    &:focus,
+    &.focus {
+        outline: 0;
+    }
+    } 
+</style>
 
