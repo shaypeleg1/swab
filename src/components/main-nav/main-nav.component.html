@@ -33,26 +33,26 @@
         <li class="dropdown" v-if="cartLength">
           <a href="#" class="dropdown-toggle">
             <span
-                    class="glyphicon glyphicon-shopping-cart"></span> {{cartLength}} - Items<span
+                    class="glyphicon glyphicon-shopping-cart"></span> {{cartLength}} - components<span
                   class="caret"></span>
           </a>
           <ul class="dropdown-menu dropdown-cart" role="menu">
-            <li v-for="item in cart">
-                  <span class="item">
-                    <span class="item-left">
-                        <img :src="item.img" alt="" style="height: 80px;width: 200px;"/>
-                        <span class="item-info">
-                            <span>{{item.title}}</span>
-                            <b>{{item.price}}{{item.currency}}</b>
+            <li v-for="component in cart">
+                  <span class="component">
+                    <span class="component-left">
+                        <img :src="component.img" alt="" style="height: 80px;width: 200px;"/>
+                        <span class="component-info">
+                            <span>{{component.title}}</span>
+                            <b>{{component.price}}{{component.currency}}</b>
                         </span>
                     </span>
 
-                    <span class="item-right">
-                        <button class="btn btn-xs btn-danger pull-right" @click.stop="removeFromCart(item)">x</button>
+                    <span class="component-right">
+                        <button class="btn btn-xs btn-danger pull-right" @click.stop="removeFromCart(component)">x</button>
                     </span>
 
                 </span>
-              <p class="item">Quantity: {{item.quantity}}</p>
+              <p class="component">Quantity: {{component.quantity}}</p>
 
             </li>
           </ul>

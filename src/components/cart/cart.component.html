@@ -21,31 +21,31 @@
 
         <div class="panel-body">
           <h3 v-if="!cartLength">Your cart is empty</h3>
-          <div class="row" v-for="item in cart" style="margin-bottom: 1.5em;">
-            <div class="col-xs-2"><img class="img-responsive" :src="item.img" style="height: 80px;">
+          <div class="row" v-for="component in cart" style="margin-bottom: 1.5em;">
+            <div class="col-xs-2"><img class="img-responsive" :src="component.img" style="height: 80px;">
             </div>
             <div class="col-xs-4">
-              <h4 class="product-name"><strong>{{item.title}}</strong></h4>
+              <h4 class="product-name"><strong>{{component.title}}</strong></h4>
               <h4>
-                <small>{{item.description}}</small>
+                <small>{{component.description}}</small>
               </h4>
             </div>
             <div class="col-xs-6">
               <div class="col-xs-6 text-right">
-                <h6><strong>{{item.price}} <span class="text-muted">x</span></strong></h6>
+                <h6><strong>{{component.price}} <span class="text-muted">x</span></strong></h6>
               </div>
               <div class="col-xs-4">
                 <select class="form-control"
-                        @change="updateQuantity( { product: item, quantity: $event.target.value } )"
+                        @change="updateQuantity( { product: component, quantity: $event.target.value } )"
                         name="quantity"
-                        :value="item.quantity">
+                        :value="component.quantity">
                   <option value="">0</option>
                   <option v-for="n in 10">{{n}}</option>
                 </select>
               </div>
               <div class="col-xs-2">
                 <button type="button" class="btn btn-link btn-xs"
-                        @click="removeFromCart(item)">
+                        @click="removeFromCart(component)">
                   <span class="glyphicon glyphicon-trash"></span>
                 </button>
               </div>

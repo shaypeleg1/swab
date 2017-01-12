@@ -1,8 +1,8 @@
-import SwabList from '../swab-list';
+import ComponentTemplateList from '../component-template-list';
 
 export default {
   props : {
-    items: {
+    components: {
       require: true,
       type:Array
     }
@@ -17,7 +17,7 @@ export default {
 
   },
   components: {
-    SwabList
+    ComponentTemplateList
   }
 
 }

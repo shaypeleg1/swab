@@ -7,27 +7,27 @@ export const CHECKOUT_ERROR = 'cart/CHECKOUT_ERROR';
 import shopService from '../../services/shop.service';
 
 const state = {
-  items  : [],
+  components  : [],
   loading: false,
   error  : null
 }
 
 const mutations = {
-  [ADD_TO_CART]( state, item ) {
-    let itemExists = state.items.indexOf(item) > -1;
-    if( !itemExists ) {
-      state.items.push(item);
+  [ADD_TO_CART]( state, component ) {
+    let componentExists = state.components.indexOf(component) > -1;
+    if( !componentExists ) {
+      state.components.push(component);
     }
   },
-  [REMOVE_FROM_CART]( state, item ) {
-    item.quantity = 0;
-    state.items.splice(state.items.indexOf(item), 1);
+  [REMOVE_FROM_CART]( state, component ) {
+    component.quantity = 0;
+    state.components.splice(state.components.indexOf(component), 1);
   },
   [CHECKOUT]( state ) {
     state.loading = true;
   },
   [CHECKOUT_SUCCESS]( state ) {
-    state.items = [];
+    state.components = [];
     state.loading = false;
   },
   [CHECKOUT_ERROR]( state, error ) {
@@ -53,15 +53,15 @@ const actions = {
 };
 
 const getters = {
-  items          : state => state.items,
+  components          : state => state.components,
   checkoutPending: state => state.loading,
   error          : state => state.error,
   cart( state ) {
-    return state.items.filter(i => i.quantity);
+    return state.components.filter(i => i.quantity);
   },
   cartTotal( _, getters ) {
-    return getters.cart.reduce(( acc, item ) => {
-      return acc + (parseInt(item.quantity) * item.price);
+    return getters.cart.reduce(( acc, component ) => {
+      return acc + (parseInt(component.quantity) * component.price);
     }, 0);
   },
   cartLength( _, getters ) {

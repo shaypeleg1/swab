@@ -1,8 +1,8 @@
 <template>
     <section id="circlePreview" class="flex">
         <header>
-            <h2>{{item.props.title}}</h2>
-            <p>{{item.props.content}}</p>
+            <h2>{{component.props.title}}</h2>
+            <p>{{component.props.content}}</p>
         </header>
         <span class="image-container"><img src="../../assets/images/pic01.jpg" alt=""></span>
     </section>
@@ -11,7 +11,7 @@
     export default  {
     name    : 'circlePreview',
     props   : {
-        item: {
+        component: {
         type    : Object,
         required: true
         }
