@@ -43,7 +43,6 @@
     #mainArticlePreview {
         margin: auto;
         .image-container {
-            // height: 80px;
             width: 400px;
             object-fit: cover;
             float: right;    

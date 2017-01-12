@@ -5,7 +5,7 @@
       <li v-for="item in items">
         <main-article-preview v-if="item.type === 'mainArticlePreview'" :item="item"></main-article-preview>
         <circle-preview v-if="item.type === 'circlePreview'" :item="item"></circle-preview>
-        <!--<short-article-preview :item="item"></short-article-preview>-->
+        <short-article-preview v-if="item.type === 'shortArticlePreview'" :item="item"></short-article-preview>
       </li>
     </ul>
     <div>
