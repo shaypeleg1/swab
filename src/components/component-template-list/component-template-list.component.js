@@ -18,6 +18,7 @@ export default {
       console.log(indexToInsert);
       let type = 'mainArticlePreview';
       this.$store.dispatch('addComp', {type,indexToInsert});
+      console.log('bla')
     }
   },
   computed  : {
