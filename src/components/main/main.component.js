@@ -17,7 +17,7 @@ export default  {
   computed:{
     count(){ return this.$store.state.count},
 
-    toolBarData(){return this.$store.state.site.toolBarData}
+    toolBarData(){return this.$store.state.site.toolBarData},
 
     components(){ return this.$store.state.site.components}
 
