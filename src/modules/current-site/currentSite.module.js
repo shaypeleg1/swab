@@ -60,9 +60,9 @@ const state = {
       state.toolBarData.siteUrl = payload;
     },
     [ADD_COMP](state, {
-      newCompData
+      newCompData,indexToInsert
     }) {
-      state.components.push(newCompData)
+      state.components.splice(indexToInsert,0, newCompData);
     },
     [DELETE_COMP](state, {
       type
@@ -75,10 +75,12 @@ const state = {
 
 
   const actions = {
-    addComp({commit}, type) {
-      let newCompData = (JSON.parse(JSON.stringify(compsTemplatesInterfaces[type]))); // Deep cloning
+    addComp({commit}, compData) {
+      console.log(compData)
+      let newCompData = (JSON.parse(JSON.stringify(compsTemplatesInterfaces[compData.type]))); // Deep cloning
+      let indexToInsert = compData.indexToInsert;
       commit(ADD_COMP, {
-        newCompData
+        newCompData,indexToInsert
       });
     },
     deleteComp({commit}, type) {
