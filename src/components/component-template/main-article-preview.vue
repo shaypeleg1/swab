@@ -2,12 +2,12 @@
     <section id="mainArticlePreview" class="flex">
         <div class="content">
             <header>
-                <h1>{{item.props.title}}</h1>
-                <p>{{item.props.subtitle}}</p>
+                <h1>{{dataProps.title}}</h1>
+                <p>{{dataProps.subtitle}}</p>
             </header>
-            <p class="txt-section">{{item.props.content}}</p>
+            <p class="txt-section">{{dataProps.content}}</p>
             <ul class="btn-on-list">
-                <li><a href="#" class="button-orange button-text">{{item.props.button}}</a></li>
+                <li><a href="#" class="button-orange button-text">{{dataProps.button}}</a></li>
             </ul>
         </div>
         <span class="image-container">
@@ -20,7 +20,7 @@
     export default  {
     name    : 'mainArticlePreview',
     props   : {
-        item: {
+        dataProps: {
         type    : Object,
         required: true
         }
@@ -28,7 +28,7 @@
     }
     computed: {
         function imgSrc() {
-            return item.props.img_src;
+            return dataProps.props.img_src;
         }
     }
 </script>
@@ -43,7 +43,6 @@
     #mainArticlePreview {
         margin: auto;
         .image-container {
-            // height: 80px;
             width: 400px;
             object-fit: cover;
             float: right;    

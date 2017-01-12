@@ -5,6 +5,10 @@ import {REMOVE_FROM_CART} from '../../modules/cart/cart.module';
 
 export default {
   name    : 'main-nav',
+  data: function(){
+    return{
+    }
+  },
   methods : {
     signout() {
       authService.signout();
@@ -17,15 +21,15 @@ export default {
   },
   computed: {
 
-    ...mapGetters([
-      'cartLength',
-      'cart'
-    ]),
-    ...mapGetters({
-        isLoggedIn: 'isLoggedIn',
-        user: 'user'
-      }
-    ),
+    // ...mapGetters([
+    //   'cartLength',
+    //   'cart'
+    // ]),
+    // ...mapGetters({
+    //     isLoggedIn: 'isLoggedIn',
+    //     user: 'user'
+    //   }
+    // ),
   }
 
 }

@@ -10,9 +10,9 @@ export default new Vuex.Store({
   state:{
     count:0,
 
-    // items: [{name: "swab1", type: "mainArticlePreview", value:"test first swab comp"},
-    //         {name: "swab2", type: "circlePreview", value:"test secound swab comp"},
-    //         {name: "swab2", type: "shortArticlePreview", value:"test third swab comp"}]
+    // components: [{name: "component-template1", type: "mainArticlePreview", value:"test first component-template comp"},
+    //         {name: "component-template2", type: "circlePreview", value:"test secound component-template comp"},
+    //         {name: "component-template2", type: "shortArticlePreview", value:"test third component-template comp"}]
 
   },
   modules:{

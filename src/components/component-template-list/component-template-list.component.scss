@@ -1,0 +1,8 @@
+.btn-delete {
+    border-radius: 30%;
+    float: right;
+    &:focus,
+    &.focus {
+    outline: 0;
+  }
+} 

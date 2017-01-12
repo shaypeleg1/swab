@@ -16,7 +16,7 @@ export default  {
   },
   computed:{
     count(){ return this.$store.state.count},
-    items(){ return this.$store.state.site.items}
+    components(){ return this.$store.state.site.components}
   },
   components : {
     MainNav,
