@@ -2,16 +2,21 @@ import MainNav from '../main-nav';
 import ToolBar from '../toolbar';
 import Editor from '../editor';
 
+import {mapState} from 'vuex';
+
 
 export default  {
   data: () => {
     return {
-      items: [{name: "swab1", type: "txt", value:"test first swab comp"},
-              {name: "swab2", type: "txt", value:"test secound swab comp"}]
+      
     }
   },
   methods : {
 
+  },
+  computed:{
+    count(){ return this.$store.state.count},
+    items(){ return this.$store.state.items}
   },
   components : {
     MainNav,
