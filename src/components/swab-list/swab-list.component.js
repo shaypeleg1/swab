@@ -1,4 +1,5 @@
-import Swab from '../swab';
+// import Swab from '../swab';
+import shortArticlePrev from '../swab/short-article-preview';
 
 export default {
   props: {
@@ -17,7 +18,8 @@ export default {
 
   },
   components: {
-    Swab
+    // Swab,
+    shortArticlePrev
   }
 
 }
