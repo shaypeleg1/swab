@@ -3,13 +3,12 @@
     <p>List of Swabs</p>
     <ul>
       <li v-for="item in items">
-        <!--<swab :item="item"></swab>-->
         <main-article-preview v-if="item.type === 'mainArticlePreview'" :item="item"></main-article-preview>
-        <circle-preview v-else="item.type === 'circlePreview'" :item="item"></circle-preview>
+        <circle-preview v-if="item.type === 'circlePreview'" :item="item"></circle-preview>
+        <!--<short-article-preview :item="item"></short-article-preview>-->
       </li>
     </ul>
     <div>
     </div>
   </div>
 </div>
-
