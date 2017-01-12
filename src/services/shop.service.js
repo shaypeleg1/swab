@@ -5,7 +5,7 @@
 export function getProducts() {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      resolve(generateItems());
+      resolve(generatecomponents());
     }, 1000);
   })
 }
@@ -18,7 +18,7 @@ export function checkout() {
   })
 }
 
-export function generateItems() {
+export function generatecomponents() {
   const skills = ['angular2',
     'web',
     'ionic',

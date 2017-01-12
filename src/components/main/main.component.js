@@ -16,8 +16,11 @@ export default  {
   },
   computed:{
     count(){ return this.$store.state.count},
-    items(){ return this.$store.state.site.items},
+
     toolBarData(){return this.$store.state.site.toolBarData}
+
+    components(){ return this.$store.state.site.components}
+
   },
   components : {
     MainNav,

@@ -1,4 +1,4 @@
-# vue
+# SWAB - Simple Web App Builder
 
 > A Vue.js project
 
