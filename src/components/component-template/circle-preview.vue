@@ -26,7 +26,8 @@
     },
     methods: {
         deleteSingleComp() {
-            console.log('delete pressed');
+            let type = this.componentIdx;
+            this.$store.dispatch('deleteComp', type);
         }
     }
     }

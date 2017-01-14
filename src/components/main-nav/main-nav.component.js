@@ -21,15 +21,15 @@ export default {
   },
   computed: {
 
-    // ...mapGetters([
-    //   'cartLength',
-    //   'cart'
-    // ]),
-    // ...mapGetters({
-    //     isLoggedIn: 'isLoggedIn',
-    //     user: 'user'
-    //   }
-    // ),
+    ...mapGetters([
+      // 'cartLength',
+      // 'cart'
+    ]),
+    ...mapGetters({
+        isLoggedIn: 'isLoggedIn',
+        user: 'user'
+      }
+    ),
   }
 
 }
