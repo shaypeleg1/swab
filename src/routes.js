@@ -3,6 +3,7 @@ import Main from './components/main';
 // import ToolBar from './components/toolbar';
 
 // import Home from './components/home';
+import Home from './components/home';
 import Signin from './components/signin';
 // import Signup from './components/signup';
 // import Shop from './components/shop';
@@ -10,9 +11,14 @@ import Signin from './components/signin';
 // import Admin from './components/admin/admin';
 
 const routes = [{
-  path     : '/',
+  path     : '/main',
   name     : 'main',
   component: Main
+},
+{
+  path     : '/',
+  name     : 'home',
+  component: Home
 },
  {
   path     : '/signin',
