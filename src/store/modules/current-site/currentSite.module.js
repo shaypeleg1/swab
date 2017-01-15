@@ -4,6 +4,7 @@ export const CHANGE_NAME = 'current-site/CHANGE_NAME'
 export const CHANGE_URL = 'current-site/CHANGE_URL'
 const ADD_COMP = 'ADD_COMP';
 const DELETE_COMP = 'DELETE_COMP';
+const GET_SINGLE_SITE = 'GET_SINGLE_SITE';
 
 const compsTemplatesInterfaces = {
   mainArticlePreview: {
@@ -72,6 +73,15 @@ const state = {
       console.log('active delete mutation');
       console.log('delete mutation on comp idx: ',type);
       state.components.splice(Number(type),1);
+    },
+    [GET_SINGLE_SITE](state, {
+      res
+    }) {
+      console.log('active get single site mutation');
+      console.log('here is the site: ',res);
+      state._id = res._id;
+      state.siteInfo = res.siteInfo;
+      state.components = res.components;
     }
   }
 
@@ -90,6 +100,15 @@ const state = {
         type
       });
     },
+    getSite({commit}, siteId) {
+      console.log('get site: action started');
+      siteService.getSingleSite(siteId)
+        .then(res => {
+          commit(GET_SINGLE_SITE, {
+            res
+          })
+        })
+    },
     saveSite(){
       siteService.postSite(this.state)
         .then(res => {
@@ -100,7 +119,6 @@ const state = {
 
   }
 
-//  this.$store.dispatch('deleteComp', type);
   export default {
     state,
     actions,
