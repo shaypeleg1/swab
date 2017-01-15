@@ -18,7 +18,7 @@ export default  {
       if( this.errors.any() ) return;
 
       authService.signin(user).then(res => {
-        this.$store.commit(SIGN_IN, res);
+        this.$store.dispatch('singnIn', res);
         this.$router.go(-1);
       }).catch(err => {
         err.json().then(res => this.error = res.error);

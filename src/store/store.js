@@ -17,7 +17,7 @@ export default new Vuex.Store({
   },
   modules:{
     site:CurrentSiteModule,
-    auth : authModule,
+    currUser : authModule,
   },
   strict : !isProduction
 })

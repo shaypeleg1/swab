@@ -4,6 +4,7 @@ export const CHANGE_NAME = 'current-site/CHANGE_NAME'
 export const CHANGE_URL = 'current-site/CHANGE_URL'
 const ADD_COMP = 'ADD_COMP';
 const DELETE_COMP = 'DELETE_COMP';
+const GET_SINGLE_SITE = 'GET_SINGLE_SITE';
 
 const compsTemplatesInterfaces = {
   mainArticlePreview: {
@@ -77,7 +78,6 @@ const mutations = {
   }
 }
 
-
 const actions = {
   addComp({
     commit
@@ -97,18 +97,24 @@ const actions = {
       type
     });
   },
+  getSite({commit}, siteId) {
+      console.log('get site: action started');
+      siteService.getSingleSite(siteId)
+        .then(res => {
+          commit(GET_SINGLE_SITE, {
+            res
+          })
+        })
+    },
   saveSite() {
     console.log('inside currentSite about to use siteService')
     siteService.updateSite(state)
       .then(res => {
         console.log('save site', res)
       })
-
   }
-
 }
 
-//  this.$store.dispatch('deleteComp', type);
 export default {
   state,
   actions,

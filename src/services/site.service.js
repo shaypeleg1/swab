@@ -43,5 +43,13 @@ export default {
     // 	});
 
     // });
-  }
+  },
+    getSingleSite(siteId) {
+    console.log('getting site with id: ', siteId);
+    return Vue.http.get('http://localhost:3003/data/sites/'+siteId)
+      .then(res => res.json())
+      .then((currSite) => {
+        return currSite;
+      })
+    }
 }
