@@ -6,7 +6,6 @@ export default {
       require: true,
       type: Array
     }
-
   },
   created() {},
   methods: {

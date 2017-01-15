@@ -14,10 +14,14 @@
         <li>
           <router-link :to="{name: 'admin'}">Admin</router-link>
         </li>
-
       </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li v-if="!isLoggedIn">
+      <ul class="nav navbar-nav navbar-right" >
+        <li>
+          Welcome {{currUser.user.firstName}}
+           <button type="button" class="btn btn-info" @click="getSite">Get User Site</button>
+        </li>
+        <li>
+        <!--<li v-if="!isLoggedIn">-->
           <router-link :to="{ name: 'signin' }">Sign in</router-link>
         </li>
         <!--<li v-if="!isLoggedIn">

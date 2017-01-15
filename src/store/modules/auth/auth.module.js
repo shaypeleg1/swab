@@ -8,18 +8,26 @@ const state = {
 
 const mutations = {
   [SIGN_IN]( state, user ) {
-    state.isLoggedIn = true;
+    
     state.user = user;
+    state.isLoggedIn = true;
   },
   [SIGN_OUT]( state ) {
     state.isLoggedIn = false;
   }
 }
 
-const actions = {};
+const actions = {
+  singnIn({commit}, type) {
+    commit(SIGN_IN, {
+      type
+    });
+  }
+};
+
 const getters = {
-  isLoggedIn: state => state.isLoggedIn,
-  user: state => state.user
+  isLoggedIn: state => state.user.isLoggedIn,
+  currUser: state => state.currUser
 };
 
 export default {

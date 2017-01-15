@@ -14,7 +14,6 @@ export default {
     }
   },
   methods: {
-
   },
   computed: {
     count() {
@@ -27,6 +26,10 @@ export default {
 
     components() {
       return this.$store.state.site.components
+    },
+
+    currUser() {
+      return this.$store.state.currUser
     }
 
   },
