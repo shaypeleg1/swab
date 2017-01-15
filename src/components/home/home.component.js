@@ -1,3 +1,5 @@
+import SignIn from '../signin/';
+
 export default  {
   name:'home-component',
   data: () => {
@@ -7,5 +9,8 @@ export default  {
   },
   methods : {
 
+  },
+  components:{
+    SignIn
   }
 }

@@ -1,17 +1,17 @@
 import Vue from 'vue';
 
 export default {
-  saveSite(data) {
-    console.log('in the actions of siteCRUD');
-    return Vue.http.post('http://localhost:3003/data/sites', {data})
+  updateSite(data) {
+    let dataJson = JSON.stringify(data);
+    console.log('in the actions of siteCRUD',dataJson);
+    return Vue.http.put('http://localhost:3003/data/sites', dataJson)
       .then(res => res.json())
       .then(({
         token,
         user
       }) => {
-        console.log('Signedin user:', user);
+        console.log('updating the user site:', user);
         setSession(token, user);
-        return user;
       })
       //         app.post('/data/:objType', upload.single('file'), function (req, res) {
       // 	//console.log('req.file', req.file);

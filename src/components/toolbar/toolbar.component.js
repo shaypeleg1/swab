@@ -3,7 +3,7 @@ import {CHANGE_URL} from '../../store/modules/current-site/currentSite.module'
 
 export default  {
   props:{
-    toolBarData:{
+    siteInfo:{
       require:true,
       type:Object
     }
