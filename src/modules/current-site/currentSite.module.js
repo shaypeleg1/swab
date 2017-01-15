@@ -17,7 +17,7 @@ const compsTemplatesInterfaces = {
   }
 }
 const state = {
-    toolBarData: {
+    toolBarData: { // Itay, please chenge that to a more sutible data name
     siteUrl: 'MY-First-SWAB',
     siteName: 'first swab',
   },

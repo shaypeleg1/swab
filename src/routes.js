@@ -3,7 +3,7 @@ import Main from './components/main';
 // import ToolBar from './components/toolbar';
 
 // import Home from './components/home';
-// import Signin from './components/signin';
+import Signin from './components/signin';
 // import Signup from './components/signup';
 // import Shop from './components/shop';
 // import Cart from './components/cart';
@@ -13,6 +13,11 @@ const routes = [{
   path     : '/',
   name     : 'main',
   component: Main
+},
+ {
+  path     : '/signin',
+  name     : 'signin',
+  component: Signin
 },
   { path: '*', redirect: { name: 'main' } }];
 
