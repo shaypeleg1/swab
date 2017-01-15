@@ -1,5 +1,5 @@
 import authService from '../../services/auth.service';
-import {SIGN_IN, SIGN_OUT} from '../../modules/auth/auth.module';
+import {SIGN_IN, SIGN_OUT} from '../../store/modules/auth/auth.module';
 
 export default  {
   mounted() {

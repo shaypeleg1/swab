@@ -1,19 +1,21 @@
 import ComponentTemplateList from '../component-template-list';
 
 export default {
-  props : {
+  props: {
     components: {
       require: true,
-      type:Array
+      type: Array
     }
 
   },
-  created () {
+  created() {},
+  methods: {
+    saveSite() {
+      console.log('post');
+      this.$store.dispatch('saveSite',);
+    },
   },
-  methods   : {
-
-  },
-  computed  : {
+  computed: {
 
   },
   components: {
@@ -21,4 +23,3 @@ export default {
   }
 
 }
-
