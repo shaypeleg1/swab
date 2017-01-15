@@ -19,7 +19,8 @@ const compsTemplatesInterfaces = {
   }
 }
 const state = {
-    toolBarData: { // Itay, please chenge that to a more sutible data name
+  _id: '587a5e2ec8bd6a0eec87634e',
+  siteInfo: { // Itay, please change that to a more sutible data name
     siteUrl: 'MY-First-SWAB',
     siteName: 'first swab',
   },
@@ -53,57 +54,63 @@ const state = {
   }, ]
 }
 
-  const mutations = {
-    [CHANGE_NAME](state, payload) {
-      console.log('payload', state);
-      state.toolBarData.siteName = payload;
-    },
-    [CHANGE_URL](state, payload) {
-      state.toolBarData.siteUrl = payload;
-    },
-    [ADD_COMP](state, {
-      newCompData,indexToInsert
-    }) {
-      state.components.splice(indexToInsert,0, newCompData);
-    },
-    [DELETE_COMP](state, {
+const mutations = {
+  [CHANGE_NAME](state, payload) {
+    console.log('payload', state);
+    state.siteInfo.siteName = payload;
+  },
+  [CHANGE_URL](state, payload) {
+    state.siteInfo.siteUrl = payload;
+  },
+  [ADD_COMP](state, {
+    newCompData,
+    indexToInsert
+  }) {
+    state.components.splice(indexToInsert, 0, newCompData);
+  },
+  [DELETE_COMP](state, {
+    type
+  }) {
+    console.log('active delete mutation');
+    console.log('delete mutation on comp idx: ', type);
+    state.components.splice(Number(type), 1);
+  }
+}
+
+
+const actions = {
+  addComp({
+    commit
+  }, compData) {
+    console.log(compData)
+    let newCompData = (JSON.parse(JSON.stringify(compsTemplatesInterfaces[compData.type]))); // Deep cloning
+    let indexToInsert = compData.indexToInsert;
+    commit(ADD_COMP, {
+      newCompData,
+      indexToInsert
+    });
+  },
+  deleteComp({
+    commit
+  }, type) {
+    commit(DELETE_COMP, {
       type
-    }) {
-      console.log('active delete mutation');
-      console.log('delete mutation on comp idx: ',type);
-      state.components.splice(Number(type),1);
-    }
-  }
-
-
-  const actions = {
-    addComp({commit}, compData) {
-      console.log(compData)
-      let newCompData = (JSON.parse(JSON.stringify(compsTemplatesInterfaces[compData.type]))); // Deep cloning
-      let indexToInsert = compData.indexToInsert;
-      commit(ADD_COMP, {
-        newCompData,indexToInsert
-      });
-    },
-    deleteComp({commit}, type) {
-      commit(DELETE_COMP, {
-        type
-      });
-    },
-    saveSite(){
-      siteService.postSite(this.state)
-        .then(res => {
-          console.log('save site',res)
-        })
-
-    }
+    });
+  },
+  saveSite() {
+    console.log('inside currentSite about to use siteService')
+    siteService.updateSite(state)
+      .then(res => {
+        console.log('save site', res)
+      })
 
   }
+
+}
 
 //  this.$store.dispatch('deleteComp', type);
-  export default {
-    state,
-    actions,
-    mutations
-  }
-
+export default {
+  state,
+  actions,
+  mutations
+}

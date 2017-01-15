@@ -21,8 +21,8 @@ export default {
       return this.$store.state.count
     },
 
-    toolBarData() {
-      return this.$store.state.site.toolBarData
+    siteInfo() {
+      return this.$store.state.site.siteInfo
     },
 
     components() {
