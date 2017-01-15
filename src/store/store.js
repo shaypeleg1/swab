@@ -1,6 +1,7 @@
 import Vuex from 'vuex';
 import CurrentSiteModule from './modules/current-site/currentSite.module.js'
 import authModule from './modules/auth/auth.module';
+import siteCRUD from './services/site.service.js';
 // import shopModule from './modules/shop/shop.module';
 // import cartModule from './modules/cart/cart.module';
 
@@ -18,6 +19,7 @@ export default new Vuex.Store({
   modules:{
     site:CurrentSiteModule,
     auth : authModule,
+    siteService: siteCRUD
   },
   strict : !isProduction
 })
