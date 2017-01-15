@@ -1,10 +1,9 @@
 import {mapMutations, mapGetters} from 'vuex';
 import authService from '../../services/auth.service';
-import {SIGN_OUT} from '../../modules/auth/auth.module';
-import {REMOVE_FROM_CART} from '../../modules/cart/cart.module';
+import {SIGN_OUT} from '../../store/modules/auth/auth.module';
 
 export default {
-  name    : 'main-nav',
+  name: 'main-nav',
   data: function(){
     return{
     }
@@ -16,7 +15,6 @@ export default {
       this.$router.push('/');
     },
     ...mapMutations({
-      removeFromCart: REMOVE_FROM_CART
     })
   },
   computed: {

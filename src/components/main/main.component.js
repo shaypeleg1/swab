@@ -2,27 +2,35 @@ import MainNav from '../main-nav';
 import ToolBar from '../toolbar';
 import Editor from '../editor';
 
-import {mapState} from 'vuex';
+import {
+  mapState
+} from 'vuex';
 
 
-export default  {
+export default {
   data: () => {
     return {
-      
+
     }
   },
-  methods : {
+  methods: {
 
   },
-  computed:{
-    count(){ return this.$store.state.count},
+  computed: {
+    count() {
+      return this.$store.state.count
+    },
 
-    toolBarData(){return this.$store.state.site.toolBarData},
+    toolBarData() {
+      return this.$store.state.site.toolBarData
+    },
 
-    components(){ return this.$store.state.site.components}
+    components() {
+      return this.$store.state.site.components
+    }
 
   },
-  components : {
+  components: {
     MainNav,
     ToolBar,
     Editor

@@ -1,3 +1,5 @@
+import siteService from '../../../services/site.service';
+
 export const CHANGE_NAME = 'current-site/CHANGE_NAME'
 export const CHANGE_URL = 'current-site/CHANGE_URL'
 const ADD_COMP = 'ADD_COMP';
@@ -87,13 +89,19 @@ const state = {
       commit(DELETE_COMP, {
         type
       });
+    },
+    saveSite(){
+      siteService.postSite(this.state)
+        .then(res => {
+          console.log('save site',res)
+        })
+
     }
 
   }
 
 //  this.$store.dispatch('deleteComp', type);
   export default {
-
     state,
     actions,
     mutations

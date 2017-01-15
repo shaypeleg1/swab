@@ -12,7 +12,7 @@ export default {
   methods: {
     saveSite() {
       console.log('post');
-      this.$store.dispatch('postSite',);
+      this.$store.dispatch('saveSite',);
     },
   },
   computed: {

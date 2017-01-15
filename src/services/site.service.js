@@ -1,6 +1,6 @@
 import Vue from 'vue';
 
-const actions = {
+export default {
   saveSite(data) {
     console.log('in the actions of siteCRUD');
     return Vue.http.post('http://localhost:3003/data/sites', {data})
@@ -44,7 +44,4 @@ const actions = {
 
     // });
   }
-}
-export default {
-  actions
 }
