@@ -40,7 +40,6 @@ export default {
     currUser() {
       return this.$store.getters.currUser
     }
-
   },
   components: {
     MainNav,
