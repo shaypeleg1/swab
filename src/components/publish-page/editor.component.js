@@ -1,8 +1,8 @@
 import ComponentTemplateList from '../component-template-list';
 
 export default {
+  name: 'publish-page',
   props: {
-    editable:'',
     components: {
       require: true,
       type: Array

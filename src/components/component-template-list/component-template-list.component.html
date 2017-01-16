@@ -1,11 +1,8 @@
-<div class="container below-nav">
+<div class="container">
   <div class="row">
-    <p>List of component-templates</p>
       <div v-for="(component,index) in components">
-         <component :is="component.type" :dataProps="component.props" :componentIdx="index"></component>
-         <button v-on:click="addSingleComp" :value="index">add comp </button>
+         <component :editable="editable" :is="component.type" :dataProps="component.props" :componentIdx="index"></component>
+         <button v-if="editable == true" v-on:click="addSingleComp" :value="index">add comp </button>
       </div>
-    <div>
-    </div>
   </div>
 </div>

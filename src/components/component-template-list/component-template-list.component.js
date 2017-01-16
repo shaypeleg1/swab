@@ -4,6 +4,7 @@ import ShortArticlePreview from '../component-template/short-article-preview';
 
 export default {
   props: {
+    editable: '',
     components: {
       require: true,
       type:Array

@@ -10,9 +10,14 @@ import {
 export default {
   data: () => {
     return {
+      editable: true,
     }
   },
   methods: {
+    changeEditModeFunc(isEditMode) {
+      console.log('edite mode methods', isEditMode);
+      this.editable = isEditMode;
+    },
   },
   created: function () {
 	  // let siteId = this.currUser.user.sites[0];

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <button type="button" @click="deleteSingleComp" class="btn btn-danger btn-delete glyphicon glyphicon-remove"></button>
+        <button v-if="editable == true" type="button" @click="deleteSingleComp" class="btn btn-danger btn-delete glyphicon glyphicon-remove"></button>
         <section id="circlePreview" class="flex">
             <header>
                 <h2>{{dataProps.title}}</h2>
@@ -15,6 +15,7 @@
     export default  {
     name    : 'circlePreview',
     props   : {
+        editable: '',
         componentIdx: {
             require: true,
             type:Number

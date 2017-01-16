@@ -6,13 +6,13 @@
     <div>
       <ul class="nav navbar-nav">
         <li>
-          <router-link :to="{ name: 'shop' }">Shop</router-link>
+            <button @click="showEditMode" type="button" class="btn btn-danger">Edit Mode</button>
         </li>
         <li>
-          <router-link :to="{name: 'cart'}">My Cart</router-link>
+            <button @click="showPreviewMode" type="button" class="btn btn-warning">Preview Mode</button>
         </li>
-        <li>
-          <router-link :to="{name: 'admin'}">Admin</router-link>
+        <li>          
+            <button @click="showPublishMode" type="button" class="btn btn-success">Publish</button>
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right" >
