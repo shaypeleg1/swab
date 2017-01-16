@@ -5,10 +5,10 @@ import {SIGN_OUT} from '../../store/modules/auth/auth.module';
 export default {
   name: 'main-nav',
   props : {
-    currUser: {
-      require: false,
-      type:Object
-    }
+    // currUser: {
+    //   require: false,
+    //   type:Object
+    // }
   },
   data: function () {
     return{
@@ -22,7 +22,9 @@ export default {
       this.$router.push('/');
     },
     getSingleSite() {
-      let siteId = this.currUser.user.sites[0];
+      console.log('curr user: ', this.currUser);
+
+      let siteId = this.currUser.sites[0];
       console.log('this is the site Id to get: ', siteId);
       this.$store.dispatch('getSite', siteId);
     },
@@ -40,6 +42,9 @@ export default {
         // currUser: 'currUser'
       }
     ),
+    currUser() {
+      return this.$store.getters.currUser
+    }
   }
 
 }

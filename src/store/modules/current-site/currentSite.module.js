@@ -69,6 +69,10 @@ const mutations = {
   }) {
     state.components.splice(indexToInsert, 0, newCompData);
   },
+  [GET_SINGLE_SITE](state, res){
+    console.log('Here is the site from the server: ', res);
+    
+  },
   [DELETE_COMP](state, {
     type
   }) {

@@ -8,7 +8,6 @@ import Vue from 'vue';
  */
 function signin( {email,password} ) {
   console.log(email);
-  
   return Vue.http.post('http://localhost:3003/login', {email: email, pass: password} )
     .then(res => res.json())
     .then(({token, user}) => {
