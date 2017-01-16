@@ -22,10 +22,7 @@ export default {
       this.$router.push('/');
     },
     getSingleSite() {
-      console.log('curr user: ', this.currUser);
-
       let siteId = this.currUser.sites[0];
-      console.log('this is the site Id to get: ', siteId);
       this.$store.dispatch('getSite', siteId);
     },
     ...mapMutations({

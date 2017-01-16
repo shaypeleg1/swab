@@ -10,7 +10,6 @@ import {
 export default {
   data: () => {
     return {
-
     }
   },
   methods: {

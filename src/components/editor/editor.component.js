@@ -9,10 +9,6 @@ export default {
   },
   created() {},
   methods: {
-    saveSite() {
-      console.log('post');
-      this.$store.dispatch('saveSite',);
-    },
   },
   computed: {
 
