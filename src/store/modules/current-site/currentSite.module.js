@@ -1,3 +1,4 @@
+import siteService from '../../../services/site.service';
 
 
 export const CHANGE_NAME = 'current-site/CHANGE_NAME'
