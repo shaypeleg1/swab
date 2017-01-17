@@ -1,13 +1,14 @@
 <div>
-    <h2>Navigation bar:</h2>
-    <h3>hi user:{{currUser.user["firstName"]}} </h3>
-
-        <div>here are your sites:{{sitesToPrev}}</div>
-    <!--<div v-for="site in currUser.user.sites">-->
-    <!--</div>-->
-    <h4>
-        
-        <a href="./main">main</a>
-    </h4>
-    </hr>
+  <h2>Navigation bar:</h2>
+  <h3>hi user:{{currUser.user["firstName"]}} </h3>
+  <!--here are your sites:{{sitesToPrev}}-->
+  <div v-for="site in sitesToPrev">
+    <router-link :to="{path:`main/${site._id}`}" >{{site.siteInfo.siteName}}</router-link>
+  </div>
+  <!--<div v-for="site in currUser.user.sites">-->
+  <!--</div>-->
+  <h4>
+    <a href="./main">main</a>
+  </h4>
+  </hr>
 </div>
