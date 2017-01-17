@@ -1,33 +1,41 @@
+import siteService from '../../../services/site.service';
 
-// const state = {
-//   isLoggedIn: !!localStorage.getItem('token'),
-//   sitesPrev: JSON.parse(localStorage.getItem('user'))
-// };
+const GET_SITES_PREV = 'GET_SITES_PREV';
 
-// const mutations = {
-//   [SIGN_IN]( state, user ) {
-//     console.log('Oh here is the user: ', state);
-//     state.user = user;    
-//     state.isLoggedIn = true;
-//   },
-//   [SIGN_OUT]( state ) {
-//     state.isLoggedIn = false;
-//   }
-// }
+const state = {
+  sitesPrev: []
+}
 
-// const actions = {
-//   singnIn({commit}, user) {
-//     console.log('user in signIn function',user)
-//     commit(SIGN_IN, {
-//       user
-//     });
-//   }
-// };
+const mutations = {
+  [GET_SITES_PREV](state, res) {
+    console.log('coming from dispatch getManySites', res);
+    console.log('this is sitesPrev',state);
+    state.sitesPrev.push(...res);
+
+  },
+}
+const actions = {
+
+  getSites({
+    commit
+  }, idOfSites) {
+    console.log('inside currentSite getSites', idOfSites)
+    siteService.getManySites(idOfSites)
+      .then(res => {
+        commit(GET_SITES_PREV,
+          res
+        )
+      })
+  }
+}
 
 const getters = {
-  sitesToPrev: state => state.site.sitesPrev
+  sitesToPrev: state => state.sitesPrev
 };
 
 export default {
+  state,
+  mutations,
+  actions,
   getters,
 }

@@ -1,4 +1,4 @@
-import siteService from '../../../services/site.service';
+
 
 export const CHANGE_NAME = 'current-site/CHANGE_NAME'
 export const CHANGE_URL = 'current-site/CHANGE_URL'
@@ -27,7 +27,6 @@ const state = {
     siteUrl: '',
     siteName: '',
   },
-  sitesPrev:[], // this needs to move to sitePrev.module
   components: [{
     name: "",
     type: "",
@@ -55,11 +54,7 @@ const mutations = {
     state.siteInfo = res.siteInfo;
     state.components = res.components;
   },
-  [GET_SITES_PREV](state,res){
-    console.log('coming from dispatch getManySites',res);
-    state.sitesPrev.push(...res);
 
-  },
   [DELETE_COMP](state, {
     type
   }) {
@@ -87,23 +82,17 @@ const actions = {
     });
   },
 
-  getSite({commit}, siteId) {
-      siteService.getSingleSite(siteId)
-        .then(res => {
-          console.log('Got site: ', res);
-          
-          commit(GET_SINGLE_SITE, res)
-        })
-  },
-  getSites({commit},idOfSites) {
-    console.log('inside currentSite getSites',idOfSites)
-    siteService.getManySites(idOfSites)
+  getSite({
+    commit
+  }, siteId) {
+    siteService.getSingleSite(siteId)
       .then(res => {
-        commit(GET_SITES_PREV, 
-          res
-        )
+        console.log('Got site: ', res);
+
+        commit(GET_SINGLE_SITE, res)
       })
   },
+
   saveSite() {
     siteService.updateSite(state)
       .then(res => {
