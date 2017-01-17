@@ -6,12 +6,20 @@ export default {
   name: 'main-nav',
   props : {
     editable:'',
+    siteInfo: {
+    require: true,
+    type: Object
+    }
   },
   data: function () {
     return{
     }
   },
-  
+  created() {
+    // get site from server from URL id param
+    let EditSiteId = this.$route.params.id;
+    this.$store.dispatch('getSite', EditSiteId);
+  },
   methods : {
     signout() {
       authService.signout();
@@ -19,8 +27,8 @@ export default {
       this.$router.push('/');
     },
     getSingleSite() {
-      let siteId = this.currUser.sites[0];
-      this.$store.dispatch('getSite', siteId);
+      let EditSiteId = this.$route.params.id;
+      this.$store.dispatch('getSite', EditSiteId);
     },
     showEditMode() {
       let enableEdit = true;
