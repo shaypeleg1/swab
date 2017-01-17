@@ -31,7 +31,7 @@ export default {
       this.$emit('changeEditMode', enableEdit);
     },
     showPublishMode() {
-      this.$router.push({ name: 'published', params: { siteId: 123 }});
+
     },
     ...mapMutations({
 
@@ -47,6 +47,9 @@ export default {
         // currUser: 'currUser'
       }
     ),
+    siteId() {
+      return this.$store.state.site._id
+    },
     currUser() {
       return this.$store.getters.currUser
     }
