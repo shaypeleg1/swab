@@ -5,10 +5,7 @@ import {SIGN_OUT} from '../../store/modules/auth/auth.module';
 export default {
   name: 'main-nav',
   props : {
-    // currUser: {
-    //   require: false,
-    //   type:Object
-    // }
+    editable:'',
   },
   data: function () {
     return{
@@ -22,11 +19,19 @@ export default {
       this.$router.push('/');
     },
     getSingleSite() {
-      console.log('curr user: ', this.currUser);
-
       let siteId = this.currUser.sites[0];
-      console.log('this is the site Id to get: ', siteId);
       this.$store.dispatch('getSite', siteId);
+    },
+    showEditMode() {
+      let enableEdit = true;
+      this.$emit('changeEditMode', enableEdit);
+    },
+    showPreviewMode() {
+      let enableEdit = false;
+      this.$emit('changeEditMode', enableEdit);
+    },
+    showPublishMode() {
+      this.$router.push({ name: 'published', params: { siteId: 123 }});
     },
     ...mapMutations({
 
