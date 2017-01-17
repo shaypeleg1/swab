@@ -8,7 +8,7 @@ const state = {
 
 const mutations = {
   [SIGN_IN]( state, user ) {
-    console.log('Oh here is the user: ', state);
+
     state.user = user;    
     state.isLoggedIn = true;
   },

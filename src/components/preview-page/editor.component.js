@@ -1,8 +1,8 @@
 import ComponentTemplateList from '../component-template-list';
 
 export default {
+  name: 'preview-page',
   props: {
-    editable:'',
     components: {
       require: true,
       type: Array

@@ -19,23 +19,7 @@ function signin( {email,password} ) {
     })
 }
 
-// how can i get access to user sites from store?
 
-// function signinDummy( { email, password } ) {
-//   return new Promise(( resolve, reject ) => {
-//     if( password === '123456' ) {
-//       const token = 'JWT';
-//       resolve({
-//         token
-//       });
-//       setSession(token);
-//     } else {
-//       reject({
-//         error: 'Email/Password not valid'
-//       });
-//     }
-//   });
-// }
 
 
 /**

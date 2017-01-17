@@ -7,9 +7,11 @@
       <label for="">Site URL: </label>
       <input type="text" @input="updateURL" :placeholder="siteInfo.siteUrl">
     </div>
+    <button @click="saveSite" class="btn btn-success">Save Site</button>
     <div>
       <label for="">Site Title: </label>
       <input type="text" @input="updateName" :placeholder="siteInfo.siteName" value="">
+    Web-site name: {{siteInfo.siteName}}
     </div>
   </section>
   <!--</div>-->

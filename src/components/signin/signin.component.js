@@ -23,7 +23,6 @@ export default  {
       }).catch(err => {
         err.json().then(res => this.error = res.error);
       })
-
     }
   }
 }

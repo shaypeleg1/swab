@@ -20,41 +20,19 @@ const compsTemplatesInterfaces = {
     }
   }
 }
+
 const state = {
-  _id: '587a5e2ec8bd6a0eec87634e',
+  _id: '',
   siteInfo: { // Itay, please change that to a more sutible data name
-    siteUrl: 'MY-First-SWAB',
-    siteName: 'first swab',
+    siteUrl: '',
+    siteName: '',
   },
   sitesPrev:[], // this needs to move to sitePrev.module
   components: [{
-    name: "component-template1",
-    type: "mainArticlePreview",
-    props: {
-      title: "component-template - first template",
-      subtitle: "Powered by Vue.js",
-      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud                                                                 exercitation ullamco laboris nis",
-      button: "LEARN MORE",
-      img_src: ""
-    }
-  }, {
-    name: "component-template2",
-    type: "circlePreview",
-    props: {
-      title: "component-template - secound template",
-      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud                                                                                      exercitation ullamco laboris nis",
-      img_src: ""
-    }
-  }, {
-    name: "component-template2",
-    type: "shortArticlePreview",
-    props: {
-      title: "component-template - third template",
-      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud                                                                 exercitation ullamco laboris nis",
-      button: "MORE",
-      img_src: ""
-    }
-  }, ]
+    name: "",
+    type: "",
+    props: {}
+  }]
 }
 
 const mutations = {
@@ -71,6 +49,7 @@ const mutations = {
   }) {
     state.components.splice(indexToInsert, 0, newCompData);
   },
+
   [GET_SINGLE_SITE](state, res) {
     console.log('Here is the site from the server: ', res);
 
@@ -78,12 +57,11 @@ const mutations = {
   [GET_SITES_PREV](state,res){
     console.log('coming from dispatch getManySites',res);
     state.sitesPrev.push(...res);
+
   },
   [DELETE_COMP](state, {
     type
   }) {
-    console.log('active delete mutation');
-    console.log('delete mutation on comp idx: ', type);
     state.components.splice(Number(type), 1);
   }
 }
@@ -107,14 +85,13 @@ const actions = {
       type
     });
   },
-  getSite({
-    commit
-  }, siteId) {
-    console.log('get site: action started');
-    siteService.getSingleSite(siteId)
-      .then(res => {
-        commit(GET_SINGLE_SITE, {
-          res
+
+  getSite({commit}, siteId) {
+      siteService.getSingleSite(siteId)
+        .then(res => {
+          console.log('Got site: ', res);
+          
+          commit(GET_SINGLE_SITE, res)
         })
       })
   },
@@ -128,7 +105,6 @@ const actions = {
       })
   },
   saveSite() {
-    console.log('inside currentSite about to use siteService')
     siteService.updateSite(state)
       .then(res => {
         console.log('save site', res)

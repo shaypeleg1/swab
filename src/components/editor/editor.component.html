@@ -1,9 +1,7 @@
-<div class="container below-nav">
+<div class="container">
   <div class="row">
-    <p>Loading Editor....</p>
     <div>
-      <button @click="saveSite" class="btn-success">Save</button>
-      <component-template-list :components="components"></component-template-list>
+      <component-template-list :components="components" :editable="editable"></component-template-list>
     </div>
   </div>
 </div>

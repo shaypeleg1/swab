@@ -14,13 +14,16 @@ export default  {
   },
   methods : {
     updateName(event){
-      console.log('about to update name',event.target.value)
       this.$store.dispatch('updateName', event.target.value);
     },
     updateURL(event){
       this.$store.dispatch('updateUrl', event.target.value)
-    }
+    },
+    saveSite() {
+      this.$store.dispatch('saveSite');
+    },
   },
+
   components : {
     
   }

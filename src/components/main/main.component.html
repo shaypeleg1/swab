@@ -1,5 +1,5 @@
 <div>
- <main-nav></main-nav> 
-<tool-bar :siteInfo="siteInfo"></tool-bar>
-<editor :components="components"></editor>
+ <main-nav :editable="editable" v-on:changeEditMode="changeEditModeFunc"></main-nav> 
+<tool-bar v-if="editable == true" :siteInfo="siteInfo"></tool-bar>
+<editor :components="components" :editable="editable"></editor>
 </div>
