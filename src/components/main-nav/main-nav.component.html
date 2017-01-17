@@ -4,26 +4,15 @@
       <router-link to="/" class="navbar-brand" exact>SWAB - Simple Web App Builder</router-link>
     </div>
     <div>
-      <ul class="nav navbar-nav">
-        <li>
-          <router-link :to="{ name: 'shop' }">Shop</router-link>
-        </li>
-        <li>
-          <router-link :to="{name: 'cart'}">My Cart</router-link>
-        </li>
-        <li>
-          <router-link :to="{name: 'admin'}">Admin</router-link>
-        </li>
-      </ul>
       <ul class="nav navbar-nav navbar-right" >
         <li>
           ok wow   {{currUser}}
            <button type="button" class="btn btn-info" @click="getSingleSite">Get User Site</button>
         </li>
-        <li>
+        <!--<li>
         <!--<li v-if="!isLoggedIn">-->
           <router-link :to="{ name: 'signin' }">Sign in</router-link>
-        </li>
+        </li>-->
         <!--<li v-if="!isLoggedIn">
           <router-link :to="{ name: 'signup' }">Sign up</router-link>
         </li>

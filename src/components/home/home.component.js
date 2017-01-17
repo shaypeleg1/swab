@@ -1,16 +1,24 @@
-import SignIn from '../signin/';
+import {mapMutations,mapGetters} from 'vuex';
 
-export default  {
-  name:'home-component',
+
+export default {
+  name: 'home-component',
   data: () => {
-    return {
-      components: []
-    }
+    return {}
   },
-  methods : {
+  methods: {
 
   },
-  components:{
-    SignIn
-  }
+  computed: {
+    ...mapGetters([
+      'currUser','sitesToPrev']),
+
+  },
+  components: {
+
+  },
+  created(){
+    console.log('this is currUser',this.currUser.user.sites);
+    this.$store.dispatch('getSites',this.currUser.user.sites);
+  },
 }

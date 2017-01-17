@@ -1,14 +1,8 @@
 import VueRouter from 'vue-router';
 import Main from './components/main';
-// import ToolBar from './components/toolbar';
 
-// import Home from './components/home';
 import Home from './components/home';
 import Signin from './components/signin';
-// import Signup from './components/signup';
-// import Shop from './components/shop';
-// import Cart from './components/cart';
-// import Admin from './components/admin/admin';
 
 const routes = [{
   path     : '/main',
@@ -16,12 +10,12 @@ const routes = [{
   component: Main
 },
 {
-  path     : '/',
+  path     : '/home',
   name     : 'home',
   component: Home
 },
  {
-  path     : '/signin',
+  path     : '/',
   name     : 'signin',
   component: Signin
 },

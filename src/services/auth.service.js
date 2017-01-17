@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import SiteService from './site.service.js';
 
 /**
  *
@@ -6,18 +7,20 @@ import Vue from 'vue';
  * @param password
  * @returns {Promise}
  */
+
+let userAndSites = [];
 function signin( {email,password} ) {
-  console.log(email);
   return Vue.http.post('http://localhost:3003/login', {email: email, pass: password} )
     .then(res => res.json())
     .then(({token, user}) => {
-      console.log('Signedin user:', user);
       setSession(token, user);
+      userAndSites.push(user);
       return user;
     })
-
-
 }
+
+// how can i get access to user sites from store?
+
 // function signinDummy( { email, password } ) {
 //   return new Promise(( resolve, reject ) => {
 //     if( password === '123456' ) {
