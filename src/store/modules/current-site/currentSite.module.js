@@ -51,8 +51,9 @@ const mutations = {
   },
 
   [GET_SINGLE_SITE](state, res) {
-    console.log('Here is the site from the server: ', res);
-
+    state._id = res._id;
+    state.siteInfo = res.siteInfo;
+    state.components = res.components;
   },
   [GET_SITES_PREV](state,res){
     console.log('coming from dispatch getManySites',res);
@@ -93,7 +94,6 @@ const actions = {
           
           commit(GET_SINGLE_SITE, res)
         })
-      })
   },
   getSites({commit},idOfSites) {
     console.log('inside currentSite getSites',idOfSites)

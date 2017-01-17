@@ -12,7 +12,6 @@ export default {
   computed: {
     ...mapGetters([
       'currUser','sitesToPrev']),
-
   },
   components: {
 

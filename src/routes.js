@@ -7,19 +7,20 @@ import Home from './components/home';
 import Signin from './components/signin';
 
 
-const routes = [{
-  path     : '/main',
-  name     : 'main',
-  component: Main
-
-  },
+const routes = [
   {
-    path     : '/',
+    path     : '/home',
     name     : 'home',
     component: Home
   },
   {
-    path     : '/signin',
+  path     : '/main',
+  name     : 'main',
+  component: Main
+  },
+
+  {
+    path     : '/',
     name     : 'signin',
     component: Signin
   },
