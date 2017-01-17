@@ -1,10 +1,40 @@
 <div>
+  <nav class="navbar navbar-default">
+    <section class="container">
+      <div class="navbar-header" style="margin-top: -4px;">
+        <router-link to="/" class="navbar-brand" exact>SWAB - Simple Web App Builder</router-link>
+      </div>
+      <div>
+        <ul class="nav navbar-nav">
+          <li>
+            <router-link :to="{path:`home`}">
+              <button type="button" class="btn btn-success">Home</button>
+            </router-link>
+
+          </li>
+          <li>
+            <router-link :to="{path:`published/${siteId}`}">
+              <button type="button" class="btn btn-success">Logout</button>
+            </router-link>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <!--<router-link :to="{ name: 'signin' }">Sign in</router-link>-->
+          </li>
+        </ul>
+      </div>
+    </section>
+  </nav>
   <h2>Navigation bar:</h2>
   <h3>hi user:{{currUser.user["firstName"]}} </h3>
   <!--here are your sites:{{sitesToPrev}}-->
-  <div v-for="site in sitesToPrev">
-    <router-link :to="{path:`main/${site._id}`}" >{{site.siteInfo.siteName}}</router-link>
+  <div v-for="site in sitesToPrev" class="prev-site-container">
+    <div class="prev-site">
+    <router-link :to="{path:`main/${site._id}`}">{{site.siteInfo.siteName}}</router-link>
+    </div>
   </div>
+  <router-link :to="{path:`main/${getDefaultSiteId}`}" class="btn btn-info"> Create New Site</router-link>
   <!--<div v-for="site in currUser.user.sites">-->
   <!--</div>-->
   <h4>

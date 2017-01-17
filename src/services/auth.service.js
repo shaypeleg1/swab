@@ -52,6 +52,9 @@ function setSession( token, user ) {
 function signout() {
   localStorage.removeItem('token');
   localStorage.removeItem('user');
+  return Vue.http.get('http://localhost:3003/logout')
+    .then(res => res.json())
+    .then(res => {console.log('session end',res)})
 }
 
 /**
