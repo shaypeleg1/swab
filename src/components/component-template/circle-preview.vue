@@ -3,9 +3,9 @@
         <button v-if="editable == true" type="button" @click="deleteSingleComp" class="btn btn-danger btn-delete glyphicon glyphicon-remove"></button>
         <section id="circlePreview" class="flex">
             <header>
-                <h2>{{dataProps.title}}</h2>
-                <p>{{dataProps.content}}</p>
-                {{componentIdx}}
+                <h2 v-bind:contenteditable="editable">{{dataProps.title}}</h2>
+                <p v-bind:contenteditable="editable">{{dataProps.content}}</p>
+                component index for debug: {{componentIdx}}
             </header>
             <span class="image-container"><img src="../../assets/images/pic01.jpg" alt=""></span>
         </section>

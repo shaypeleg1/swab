@@ -14,7 +14,7 @@
             <button @click="showPreviewMode" type="button" class="btn btn-warning">Preview Mode</button>
         </li>
         <li>      
-              <router-link :to="{path:`published/${siteId}`}">
+              <router-link v-if="siteId" :to="{path:`/published/${siteId}`}" append>
                 <button @click="showPublishMode" type="button" class="btn btn-success">Publish Site</button>
               </router-link>
         </li>

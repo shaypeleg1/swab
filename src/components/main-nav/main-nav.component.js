@@ -47,14 +47,9 @@ export default {
   },
   computed: {
     ...mapGetters([
-      // 'cartLength',
+      // 'currSiteId',
       // 'cart'
     ]),
-    ...mapGetters({
-        isLoggedIn: 'isLoggedIn',
-        // currUser: 'currUser'
-      }
-    ),
     siteId() {
       return this.$store.state.site._id
     },

@@ -4,13 +4,13 @@
         <section id="mainArticlePreview" class="flex">
             <div class="content">
                 <header>
-                    <h1>{{dataProps.title}}</h1>
-                    <p>{{dataProps.subtitle}}</p>
-                    {{componentIdx}}
+                    <h1 v-bind:contenteditable="editable" @keyup="updateCompTitle($event)">{{dataProps.title}}</h1>
+                    <p v-bind:contenteditable="editable">{{dataProps.subtitle}}</p>
+                    component index for debug: {{componentIdx}}
                 </header>
-                <p class="txt-section">{{dataProps.content}}</p>
+                <p v-bind:contenteditable="editable" class="txt-section">{{dataProps.content}}</p>
                 <ul class="btn-on-list">
-                    <li><a href="#" class="button-orange button-text">{{dataProps.button}}</a></li>
+                    <li><a v-bind:contenteditable="editable" href="#" class="button-orange button-text">{{dataProps.button}}</a></li>
                 </ul>
             </div>
             <span class="image-container">
@@ -21,6 +21,7 @@
 </template>
 
 <script>
+// import  from ''
     export default  {
     name    : 'mainArticlePreview',
     props   : {
@@ -35,6 +36,11 @@
         }
     },
     methods: {
+        updateCompTitle($event) {
+            let textValue = $event.target.outerText;
+            let compIdx = this.componentIdx;
+            this.$store.dispatch('updatePropsTitle', {compIdx, textValue});
+        },
         deleteSingleComp() {
             let type = this.componentIdx;
             this.$store.dispatch('deleteComp', type);

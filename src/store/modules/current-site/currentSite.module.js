@@ -5,6 +5,7 @@ export const CHANGE_NAME = 'current-site/CHANGE_NAME'
 export const CHANGE_URL = 'current-site/CHANGE_URL'
 const ADD_COMP = 'ADD_COMP';
 const DELETE_COMP = 'DELETE_COMP';
+const UPDATE_PROPS_TITLE = 'UPDATE_PROPS_TITLE';
 const GET_SINGLE_SITE = 'GET_SINGLE_SITE';
 const GET_SITES_PREV = 'GET_SITES_PREV';
 
@@ -55,7 +56,11 @@ const mutations = {
     state.siteInfo = res.siteInfo;
     state.components = res.components;
   },
-
+  [UPDATE_PROPS_TITLE](state,newCompValueObj) {
+    let compIdx = newCompValueObj.compIdx;
+    let propValue = newCompValueObj.textValue;
+    state.components[compIdx].props.title = propValue;
+  },
   [DELETE_COMP](state, {
     type
   }) {
@@ -82,7 +87,13 @@ const actions = {
       type
     });
   },
+  updatePropsTitle({commit}, newCompValueObj) {
 
+    
+    commit(UPDATE_PROPS_TITLE, 
+      newCompValueObj
+    );
+  },
   getSite({
     commit
   }, siteId) {
@@ -102,8 +113,13 @@ const actions = {
   }
 }
 
+const getters = {
+  // currSiteId: state => state._id
+};
+
 export default {
   state,
   actions,
-  mutations
+  mutations,
+  getters
 }
