@@ -2,6 +2,8 @@ import Vuex from 'vuex';
 import CurrentSiteModule from './modules/current-site/currentSite.module.js'
 import authModule from './modules/auth/auth.module';
 
+import sitesPrev from './modules/sites-prev/sitesPrev.module'
+
 // import shopModule from '.store/modules/shop/shop.module';
 // import cartModule from '.store/modules/cart/cart.module';
 

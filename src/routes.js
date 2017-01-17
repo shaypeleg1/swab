@@ -1,5 +1,6 @@
 import VueRouter from 'vue-router';
 
+
 import Main from './components/main';
 import PublishPage from './components/publish-page';
 import Home from './components/home';
@@ -10,6 +11,7 @@ const routes = [{
   path     : '/main',
   name     : 'main',
   component: Main
+
   },
   {
     path     : '/',

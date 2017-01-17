@@ -5,6 +5,7 @@ export const CHANGE_URL = 'current-site/CHANGE_URL'
 const ADD_COMP = 'ADD_COMP';
 const DELETE_COMP = 'DELETE_COMP';
 const GET_SINGLE_SITE = 'GET_SINGLE_SITE';
+const GET_SITES_PREV = 'GET_SITES_PREV';
 
 const compsTemplatesInterfaces = {
   mainArticlePreview: {
@@ -26,6 +27,7 @@ const state = {
     siteUrl: '',
     siteName: '',
   },
+  sitesPrev:[], // this needs to move to sitePrev.module
   components: [{
     name: "",
     type: "",
@@ -47,10 +49,15 @@ const mutations = {
   }) {
     state.components.splice(indexToInsert, 0, newCompData);
   },
-  [GET_SINGLE_SITE](state, res){
-    state._id = res._id;
-    state.siteInfo = res.siteInfo;
-    state.components = res.components;
+
+  [GET_SINGLE_SITE](state, res) {
+    console.log('Here is the site from the server: ', res);
+
+  },
+  [GET_SITES_PREV](state,res){
+    console.log('coming from dispatch getManySites',res);
+    state.sitesPrev.push(...res);
+
   },
   [DELETE_COMP](state, {
     type
@@ -78,6 +85,7 @@ const actions = {
       type
     });
   },
+
   getSite({commit}, siteId) {
       siteService.getSingleSite(siteId)
         .then(res => {
@@ -85,7 +93,17 @@ const actions = {
           
           commit(GET_SINGLE_SITE, res)
         })
-    },
+      })
+  },
+  getSites({commit},idOfSites) {
+    console.log('inside currentSite getSites',idOfSites)
+    siteService.getManySites(idOfSites)
+      .then(res => {
+        commit(GET_SITES_PREV, 
+          res
+        )
+      })
+  },
   saveSite() {
     siteService.updateSite(state)
       .then(res => {

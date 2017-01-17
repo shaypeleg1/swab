@@ -14,5 +14,12 @@ export default {
       .then((currSite) => {        
         return currSite;
       })
+    },
+    // is called by currentSite.module
+    getManySites(siteIdArray){
+      console.log(siteIdArray);
+      return Vue.http.post('http://localhost:3003/data/sites/',{sitesToGet:siteIdArray})
+        .then(res => res.json())
+        .then(res => {return res});
     }
 }

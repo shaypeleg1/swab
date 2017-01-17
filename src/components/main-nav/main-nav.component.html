@@ -4,6 +4,8 @@
       <router-link to="/" class="navbar-brand" exact>SWAB - Simple Web App Builder</router-link>
     </div>
     <div>
+
+
       <ul class="nav navbar-nav">
         <li>
             <button @click="showEditMode" type="button" class="btn btn-danger">Edit Mode</button>
@@ -19,47 +21,9 @@
         <li>
            <button type="button" class="btn btn-info" @click="getSingleSite">Get User Site</button>
         </li>
-        <li>
-        <!--<li v-if="!isLoggedIn">-->
+       <li>
           <router-link :to="{ name: 'signin' }">Sign in</router-link>
         </li>
-        <!--<li v-if="!isLoggedIn">
-          <router-link :to="{ name: 'signup' }">Sign up</router-link>
-        </li>
-        <li v-if="isLoggedIn">
-          <a href="#" @click="signout">Sign out</a>
-        </li>
-        <li v-if="isLoggedIn">
-          <img src="~assets/profile.png" :title="user.username" class="profile-img" />
-        </li>
-
-        <li class="dropdown" v-if="cartLength">
-          <a href="#" class="dropdown-toggle">
-            <span
-                    class="glyphicon glyphicon-shopping-cart"></span> {{cartLength}} - components<span
-                  class="caret"></span>
-          </a>
-          <ul class="dropdown-menu dropdown-cart" role="menu">
-            <li v-for="component in cart">
-                  <span class="component">
-                    <span class="component-left">
-                        <img :src="component.img" alt="" style="height: 80px;width: 200px;"/>
-                        <span class="component-info">
-                            <span>{{component.title}}</span>
-                            <b>{{component.price}}{{component.currency}}</b>
-                        </span>
-                    </span>
-
-                    <span class="component-right">
-                        <button class="btn btn-xs btn-danger pull-right" @click.stop="removeFromCart(component)">x</button>
-                    </span>
-
-                </span>
-              <p class="component">Quantity: {{component.quantity}}</p>
-
-            </li>
-          </ul>
-        </li>-->
       </ul>
     </div>
   </section>
