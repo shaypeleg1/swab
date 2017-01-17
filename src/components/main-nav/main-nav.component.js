@@ -31,7 +31,7 @@ export default {
       this.$emit('changeEditMode', enableEdit);
     },
     showPublishMode() {
-      console.log('Entering Publish Mode');
+      this.$router.push({ name: 'published', params: { siteId: 123 }});
     },
     ...mapMutations({
 
