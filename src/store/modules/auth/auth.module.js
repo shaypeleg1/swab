@@ -23,6 +23,9 @@ const actions = {
     commit(SIGN_IN, {
       user
     });
+  },
+  signOut(){
+    
   }
 };
 

@@ -7,11 +7,15 @@ export default {
     return {}
   },
   methods: {
-
+    makeNewSite(){
+      console.log('make new site');
+      // this dispatch a post request 
+      this.$store.dispatch('makeNewSite');
+    }
   },
   computed: {
     ...mapGetters([
-      'currUser','sitesToPrev']),
+      'currUser','sitesToPrev','getDefaultSiteId']),
   },
   components: {
 

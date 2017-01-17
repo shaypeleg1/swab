@@ -21,5 +21,8 @@ export default {
       return Vue.http.post('http://localhost:3003/data/sites/',{sitesToGet:siteIdArray})
         .then(res => res.json())
         .then(res => {return res});
+    },
+    makeNewSite(){
+      console.log('make new site in site service')
     }
 }

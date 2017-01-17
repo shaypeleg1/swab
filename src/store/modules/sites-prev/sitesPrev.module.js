@@ -3,7 +3,8 @@ import siteService from '../../../services/site.service';
 const GET_SITES_PREV = 'GET_SITES_PREV';
 
 const state = {
-  sitesPrev: []
+  sitesPrev: [],
+  defualtSiteId:"587e2fb49f8d447e4e1cbb55"
 }
 
 const mutations = {
@@ -26,11 +27,19 @@ const actions = {
           res
         )
       })
-  }
+  },
+  makeNewSite({commit},userId){
+    console.log('inside sitePrev making new site');
+    // make new site in server
+    //request the data of defualt site as i get sitePrev 
+    // siteService.
+  },
+  
 }
 
 const getters = {
-  sitesToPrev: state => state.sitesPrev
+  sitesToPrev      : state => state.sitesPrev,
+  getDefaultSiteId : state => state.defualtSiteId
 };
 
 export default {
