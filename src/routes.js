@@ -25,7 +25,7 @@ const routes = [
     component: Signin
   },
   {
-    path     : '/published',
+    path     : '/published/:id',
     name     : 'published',
     component: PublishPage
   },
