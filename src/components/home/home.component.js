@@ -28,7 +28,7 @@ export default {
       console.log('(01)make new site, userId:', this.$store.state.currUser.user.user._id);
       // {path:`main/${getDefaultSiteId}`}" this is where the new site will be opened
       // dispatch to sitePrev.module, sends template site id
-      let defaultSiteId = "587e2fb49f8d447e4e1cbb55";
+      let defaultSiteId = "587a5e2ec8bd6a0eec87634e";
       this.$store.dispatch('createNewSite', {
           siteId: defaultSiteId,
           userId: this.$store.state.currUser.user.user._id
