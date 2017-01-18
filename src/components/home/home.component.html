@@ -7,18 +7,16 @@
       <div>
         <ul class="nav navbar-nav">
           <li>
-            <router-link :to="{path:`home`}">
+            <!--<router-link :to="{path:`home`}">-->
               <button type="button" class="btn btn-success">Home</button>
-            </router-link>
-
+            <!--</router-link>-->
           </li>
           <li>
-              <button type="button" class="btn btn-success">Logout</button>
+            <button @click="signOut" type="button" class="btn btn-success" v-if="!isLoggedIn">Logout</button>
           </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li>
-            <!--<router-link :to="{ name: 'signin' }">Sign in</router-link>-->
           </li>
         </ul>
       </div>
@@ -26,17 +24,14 @@
   </nav>
   <h2>Navigation bar:</h2>
   <h3>hi user:{{currUser.user["firstName"]}} </h3>
-  <!--here are your sites:{{sitesToPrev}}-->
-  <div v-for="site in sitesToPrev" class="prev-site-container">
+  <p>this suppose to show sites to prev {{sitesToPrevFunc}}</p>
+  <div v-for="site in sitesToPrevFunc" class="prev-site-container">
     <div class="prev-site">
-    <router-link :to="{path:`main/${site._id}`}">{{site.siteInfo.siteName}}</router-link>
+      <router-link :to="{path:`main/${site._id}`}">{{site.siteInfo.siteName}}</router-link>
     </div>
   </div>
   <router-link :to="{path:`main/${getDefaultSiteId}`}" class="btn btn-info"> Create New Site</router-link>
-  <!--<div v-for="site in currUser.user.sites">-->
-  <!--</div>-->
   <h4>
     <a href="./main">main</a>
   </h4>
-  </hr>
 </div>
