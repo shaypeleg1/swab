@@ -27,8 +27,6 @@ export default {
     createNewSite() {
       console.log('(01)make new site, userId:', this.$store.state.defualtSiteId);
 
-      let defaultSiteId = "587e0e2e9f8d447e4e1cbb54";
-
       this.$store.dispatch('createNewSite', {
           siteId: this.$store.state.defualtSiteId,
           userId: this.$store.state.currUser.user.user._id
