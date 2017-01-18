@@ -22,17 +22,13 @@
       </div>
     </section>
   </nav>
-  <h2>Navigation bar:</h2>
   <h3>hi user:{{currUser.user["firstName"]}} </h3>
-  <p>this suppose to show sites to prev {{sitesToPrevFunc}}</p>
   <div v-for="site in sitesToPrevFunc" class="prev-site-container">
     <div class="prev-site">
       <router-link :to="{path:`main/${site._id}`}">{{site.siteInfo.siteName}}</router-link>
     </div>
   </div>
   <button  @click="createNewSite" class="btn btn-info">  Create New Site</button>
-  <router-link  :to="{path:`main/${getDefaultSiteId}`}" > Create New Site</router-link>
   <h4>
-    <a href="./main">main</a>
   </h4>
 </div>

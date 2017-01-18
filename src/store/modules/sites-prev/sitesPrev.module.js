@@ -3,8 +3,7 @@ import siteService from '../../../services/site.service';
 const GET_SITES_PREV = 'GET_SITES_PREV';
 
 const state = {
-  sitesPrev: [],
-  defualtSiteId: "587a5e2ec8bd6a0eec87634e"
+  sitesPrev: []
 }
 
 const mutations = {

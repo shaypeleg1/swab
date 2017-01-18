@@ -19,18 +19,16 @@ export default {
     },
     signOut() {
       console.log(' home.component.html -> home.component:signOut =>> auth.module:signOut');
-      this.$store.dispatch('signOut') //sends to site.service and send to auth.module
+      this.$store.dispatch('signOut') 
         .then(res => {
           this.$router.push('/')
         })
     },
     createNewSite() {
-      console.log('(01)make new site, userId:', this.$store.state.currUser.user.user._id);
-      // {path:`main/${getDefaultSiteId}`}" this is where the new site will be opened
-      // dispatch to sitePrev.module, sends template site id
-      let defaultSiteId = "587a5e2ec8bd6a0eec87634e";
+      console.log('(01)make new site, userId:', this.$store.state.defualtSiteId);
+
       this.$store.dispatch('createNewSite', {
-          siteId: defaultSiteId,
+          siteId: this.$store.state.defualtSiteId,
           userId: this.$store.state.currUser.user.user._id
         })
         .then(res => {
