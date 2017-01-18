@@ -8,6 +8,9 @@ const DELETE_COMP = 'DELETE_COMP';
 const UPDATE_PROPS = 'UPDATE_PROPS';
 const GET_SINGLE_SITE = 'GET_SINGLE_SITE';
 const GET_SITES_PREV = 'GET_SITES_PREV';
+const GET_NEW_SITE = 'GET_NEW_SITE';
+const UPDATE_NAME = 'UPDATE_NAME';
+
 
 const compsTemplatesInterfaces = {
   mainArticlePreview: {
@@ -85,6 +88,12 @@ const mutations = {
     type
   }) {
     state.components.splice(Number(type), 1);
+  },
+  [GET_NEW_SITE](state, res) {
+    state._id = res._id;
+    state.siteInfo = res.siteInfo;
+    state.components = res.components;
+    return res._id;
   }
 }
 
@@ -107,7 +116,9 @@ const actions = {
       type
     });
   },
-  updateProps({commit}, newCompValueObj) {
+  updateProps({
+    commit
+  }, newCompValueObj) {
     console.log(newCompValueObj);
 
     commit(UPDATE_PROPS,
@@ -123,6 +134,7 @@ const actions = {
 
         commit(GET_SINGLE_SITE, res)
       })
+      // .then()
   },
 
   saveSite() {
@@ -130,7 +142,21 @@ const actions = {
       .then(res => {
         console.log('save site', res)
       })
-  }
+  },
+  createNewSite({
+    commit
+  }, newSiteData) {
+    console.log('(02)  sitePrev making new site =>> site.service, siteId:', newSiteData);
+    siteService.createNewSite(newSiteData)
+      .then(res => {
+        console.log('this is the response after getting new site:', res);
+        return commit(GET_NEW_SITE,res);
+        // return res;
+      })
+  },
+  // updateName({commit},name){
+  //   commit(CHANGE_NAME,name)
+  // }
 }
 
 const getters = {
