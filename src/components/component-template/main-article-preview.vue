@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <button v-if="editable == true" type="button" @click="deleteSingleComp" class="btn btn-danger btn-delete glyphicon glyphicon-remove"></button>
+    <div v-bind:id="componentIdx">
+        <button v-if="editable" type="button" @click="deleteSingleComp" class="btn btn-danger btn-delete glyphicon glyphicon-remove"></button>
         <section id="mainArticlePreview" class="flex">
             <div class="content">
                 <header>

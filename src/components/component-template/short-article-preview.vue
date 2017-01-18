@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <button v-if="editable == true" type="button" @click="deleteSingleComp" class="btn btn-danger btn-delete glyphicon glyphicon-remove"></button>
+    <div v-bind:id="componentIdx">
+        <button v-if="editable" type="button" @click="deleteSingleComp" class="btn btn-danger btn-delete glyphicon glyphicon-remove"></button>
         <section id="shortArticlePreview">
             <a href="#" class="image-container"><img src="../../assets/images/pic02.jpg" alt=""></a>
             <h3 v-bind:contenteditable="editable" @keyup="updateCompProps($event,'title')">{{dataProps.title}}</h3>
