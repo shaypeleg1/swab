@@ -39,7 +39,7 @@ export default {
       this.$emit('changeEditMode', enableEdit);
     },
     showPublishMode() {
-
+       this.$router.push({ name: 'published', params: { id: this.siteId }})
     },
     ...mapMutations({
 
