@@ -8,13 +8,13 @@ import SiteService from './site.service.js';
  * @returns {Promise}
  */
 
-let userAndSites = [];
+// let userAndSites = [];
 function signin( {email,password} ) {
   return Vue.http.post('http://localhost:3003/login', {email: email, pass: password} )
     .then(res => res.json())
     .then(({token, user}) => {
       setSession(token, user);
-      userAndSites.push(user);
+      // userAndSites.push(user);
       return user;
     })
 }
@@ -50,11 +50,10 @@ function setSession( token, user ) {
  * Remove session
  */
 function signout() {
+  console.log('auth.module:signOut -> auth.service:signout => server-full:get.logout')
   localStorage.removeItem('token');
   localStorage.removeItem('user');
-  return Vue.http.get('http://localhost:3003/logout')
-    .then(res => res.json())
-    .then(res => {console.log('session end',res)})
+  Vue.http.get('http://localhost:3003/logout')
 }
 
 /**

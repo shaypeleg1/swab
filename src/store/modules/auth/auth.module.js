@@ -1,3 +1,5 @@
+import authService from '../../../services/auth.service';
+
 export const SIGN_IN = 'auth/SIGN_IN';
 export const SIGN_OUT = 'auth/SIGN_OUT';
 
@@ -8,11 +10,12 @@ const state = {
 
 const mutations = {
   [SIGN_IN]( state, user ) {
-
+    console.log('sinin.components:signin -> auth.modue:SIGN_IN this is user: ', user)
     state.user = user;    
     state.isLoggedIn = true;
   },
   [SIGN_OUT]( state ) {
+    console.log('auth.module:signOut -> auth.module:SIGN_OUT, about to change state.isLoggedin to false')
     state.isLoggedIn = false;
   }
 }
@@ -24,8 +27,11 @@ const actions = {
       user
     });
   },
-  signOut(){
-    
+  signOut({commit}){
+    console.log('home.component:signOut -> auth.module:signOut =>> auth.service:signout no data to send');
+    let testRes = authService.signout()
+    console.log('authService -> auth.module:signOut => auth.module:SIGN_OUT',);
+    commit(SIGN_OUT);
   }
 };
 

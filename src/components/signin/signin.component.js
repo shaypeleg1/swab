@@ -17,10 +17,14 @@ export default  {
       this.$validator.validateAll();
       if( this.errors.any() ) return;
       authService.signin(user).then(res => {
+        console.log('before dispatch signIn insign.components')
         this.$store.dispatch('singnIn', res);
+      })
+      // changing so after singIn router will change
+      .then(res => {
         this.$router.push('/home');
-
-      }).catch(err => {
+      })
+      .catch(err => {
         err.json().then(res => this.error = res.error);
       })
     }
