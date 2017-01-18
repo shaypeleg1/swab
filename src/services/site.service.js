@@ -19,17 +19,25 @@ export default {
   },
   // is called by currentSite.module
   getManySites(siteIdArray) {
-    console.log('sitePrev -> [site.service -> F:getManySites]',siteIdArray);
+
     return Vue.http.post(serverConfig.serverUrl+'data/sites/', {
         sitesToGet: siteIdArray
       })
       .then(res => res.json())
       .then(res => {
-        console.log('server-full -> [site.service -> F:getManySites] this is the server res', res)
+        // console.log('server-full -> [site.service -> F:getManySites] this is the server res', res)
         return res
       });
   },
-  makeNewSite() {
-    console.log('make new site in site service')
+  /*recives: id of tempalte sites */
+  createNewSite(newSiteData) {
+    console.log('(03) createNewSite in site.service =>> server post,siteId: ', newSiteData)
+      // getting new site based on id
+    return Vue.http.post('http://localhost:3003/data/sites/', {
+        newSiteData
+      })
+      .then(res => {
+        return res.json()
+      })
   }
 }

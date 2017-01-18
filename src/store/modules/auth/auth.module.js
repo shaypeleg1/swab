@@ -10,27 +10,27 @@ const state = {
 
 const mutations = {
   [SIGN_IN]( state, user ) {
-    console.log('sinin.components:signin -> auth.modue:SIGN_IN this is user: ', user)
+    // console.log('sinin.components:signin -> auth.modue:SIGN_IN this is user: ', user)
     state.user = user;    
     state.isLoggedIn = true;
   },
   [SIGN_OUT]( state ) {
-    console.log('auth.module:signOut -> auth.module:SIGN_OUT, about to change state.isLoggedin to false')
+    // console.log('auth.module:signOut -> auth.module:SIGN_OUT, about to change state.isLoggedin to false')
     state.isLoggedIn = false;
   }
 }
 
 const actions = {
   singnIn({commit}, user) {
-    console.log('user in signIn function',user)
+    // console.log('user in signIn function',user)
     commit(SIGN_IN, {
       user
     });
   },
   signOut({commit}){
-    console.log('home.component:signOut -> auth.module:signOut =>> auth.service:signout no data to send');
+    // console.log('home.component:signOut -> auth.module:signOut =>> auth.service:signout no data to send');
     let testRes = authService.signout()
-    console.log('authService -> auth.module:signOut => auth.module:SIGN_OUT',);
+    // console.log('authService -> auth.module:signOut => auth.module:SIGN_OUT',);
     commit(SIGN_OUT);
   }
 };

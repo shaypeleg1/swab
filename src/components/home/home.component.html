@@ -30,7 +30,8 @@
       <router-link :to="{path:`main/${site._id}`}">{{site.siteInfo.siteName}}</router-link>
     </div>
   </div>
-  <router-link :to="{path:`main/${getDefaultSiteId}`}" class="btn btn-info"> Create New Site</router-link>
+  <button  @click="createNewSite" class="btn btn-info">  Create New Site</button>
+  <router-link  :to="{path:`main/${getDefaultSiteId}`}" > Create New Site</router-link>
   <h4>
     <a href="./main">main</a>
   </h4>
