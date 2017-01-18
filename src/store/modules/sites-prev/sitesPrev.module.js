@@ -4,7 +4,7 @@ const GET_SITES_PREV = 'GET_SITES_PREV';
 
 const state = {
   sitesPrev: [],
-  defualtSiteId: "587e2fb49f8d447e4e1cbb55"
+  defualtSiteId: "587a5e2ec8bd6a0eec87634e"
 }
 
 const mutations = {

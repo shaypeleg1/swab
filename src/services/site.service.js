@@ -33,7 +33,7 @@ export default {
   createNewSite(newSiteData) {
     console.log('(03) createNewSite in site.service =>> server post,siteId: ', newSiteData)
       // getting new site based on id
-    return Vue.http.post('http://localhost:3003/data/sites/', {
+    return Vue.http.post(serverConfig.serverUrl+'data/sites/', {
         newSiteData
       })
       .then(res => {
