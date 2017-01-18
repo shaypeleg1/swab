@@ -7,6 +7,8 @@ var port = process.env.PORT || 5000;
 app = express();
 app.use('/', express.static(__dirname));
 
+require('./server-full');
+
 app.use('/*', express.static(__dirname));
 
 app.listen(port, function () {

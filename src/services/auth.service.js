@@ -1,5 +1,7 @@
 import Vue from 'vue';
 import SiteService from './site.service.js';
+import serverConfig from './services-config.js';
+
 
 /**
  *
@@ -9,8 +11,10 @@ import SiteService from './site.service.js';
  */
 
 // let userAndSites = [];
-function signin( {email,password} ) {
-  return Vue.http.post('http://localhost:3003/login', {email: email, pass: password} )
+function signin( {email,password} ) { 
+  console.log(serverConfig.serverUrl);
+   
+  return Vue.http.post(serverConfig.serverUrl+'login', {email: email, pass: password} )
     .then(res => res.json())
     .then(({token, user}) => {
       setSession(token, user);
@@ -53,7 +57,7 @@ function signout() {
   console.log('auth.module:signOut -> auth.service:signout => server-full:get.logout')
   localStorage.removeItem('token');
   localStorage.removeItem('user');
-  Vue.http.get('http://localhost:3003/logout')
+  Vue.http.get(serverConfig.serverUrl+'logout')
 }
 
 /**

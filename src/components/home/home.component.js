@@ -35,7 +35,7 @@ export default {
 
   },
   created() {
-    console.log('this is currUser', this.currUser.user.sites);
+    //console.log('this is currUser', this.currUser.user.sites);
     this.$store.dispatch('getSites', this.currUser.user.sites);
   },
 }

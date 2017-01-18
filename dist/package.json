@@ -4,6 +4,6 @@
  "description": "Simple Web App Builder",
  "private": true,
  "scripts": {
-   "postinstall": "npm install express"
+   "postinstall": "npm install express body-parser cors mongodb client-sessions multer"
  }
 }
