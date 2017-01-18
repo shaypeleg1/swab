@@ -17,7 +17,7 @@ export default {
     addSingleComp(event){
       let indexToInsert = +event.target.value + 1;
       console.log('index to insert',indexToInsert);
-      let type = 'mainArticlePreview';
+      let type = 'circlePreview';
       this.$store.dispatch('addComp', {type,indexToInsert});
 
     }

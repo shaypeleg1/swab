@@ -5,7 +5,7 @@ export const CHANGE_NAME = 'current-site/CHANGE_NAME'
 export const CHANGE_URL = 'current-site/CHANGE_URL'
 const ADD_COMP = 'ADD_COMP';
 const DELETE_COMP = 'DELETE_COMP';
-const UPDATE_PROPS_TITLE = 'UPDATE_PROPS_TITLE';
+const UPDATE_PROPS = 'UPDATE_PROPS';
 const GET_SINGLE_SITE = 'GET_SINGLE_SITE';
 const GET_SITES_PREV = 'GET_SITES_PREV';
 
@@ -16,11 +16,30 @@ const compsTemplatesInterfaces = {
     props: {
       title: "component-template - first template",
       subtitle: "Powered by Vue.js",
-      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud                                                                 exercitation ullamco laboris nis",
+      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nis",
       button: "LEARN MORE",
       img_src: ""
     }
-  }
+  },
+  circlePreview: {
+    name: "component-template1",
+    type: "circlePreview",
+    props: {
+      title: "component-template - secound template",
+      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nis",
+      img_src: ""
+    }
+  },
+  shortArticlePreview: {
+    name: "component-template1",
+    type: "shortArticlePreview",
+    props: {
+      title: "component-template - third template",
+      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nis",
+      button: "MORE",
+      img_src: ""
+    }
+  },
 }
 
 const state = {
@@ -56,10 +75,11 @@ const mutations = {
     state.siteInfo = res.siteInfo;
     state.components = res.components;
   },
-  [UPDATE_PROPS_TITLE](state,newCompValueObj) {
+  [UPDATE_PROPS](state, newCompValueObj) {
     let compIdx = newCompValueObj.compIdx;
     let propValue = newCompValueObj.textValue;
-    state.components[compIdx].props.title = propValue;
+    let propType = newCompValueObj.propToChange;
+    state.components[compIdx].props[propType] = propValue;
   },
   [DELETE_COMP](state, {
     type
@@ -87,10 +107,10 @@ const actions = {
       type
     });
   },
-  updatePropsTitle({commit}, newCompValueObj) {
+  updateProps({commit}, newCompValueObj) {
+    console.log(newCompValueObj);
 
-    
-    commit(UPDATE_PROPS_TITLE, 
+    commit(UPDATE_PROPS,
       newCompValueObj
     );
   },
