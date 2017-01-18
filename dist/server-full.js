@@ -58,7 +58,8 @@ function dbConnect() {
 
 	return new Promise((resolve, reject) => {
 		// Connection URL
-		var url = 'mongodb://localhost:27017/swab';
+		//var url = 'mongodb://localhost:27017/swab';
+		var url = 'mongodb://swabuser:misterbit@ds117209.mlab.com:17209/swab';
 		// Use connect method to connect to the Server
 		mongodb.MongoClient.connect(url, function (err, db) {
 			if (err) {
