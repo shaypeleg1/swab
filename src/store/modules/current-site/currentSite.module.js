@@ -93,7 +93,7 @@ const actions = {
     commit
   }, compData) {
     console.log(compData)
-    let newCompData = (JSON.parse(JSON.stringify(compsTemplatesInterfaces[compData.type]))); // Deep cloning
+    let newCompData = (JSON.parse(JSON.stringify(compsTemplatesInterfaces[compData.compType]))); // Deep cloning
     let indexToInsert = compData.indexToInsert;
     commit(ADD_COMP, {
       newCompData,
@@ -134,7 +134,7 @@ const actions = {
 }
 
 const getters = {
-  // currSiteId: state => state._id
+  templatesList: state => Object.keys(compsTemplatesInterfaces)
 };
 
 export default {

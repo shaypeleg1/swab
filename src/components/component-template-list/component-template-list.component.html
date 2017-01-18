@@ -1,8 +1,27 @@
 <div class="container">
   <div class="row">
-      <div v-for="(component,index) in components">
-         <component :editable="editable" :is="component.type" :dataProps="component.props" :componentIdx="index"></component>
-         <button v-if="editable == true" v-on:click="addSingleComp" :value="index">add comp </button>
+    <div v-for="(component,index) in components">
+      <component :editable="editable" :is="component.type" :dataProps="component.props" :componentIdx="index"></component>
+      <!--<button v-if="editable" v-on:click="addSingleComp" :value="index">add comp </button>-->
+
+      <div v-bind:id="index" v-bind:class="{ open: openedDropdownIndex === index }" class="dropdown">
+        <button @click="toggleDropDown($event,index)" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Add
+  <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          <li><button :value="index" v-on:click="addSingleComp($event,0)" type="button" class="btn btn-default">{{templatesList[0]}}</button></li>
+          <li><button :value="index" v-on:click="addSingleComp($event,1)" type="button" class="btn btn-default">{{templatesList[1]}}</button></li>
+          <li><button :value="index" v-on:click="addSingleComp($event,2)" type="button" class="btn btn-default">{{templatesList[2]}}</button></li>
+        </ul>
       </div>
+    </div>
+    <div v-if="components.length === 0" v-bind:id="index" v-bind:class="{ open: openedDropdownIndex === index }" class="dropdown">
+      <button @click="toggleDropDown($event,index)" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Add
+  <span class="caret"></span></button>
+      <ul class="dropdown-menu">
+        <li><button v-on:click="addSingleComp($event,0)" type="button" class="btn btn-default">{{templatesList[0]}}</button></li>
+        <li><button v-on:click="addSingleComp($event,1)" type="button" class="btn btn-default">{{templatesList[1]}}</button></li>
+        <li><button v-on:click="addSingleComp($event,2)" type="button" class="btn btn-default">{{templatesList[2]}}</button></li>
+      </ul>
+    </div>
   </div>
 </div>
