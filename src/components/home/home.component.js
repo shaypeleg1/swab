@@ -33,7 +33,7 @@ export default {
         })
         .then(res => {
           console.log('this is the res:', res);
-          this.$router.push('/main/' + this.$store.state.site._id)
+          this.$router.push({ name: 'main', params: { id: this.$store.state.site._id }})
         });
     }
   },

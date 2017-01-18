@@ -93,7 +93,6 @@ const mutations = {
     state._id = res._id;
     state.siteInfo = res.siteInfo;
     state.components = res.components;
-    return res._id;
   }
 }
 
@@ -150,8 +149,13 @@ const actions = {
     siteService.createNewSite(newSiteData)
       .then(res => {
         console.log('this is the response after getting new site:', res);
-        return commit(GET_NEW_SITE,res);
+        commit(GET_NEW_SITE,res);
+        return state._id
         // return res;
+      })
+      .then(res => {
+                console.log('this is the new returned site:',res)
+        return res;
       })
   },
   // updateName({commit},name){
