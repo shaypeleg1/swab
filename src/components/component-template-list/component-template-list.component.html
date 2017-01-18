@@ -1,12 +1,32 @@
 <div class="container">
   <div class="row">
+    
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+      </button>
+          <a class="navbar-brand" href="#">Go To:</a>
+        </div>
+        <div>
+          <div class="collapse navbar-collapse" id="myNavbar">
+            <ul v-for="(component,index) in components" class="nav navbar-nav">
+              <nav-sections :componentIdx="index" :dataProps="component.props"></nav-sections>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+
     <div v-for="(component,index) in components">
       <component :editable="editable" :is="component.type" :dataProps="component.props" :componentIdx="index"></component>
-      <!--<button v-if="editable" v-on:click="addSingleComp" :value="index">add comp </button>-->
 
       <div v-bind:id="index" v-bind:class="{ open: openedDropdownIndex === index }" class="dropdown">
-        <button @click="toggleDropDown($event,index)" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Add
-  <span class="caret"></span></button>
+        <button v-if="editable" @click="toggleDropDown($event,index)" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Add
+          <span class="caret"></span></button>
         <ul class="dropdown-menu">
           <li><button :value="index" v-on:click="addSingleComp($event,0)" type="button" class="btn btn-default">{{templatesList[0]}}</button></li>
           <li><button :value="index" v-on:click="addSingleComp($event,1)" type="button" class="btn btn-default">{{templatesList[1]}}</button></li>
@@ -14,8 +34,9 @@
         </ul>
       </div>
     </div>
+
     <div v-if="components.length === 0" v-bind:id="index" v-bind:class="{ open: openedDropdownIndex === index }" class="dropdown">
-      <button @click="toggleDropDown($event,index)" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Add
+      <button v-if="editable" @click="toggleDropDown($event,index)" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Add
   <span class="caret"></span></button>
       <ul class="dropdown-menu">
         <li><button v-on:click="addSingleComp($event,0)" type="button" class="btn btn-default">{{templatesList[0]}}</button></li>
