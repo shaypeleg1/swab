@@ -1,4 +1,3 @@
-console.log('utilities loaded');
 
 function debounce(func, wait, immediate) {
 	var timeout;

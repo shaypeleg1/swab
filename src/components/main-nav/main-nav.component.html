@@ -1,36 +1,34 @@
 <nav class="navbar navbar-default">
+      <img class="nav-logo" src="../../assets/logos/1.png" alt="swab logo">
   <section class="container">
     <div class="navbar-header" style="margin-top: -4px;">
-      <router-link to="/" class="navbar-brand" exact>SWAB - Simple Web App Builder</router-link>
-    </div>
-    <div>
-
-
-      <ul class="nav navbar-nav">
-        <li>
-            <button @click="showEditMode" type="button" class="btn btn-danger">Edit Mode</button>
-        </li>
-        <li>
-            <button @click="showPreviewMode" type="button" class="btn btn-warning">Preview Mode</button>
-        </li>
-        <li>      
-              <!--<router-link v-if="siteId" :to="{path:`/published/${siteId}`}" append>-->
-                <button @click="showPublishMode" type="button" class="btn btn-success">Publish Site
+<router-link to="/" class="navbar-brand" exact>SWAB - Simple Web App Builder</router-link>
+</div>
+<div>
+  <ul class="nav navbar-nav">
+    <li>
+      <button @click="showEditMode" type="button" class="btn btn-danger">Edit Mode</button>
+    </li>
+    <li>
+      <button @click="showPreviewMode" type="button" class="btn btn-warning">Preview Mode</button>
+    </li>
+    <li>
+      <!--<router-link v-if="siteId" :to="{path:`/published/${siteId}`}" append>-->
+      <button @click="showPublishMode" type="button" class="btn btn-success">Publish Site
               </button>
-              <!--</router-link>-->
-        </li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right" >
-        <li>
-           <button type="button" class="btn btn-info" @click="getSingleSite">Get User Site</button>
-        </li>
-       <li>
-          <router-link :to="{ name: 'signin' }">Sign in</router-link>
-          
-        </li>
-      </ul>
-    </div>
-  </section>
+      <!--</router-link>-->
+    </li>
+  </ul>
+  <ul class="nav navbar-nav navbar-right">
+    <li>
+      <button type="button" class="btn btn-info" @click="getSingleSite">Get User Site</button>
+    </li>
+    <li>
+      <router-link :to="{ name: 'signin' }">Sign in</router-link>
+
+    </li>
+  </ul>
+</div>
+</section>
 
 </nav>
-

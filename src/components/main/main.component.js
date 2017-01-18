@@ -15,7 +15,6 @@ export default {
   },
   methods: {
     changeEditModeFunc(isEditMode) {
-      console.log('edite mode methods', isEditMode);
       this.editable = isEditMode;
     },
   },

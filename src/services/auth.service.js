@@ -12,7 +12,6 @@ import serverConfig from './services-config.js';
 
 // let userAndSites = [];
 function signin( {email,password} ) { 
-  console.log(serverConfig.serverUrl);
    
   return Vue.http.post(serverConfig.serverUrl+'login', {email: email, pass: password} )
     .then(res => res.json())
@@ -54,7 +53,6 @@ function setSession( token, user ) {
  * Remove session
  */
 function signout() {
-  console.log('auth.module:signOut -> auth.service:signout => server-full:get.logout')
   localStorage.removeItem('token');
   localStorage.removeItem('user');
   Vue.http.get(serverConfig.serverUrl+'logout')

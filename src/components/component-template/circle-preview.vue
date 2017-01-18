@@ -5,7 +5,6 @@
             <header>
                 <h2 v-bind:contenteditable="editable" @keyup="updateCompProps($event,'title')">{{dataProps.title}}</h2>
                 <p v-bind:contenteditable="editable" @keyup="updateCompProps($event,'content')">{{dataProps.content}}</p>
-                component index for debug: {{componentIdx}}
             </header>
             <span class="image-container"><img src="../../assets/images/pic01.jpg" alt=""></span>
         </section>
@@ -29,7 +28,6 @@
         updateCompProps($event,propToChange) {
             let textValue = $event.target.outerText;
             let compIdx = this.componentIdx;
-            console.log(propToChange);
             this.$store.dispatch('updateProps', {compIdx, textValue, propToChange});
         },
         deleteSingleComp() {

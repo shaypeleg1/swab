@@ -15,7 +15,6 @@ export default {
 
   created() {
       let publishedSiteId = this.$route.params.id;
-      console.log('here is the id to get: ', publishedSiteId);
       this.$store.dispatch('getSite', publishedSiteId);
   },
   methods: {

@@ -29,7 +29,6 @@ export default {
     addSingleComp($event){ // look at the toggleDropDown function you can use "index" also here insted of event.value
       let compType = $event.target.outerText;
       let indexToInsert = +event.target.value + 1;
-      console.log('index to insert',compType);
       this.$store.dispatch('addComp', {compType,indexToInsert});
     }
   },
