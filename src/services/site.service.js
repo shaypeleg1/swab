@@ -37,6 +37,7 @@ export default {
         newSiteData 
       })
       .then(res => {
+        console.log()
         return res.json()
       })
   }
