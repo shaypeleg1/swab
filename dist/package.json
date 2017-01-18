@@ -1,0 +1,9 @@
+{
+ "name": "swab",
+ "version": "1.0.0",
+ "description": "Simple Web App Builder",
+ "private": true,
+ "scripts": {
+   "postinstall": "npm install express body-parser cors mongodb client-sessions multer"
+ }
+}

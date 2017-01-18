@@ -1,15 +1,17 @@
 import Vue from 'vue';
+import serverConfig from './services-config.js';
+
 
 export default {
   updateSite(data) {
     let dataJson = JSON.stringify(data);
-    return Vue.http.put('http://localhost:3003/data/sites', dataJson)
+    return Vue.http.put(serverConfig.serverUrl+'data/sites', dataJson)
       .then((res) => {
         return res;
       })
   },
   getSingleSite(siteId) {
-    return Vue.http.get('http://localhost:3003/data/sites/' + siteId)
+    return Vue.http.get(serverConfig.serverUrl+'data/sites/' + siteId)
       .then(res => res.json())
       .then((currSite) => {
         return currSite;
@@ -17,9 +19,8 @@ export default {
   },
   // is called by currentSite.module
   getManySites(siteIdArray) {
-    console.log('sitePrev -> [site.service -> F:getManySites]', siteIdArray);
 
-    return Vue.http.post('http://localhost:3003/data/sites/', {
+    return Vue.http.post(serverConfig.serverUrl+'data/sites/', {
         sitesToGet: siteIdArray
       })
       .then(res => res.json())
