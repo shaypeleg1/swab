@@ -1,6 +1,7 @@
 import MainArticlePreview from '../component-template/main-article-preview';
 import CirclePreview from '../component-template/circle-preview';
 import ShortArticlePreview from '../component-template/short-article-preview';
+import { mapGetters } from 'vuex'
 
 export default {
   props: {
@@ -10,20 +11,32 @@ export default {
       type:Array
     }
   },
+  data: () => {
+    return {
+      openedDropdownIndex: -1
+    }
+  },
   created () {
 
   },
   methods   : {
-    addSingleComp(event){
+    toggleDropDown(event, index) {
+    if (this.openedDropdownIndex === index) this.openedDropdownIndex = -1;
+    else this.openedDropdownIndex = index;
+      
+    },
+    addSingleComp($event){ // look at the toggleDropDown function you can use "index" also here insted of event.value
+      let compType = $event.target.outerText;
       let indexToInsert = +event.target.value + 1;
-      console.log('index to insert',indexToInsert);
-      let type = 'circlePreview';
-      this.$store.dispatch('addComp', {type,indexToInsert});
-
+      console.log('index to insert',compType);
+      this.$store.dispatch('addComp', {compType,indexToInsert});
     }
   },
   computed  : {
-
+    ...mapGetters([
+          'templatesList',
+        ])
+      
   },
   components: {
     MainArticlePreview,
