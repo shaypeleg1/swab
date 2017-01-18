@@ -3,8 +3,8 @@
         <button v-if="editable == true" type="button" @click="deleteSingleComp" class="btn btn-danger btn-delete glyphicon glyphicon-remove"></button>
         <section id="circlePreview" class="flex">
             <header>
-                <h2 v-bind:contenteditable="editable">{{dataProps.title}}</h2>
-                <p v-bind:contenteditable="editable">{{dataProps.content}}</p>
+                <h2 v-bind:contenteditable="editable" @keyup="updateCompProps($event,'title')">{{dataProps.title}}</h2>
+                <p v-bind:contenteditable="editable" @keyup="updateCompProps($event,'content')">{{dataProps.content}}</p>
                 component index for debug: {{componentIdx}}
             </header>
             <span class="image-container"><img src="../../assets/images/pic01.jpg" alt=""></span>
@@ -26,6 +26,12 @@
         }
     },
     methods: {
+        updateCompProps($event,propToChange) {
+            let textValue = $event.target.outerText;
+            let compIdx = this.componentIdx;
+            console.log(propToChange);
+            this.$store.dispatch('updateProps', {compIdx, textValue, propToChange});
+        },
         deleteSingleComp() {
             let type = this.componentIdx;
             this.$store.dispatch('deleteComp', type);

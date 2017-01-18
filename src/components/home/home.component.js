@@ -5,6 +5,7 @@ import {
 } from 'vuex';
 
 
+
 export default {
   name: 'home-component',
   data: () => {

@@ -3,11 +3,11 @@
         <button v-if="editable == true" type="button" @click="deleteSingleComp" class="btn btn-danger btn-delete glyphicon glyphicon-remove"></button>
         <section id="shortArticlePreview">
             <a href="#" class="image-container"><img src="../../assets/images/pic02.jpg" alt=""></a>
-            <h3 v-bind:contenteditable="editable">{{dataProps.title}}</h3>
-            <p v-bind:contenteditable="editable">{{dataProps.content}}</p>
+            <h3 v-bind:contenteditable="editable" @keyup="updateCompProps($event,'title')">{{dataProps.title}}</h3>
+            <p v-bind:contenteditable="editable" @keyup="updateCompProps($event,'content')">{{dataProps.content}}</p>
             component index for debug: {{componentIdx}}
             <ul class="btn-on-list">
-            <li><a v-bind:contenteditable="editable" href="#" class="button-orange button-text">{{dataProps.button}}</a></li>
+            <li><a v-bind:contenteditable="editable" href="#" class="button-orange button-text" @keyup="updateCompProps($event,'button')">{{dataProps.button}}</a></li>
             </ul>
         </section>
     </div>
@@ -27,6 +27,12 @@
         }
     },
     methods: {
+        updateCompProps($event,propToChange) {
+            let textValue = $event.target.outerText;
+            let compIdx = this.componentIdx;
+            console.log(propToChange);
+            this.$store.dispatch('updateProps', {compIdx, textValue, propToChange});
+        },
         deleteSingleComp() {
             let type = this.componentIdx;
             this.$store.dispatch('deleteComp', type);
