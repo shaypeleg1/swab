@@ -143,14 +143,14 @@ const actions = {
         console.log('save site', res)
       })
   },
-  createNewSite({
-    commit
-  }, newSiteData) {
+  
+  createNewSite({commit}, newSiteData) {
     console.log('(02)  sitePrev making new site =>> site.service, siteId:', newSiteData);
     siteService.createNewSite(newSiteData)
       .then(res => {
         console.log('this is the response after getting new site:', res);
-        return commit(GET_NEW_SITE,res);
+        commit(GET_NEW_SITE,res);
+        //return commit(GET_NEW_SITE,res);
         // return res;
       })
   },
@@ -160,7 +160,8 @@ const actions = {
 }
 
 const getters = {
-  templatesList: state => Object.keys(compsTemplatesInterfaces)
+  templatesList: state => Object.keys(compsTemplatesInterfaces),
+  currSiteId: state => state._id
 };
 
 export default {

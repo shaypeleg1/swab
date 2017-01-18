@@ -29,6 +29,7 @@
     </div>
   </div>
   <button  @click="createNewSite" class="btn btn-info">  Create New Site</button>
+  <router-link v-if="currSiteId" :to="{path:`main/${currSiteId}`}">{{currSiteId}}</router-link>
   <h4>
   </h4>
 </div>
