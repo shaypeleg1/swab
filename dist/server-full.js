@@ -39,6 +39,7 @@ var corsOptions = {
 const serverRoot = '/';
 const baseUrl = serverRoot + 'data';
 
+cl('Loaded server-full.js');
 
 app.use(express.static('uploads'));
 app.use(cors(corsOptions));

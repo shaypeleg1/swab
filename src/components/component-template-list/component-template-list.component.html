@@ -20,7 +20,9 @@
         </div>
       </div>
     </nav>
-
+    <div class="siteTitle">
+     <h1> {{currSiteName}} <h1>
+    </div>
     <div v-for="(component,index) in components">
       <component :editable="editable" :is="component.type" :dataProps="component.props" :componentIdx="index"></component>
 

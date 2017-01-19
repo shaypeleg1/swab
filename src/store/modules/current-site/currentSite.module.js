@@ -154,7 +154,8 @@ const actions = {
 
 const getters = {
   templatesList: state => Object.keys(compsTemplatesInterfaces),
-  currSiteId: state => state._id
+  currSiteId: state => state._id,
+  currSiteName: state => state.siteInfo.siteName
 };
 
 export default {

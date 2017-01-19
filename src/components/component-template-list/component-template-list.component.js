@@ -34,7 +34,7 @@ export default {
   },
   computed  : {
     ...mapGetters([
-          'templatesList',
+          'templatesList','currSiteName'
         ])
       
   },
