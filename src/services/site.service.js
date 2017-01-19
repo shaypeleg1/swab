@@ -31,13 +31,11 @@ export default {
   },
   /*recives: id of tempalte sites */
   createNewSite(newSiteData) {
-    console.log('(03) createNewSite in site.service =>> server post,siteId: ', newSiteData)
       // getting new site based on id
     return Vue.http.post(serverConfig.serverUrl+'data/sites/', {
         newSiteData 
       })
       .then(res => {
-        console.log()
         return res.json()
       })
   }

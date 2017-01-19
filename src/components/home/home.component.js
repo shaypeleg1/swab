@@ -13,19 +13,16 @@ export default {
   },
   methods: {
     makeNewSite() {
-      console.log('make new site');
       // this dispatch a post request 
       this.$store.dispatch('makeNewSite');
     },
     signOut() {
-      console.log(' home.component.html -> home.component:signOut =>> auth.module:signOut');
       this.$store.dispatch('signOut')
         .then(res => {
           this.$router.push('/')
         })
     },
     createNewSite() {
-      console.log('(01)make new site, userId:', this.$store.state.defualtSiteId);
 
       this.$store.dispatch('createNewSite', {
         siteId: this.$store.state.defualtSiteId,

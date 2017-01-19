@@ -60,7 +60,6 @@ const state = {
 
 const mutations = {
   [CHANGE_NAME](state, payload) {
-    console.log('payload', state);
     state.siteInfo.siteName = payload;
   },
   [CHANGE_URL](state, payload) {
@@ -101,7 +100,6 @@ const actions = {
   addComp({
     commit
   }, compData) {
-    console.log(compData)
     let newCompData = (JSON.parse(JSON.stringify(compsTemplatesInterfaces[compData.compType]))); // Deep cloning
     let indexToInsert = compData.indexToInsert;
     commit(ADD_COMP, {
@@ -119,7 +117,6 @@ const actions = {
   updateProps({
     commit
   }, newCompValueObj) {
-    console.log(newCompValueObj);
 
     commit(UPDATE_PROPS,
       newCompValueObj
@@ -130,7 +127,6 @@ const actions = {
   }, siteId) {
     siteService.getSingleSite(siteId)
       .then(res => {
-        console.log('Got site: ', res);
 
         commit(GET_SINGLE_SITE, res)
       })
@@ -140,15 +136,12 @@ const actions = {
   saveSite() {
     siteService.updateSite(state)
       .then(res => {
-        console.log('save site', res)
       })
   },
   
   createNewSite({commit}, newSiteData) {
-    console.log('(02)  sitePrev making new site =>> site.service, siteId:', newSiteData);
     siteService.createNewSite(newSiteData)
       .then(res => {
-        console.log('this is the response after getting new site:', res);
         commit(GET_NEW_SITE,res);
         //return commit(GET_NEW_SITE,res);
         // return res;

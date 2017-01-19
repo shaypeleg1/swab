@@ -1,11 +1,19 @@
-toolbar {
-  color: red;
+#toolbar {
+  color: white;
+  background: #333399;
 }
+
 
 
 section {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  flex-direction: row;
+   justify-content: space-around;
+  // justify-content: space-around;
   padding: 10px;
+}
+
+#toolContainer  * {
+  align-content: center;
 }

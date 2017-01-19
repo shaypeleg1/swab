@@ -1,18 +1,18 @@
-<section>
+<section id="toolbar">
   <br>
   <!--<div>-->
   <!--<h1>This is a toolbar</h1>-->
   <section>
-    <div>
+    <div id="toolContainer">
       <label for="">Site URL: </label>
       <input type="text" @input="updateURL" :placeholder="siteInfo.siteUrl">
     </div>
-    <button @click="saveSite" class="btn btn-success">Save Site</button>
-    <div>
+    <div id="toolContainer">
       <label for="">Site Title: </label>
       <input type="text" @input="updateName" :placeholder="siteInfo.siteName" value="">
-    Web-site name: {{siteInfo.siteName}}
+    <h2>Web-site name: {{siteInfo.siteName}}</h2>
     </div>
+    <button @click="saveSite" class="btn btn-success">Save Site</button>
   </section>
   <!--</div>-->
 </section>
