@@ -9,7 +9,7 @@ app.use('/', express.static(__dirname));
 
 require('./server-full');
 
-app.use('/*', express.static(__dirname)); 
+app.use('/*', express.static(__dirname));
 
 app.listen(port, function () {
   console.log('server started ' + port);
