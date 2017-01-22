@@ -1,21 +1,34 @@
 import authService from '../../services/auth.service';
-import {SIGN_IN} from '../../store/modules/auth/auth.module';
-export default  {
-  data   : () => {
+import {
+  SIGN_IN
+} from '../../store/modules/auth/auth.module';
+export default {
+  data: () => {
     return {
-      user : { email: '', password: '' },
+      user: {
+        email: '',
+        password: '',
+        firstName: '',
+        lastName: '',
+        sites: []
+      },
       error: ""
     }
   },
   methods: {
-    signup( user ) {
+    signup(newUser) {
+      console.log('user in signup in signup components', newUser)
       this.$validator.validateAll();
-      if( this.errors.any() ) return;
+      if (this.errors.any()) return;
 
-      authService.signup(user).then(res => {
-        this.$store.commit(SIGN_IN);
-        this.$router.push({ name: 'shop' });
-      });
+      authService.signup(newUser)
+        .then(res => {
+          console.log('in sign up', res);
+          // this.$store.dispatch(signin), res;
+          this.$store.dispatch('singnIn', res);
+
+          this.$router.push('/home');
+        });
     }
   }
 }
