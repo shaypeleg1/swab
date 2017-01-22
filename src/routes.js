@@ -5,6 +5,7 @@ import Main from './components/main';
 import PublishPage from './components/publish-page';
 import Home from './components/home';
 import Signin from './components/signin';
+import Signup from './components/signup';
 
 
 const routes = [
@@ -23,6 +24,11 @@ const routes = [
     path     : '/',
     name     : 'signin',
     component: Signin
+  },
+  {
+    path     :'/signup',
+    name     :'signup',
+    component:Signup
   },
   {
     path     : '/published/:id',
