@@ -1,3 +1,5 @@
+import signin from '../signin';
+
 import {
   mapMutations,
   mapGetters,
@@ -10,9 +12,16 @@ export default {
   name: 'home-component',
   data: () => {
     return {
+      show: {
+        signIn: false,
+      }
     }
   },
   methods: {
+    showModal() {
+      this.show.signIn = !this.show.signIn
+
+    },
     makeNewSite() {
       this.$store.dispatch('makeNewSite');
     },
@@ -43,9 +52,7 @@ export default {
       return this.$store.getters.currUser.firstName
     }
   },
-  components: {
 
-  },
   created() {
       this.$store.dispatch('checkUserLogged',)
       console.log('isLoggedIn', this.isLoggedIn);      
@@ -53,5 +60,8 @@ export default {
       this.$store.dispatch('getSites', this.currUser.sites);
     } else {
     }
+  },
+  components: {
+    signin,
   },
 }

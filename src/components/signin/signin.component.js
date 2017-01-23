@@ -2,6 +2,7 @@ import authService from '../../services/auth.service';
 import {SIGN_IN, SIGN_OUT} from '../../store/modules/auth/auth.module';
 
 export default  {
+  name    : 'signin',
   mounted() {
     // console.log(this.$router);
     // console.log(this.$route);
@@ -22,7 +23,10 @@ export default  {
       })
       // changing so after singIn router will change
       .then(res => {
-        this.$router.push('/home');
+        // this.$router.push('/home');
+        console.log('ok');
+        
+           location.reload();
       })
       .catch(err => {
         err.json().then(res => this.error = res.error);

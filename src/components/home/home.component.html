@@ -28,7 +28,18 @@
 </section>
 </nav>
 <section>
+<!-- Trigger/Open The Modal -->
+<button @click="showModal" id="myBtn">Open Modal</button>
+<!-- The Modal -->
+<div v-if="show.signIn" v-bind:class="{'modal-trigger': show.signIn }" id="myModal" class="modal">
+  <div class="modal-content">
+     <button @click="showModal" class="delete is-large"></button>
+    <signin></signin>
+  </div>
+</div>
+
 </section>
+
 <!--render saved sites-->
 
 <!--old render-->

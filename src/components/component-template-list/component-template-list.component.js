@@ -1,4 +1,4 @@
- import NavSections from '../nav-sections/nav-sections';
+import NavSections from '../nav-sections/nav-sections';
 import MainArticlePreview from '../component-template/main-article-preview';
 import CirclePreview from '../component-template/circle-preview';
 import ShortArticlePreview from '../component-template/short-article-preview';
