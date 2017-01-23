@@ -1,4 +1,6 @@
 
+
+
 .prev-site{
     border: 1px dashed;
     padding: 10px;
@@ -22,10 +24,18 @@
 li{
     margin: 10px;
 }
-
-.nav-header-home{
-
+.nav {
+    background-color: transparent;
 }
+.navbar{
+    padding-top: 10px;
+    background-color: transparent;
+    border-bottom-color: transparent;
+}
+.nav-header-home{
+    
+}
+
 .btn-create-container{
     display: flex;
     justify-content: center;
@@ -38,11 +48,52 @@ li{
 
 
 h4{
-    color:dimgrey;
+	color: #eb6429;
+	font-size: 54px;
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;  
 }
 
 .home-container{
     height: 1500px;
-    background: linear-gradient(#ffffff,#99ffff);
+    background: #0e0e52;
+    background-image: url("../../assets/ZenBG-1.png"), url("../../assets/ZenBG-2.png");
+    background-repeat: repeat-x, repeat;
+    // background: linear-gradient(#ffffff,#99ffff);
 }
-
+.bold-text {
+    font-weight: 700px;
+}
+.nav-logo {
+    max-height: none;
+    top: 0px;
+    left: 15px;
+    // position: fixed;
+    width: 220px;
+}
+.vue-section{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    bottom: 10px;
+    position: fixed;
+    max-width: 25%;
+    margin-bottom: 5px;
+    margin-left: 15px;
+    h3 {
+        color: white;
+        font-size: 20px;
+        text-shadow:
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;  
+    }
+} 
+.vue-logo {
+    width: 70px;
+    padding: 5px;
+}

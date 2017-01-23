@@ -1,6 +1,13 @@
 $container-width: 1063px;
 $mobile-breakpoint: 642px;
 
+// Site main colors
+$swabDarkPurple: #0E0E52;
+$swabPurple: #333399;
+$swabCyan: #449DD1;
+$swabLightSign: #78C0E0;
+$swabOrange: #EB6429;
+$swabRed: #db1d13;
 :root {
   /* Layout */
   --container-width: $container-width;
@@ -13,4 +20,7 @@ $mobile-breakpoint: 642px;
   --sections-bg: #f0f0f0;
 }
 
+// Bulma override
+$info: $swabOrange;
+$danger: $swabRed;
 

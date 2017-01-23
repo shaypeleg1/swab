@@ -1,26 +1,27 @@
 <div class="home-container">
   <div>
     <nav class="navbar navbar-default">
+          <router-link to="/" class="navbar-brand" exact><img class="nav-logo" src="../../assets/logos/rsz_24.png" alt="swab logo"></router-link>
       <section class="container">
         <div class="navbar-header nav-header-home" style="margin-top: -4px;">
-          <router-link to="/" class="navbar-brand" exact>SWAB - Simple Web App Builder</router-link>
         </div>
         <div>
           <ul class="nav navbar-nav">
             <li>
-              <h4 v-if="isGuest">Hi Guest </h4>
+            </li>
+            <li>
+              <h4 v-if="!isLoggedIn">Hi Guest </h4>
               <h4 v-else>Hi {{userFirstName}} </h4>
             </li>
-            
             <li>
-              <button @click="signOut" type="button" class="btn btn-success" v-if="isLoggedIn">Logout</button>
-            </li>
-            <li>
-              <button @click="signIn" type="button" class="btn btn-success" v-if="!isLoggedIn">Sign In</button>
+
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li>
+              <button @click="signOut" type="button" class="button is-danger" v-if="isLoggedIn">Logout</button>
+              <button @click="signIn" type="button" class="button is-success" v-if="!isLoggedIn">Sign In</button>
+              <button @click="signUp" type="button" class="button is-primary" v-if="!isLoggedIn">Sign Up</button>
             </li>
           </ul>
         </div>
@@ -28,16 +29,22 @@
     </nav>
     <section>
     </section>
-    <div class="sites-list">
+    <div v-if="isLoggedIn" class="sites-list">
       <div v-for="site in sitesToPrevFunc">
         <div class="prev-site">
-          <router-link  v-if="!isGuest" :to="{path:`main/${site._id}`}">{{site.siteInfo.siteName}}</router-link>
+          <router-link :to="{path:`main/${site._id}`}">{{site.siteInfo.siteName}}</router-link>
         </div>
       </div>
     </div>
     <div class="btn-create-container">
-      <button @click="createNewSite" class="btn btn-info create-Site-btn">  Create New Site</button>
+      <button @click="createNewSite" class="button is-info is-medium" v-bind:class="{ 'is-disabled': !isLoggedIn }">  Create New Site</button>
+
     </div>
     <router-link v-if="currSiteId" :to="{path:`main/${currSiteId}`}">{{currSiteId}}</router-link>
+    <div class="vue-section">
+    <h3>Powerd By</h3>
+      <img class="vue-logo" src="https://vuejs.org/images/logo.png" alt="Vuejs">
+      <h3>Vue js</h3>
+    </div>
   </div>
 </div>
