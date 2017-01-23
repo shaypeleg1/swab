@@ -4,8 +4,6 @@ import {SIGN_IN, SIGN_OUT} from '../../store/modules/auth/auth.module';
 export default  {
   name    : 'signin',
   mounted() {
-    // console.log(this.$router);
-    // console.log(this.$route);
   },
   data   : () => {
     return {

@@ -60,7 +60,7 @@ function signup({
       console.log('this  user that is returned from server', user)
       setSession(token, user);
       return user;
-    })
+    });
     // );
 }
 
