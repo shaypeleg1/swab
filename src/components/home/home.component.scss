@@ -5,16 +5,21 @@
     border: 1px dashed;
     padding: 10px;
     margin: 10px;
-    width: 200px;
-    height: 150px;
+    // width: 200px;
+    // height: 150px;
     border-radius: 10px;
 
 }
 
 .sites-list{
+    // width: 50%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: center;
+    // justify-content: space-around;
+}
+.padding-box {
+    margin: 20px;
 }
 
 .create-Site-btn{
@@ -29,13 +34,22 @@ li{
 }
 .navbar{
     padding-top: 10px;
-    background-color: transparent;
-    border-bottom-color: transparent;
+    background-color: white;
+    -webkit-box-shadow: inset 0px -19px 26px -13px rgba(120,192,224,0.48);
+    -moz-box-shadow: inset 0px -19px 26px -13px rgba(120,192,224,0.48);
+    box-shadow: inset 0px -19px 26px -13px rgba(120,192,224,0.48);
+    // border-bottom-color: black;
 }
 .nav-header-home{
     
 }
-
+.nav-logo {
+    max-height: 300%;
+    top: 0px;
+    left: 15px;
+    // position: fixed;
+    width: 200px;
+}
 .btn-create-container{
     display: flex;
     justify-content: center;
@@ -49,7 +63,7 @@ li{
 
 h4{
 	color: #eb6429;
-	font-size: 54px;
+	font-size: 35px;
     text-shadow:
     -1px -1px 0 #000,
     1px -1px 0 #000,
@@ -58,29 +72,34 @@ h4{
 }
 
 .home-container{
-    height: 1500px;
+    height: 100%;
     background: #0e0e52;
     background-image: url("../../assets/ZenBG-1.png"), url("../../assets/ZenBG-2.png");
     background-repeat: repeat-x, repeat;
-    // background: linear-gradient(#ffffff,#99ffff);
+    background: cover;
+    background-size: contain;
 }
 .bold-text {
     font-weight: 700px;
 }
-.nav-logo {
-    max-height: none;
-    top: 0px;
-    left: 15px;
-    // position: fixed;
-    width: 220px;
+
+#newsletter {
+    background-color: lightgray;
+    font-size: 20px;
+    // height: auto;
+    padding: 5px;
+    #mce-EMAIL {
+        max-height: 80%;
+    }
 }
 .vue-section{
     display: flex;
-    justify-content: space-between;
+    // justify-content: space-between;
     align-items: center;
     bottom: 10px;
-    position: fixed;
+    // position: fixed;
     max-width: 25%;
+    margin-top: 10px;
     margin-bottom: 5px;
     margin-left: 15px;
     h3 {
@@ -96,4 +115,22 @@ h4{
 .vue-logo {
     width: 70px;
     padding: 5px;
+}
+#about {
+    	color: #dbdbdb;
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+    padding: 100px;
+}
+.footer {
+    background-color: transparent;
+    bottom: 0px;
+    // position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
 }
