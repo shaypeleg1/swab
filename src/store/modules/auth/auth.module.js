@@ -10,7 +10,8 @@ const state = {
 
 const mutations = {
   [SIGN_IN]( state, user ) {
-    // console.log('sinin.components:signin -> auth.modue:SIGN_IN this is user: ', user)
+    console.log('sinin.components:signin -> auth.modue:SIGN_IN this is user: ', user)
+    console.log('this is the state',state);
     state.user = user;    
     state.isLoggedIn = true;
   },
@@ -22,7 +23,7 @@ const mutations = {
 
 const actions = {
   singnIn({commit}, user) {
-    // console.log('user in signIn function',user)
+    console.log('user in signIn function',user)
     commit(SIGN_IN, {
       user
     });

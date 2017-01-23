@@ -17,6 +17,7 @@ export default  {
       this.$validator.validateAll();
       if( this.errors.any() ) return;
       authService.signin(user).then(res => {
+        console.log('signin in after auth service',res)
         this.$store.dispatch('singnIn', res);
       })
       // changing so after singIn router will change

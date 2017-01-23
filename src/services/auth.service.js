@@ -11,40 +11,68 @@ import serverConfig from './services-config.js';
  */
 
 // let userAndSites = [];
-function signin( {email,password} ) { 
-   
-  return Vue.http.post(serverConfig.serverUrl+'login', {email: email, pass: password} )
+function signin({
+  email,
+  password
+}) {
+
+  return Vue.http.post(serverConfig.serverUrl + 'login', {
+      email: email,
+      pass: password
+    })
     .then(res => res.json())
-    .then(({token, user}) => {
+    .then(({
+      token,
+      user
+    }) => {
       setSession(token, user);
       // userAndSites.push(user);
       return user;
     })
 }
 
-
-
-
 /**
  *
  * @param email
  * @param password
  */
-function signup( { email, password } ) {
+function signup({
+  email,
+  password,
+  firstName,
+  lastName,
+  sites
+}) {
+  console.log('sign up in auth service');
   const token = 'JWT';
-  return new Promise(resolve => {
-    resolve({
-      token
-    });
-    setSession(token);
-  });
+
+
+
+  // return new Promise(resolve => 
+ return Vue.http.post(serverConfig.serverUrl + 'signup', {
+      email: email,
+      pass: password,
+      firstName: firstName,
+      lastName: lastName,
+      sites: sites
+    })
+    .then(res => res.json())
+    .then(({
+      token,
+      user
+    }) => {
+      console.log('this  user that is returned from server', user)
+      setSession(token, user);
+      return user;
+    })
+    // );
 }
 
 /**
  *
  * @param token
  */
-function setSession( token, user ) {
+function setSession(token, user) {
   localStorage.setItem('token', token);
   localStorage.setItem('user', JSON.stringify(user));
 }
@@ -55,7 +83,7 @@ function setSession( token, user ) {
 function signout() {
   localStorage.removeItem('token');
   localStorage.removeItem('user');
-  Vue.http.get(serverConfig.serverUrl+'logout')
+  Vue.http.get(serverConfig.serverUrl + 'logout')
 }
 
 /**
@@ -70,8 +98,8 @@ function isLoggedIn() {
  *
  * @param next
  */
-function protectRoute( next ) {
-  if( isLoggedIn() ) {
+function protectRoute(next) {
+  if (isLoggedIn()) {
     next();
   } else {
     next(false);

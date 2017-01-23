@@ -1,42 +1,39 @@
-<div>
-  <nav class="navbar navbar-default">
-    <section class="container">
-      <div class="navbar-header nav-header-home" style="margin-top: -4px;">
-        <router-link to="/" class="navbar-brand" exact>SWAB - Simple Web App Builder</router-link>
-      </div>
-      <div>
-        <ul class="nav navbar-nav">
-          <li><h3>Welcome:{{currUser.user["firstName"]}} </h3></li>
-          <li>
-            <!--<router-link :to="{path:`home`}">-->
-            <button type="button" class="btn btn-success">Home</button>
-            <!--</router-link>-->
-          </li>
-          <li>
-            <button @click="signOut" type="button" class="btn btn-success" v-if="!isLoggedIn">Logout</button>
-          </li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li>
-          </li>
-        </ul>
-      </div>
+<div class="home-container">
+  <div>
+    <nav class="navbar navbar-default">
+      <section class="container">
+        <div class="navbar-header nav-header-home" style="margin-top: -4px;">
+          <router-link to="/" class="navbar-brand" exact>SWAB - Simple Web App Builder</router-link>
+        </div>
+        <div>
+          <ul class="nav navbar-nav">
+            <li>
+              <h4>Hi {{currUser.user["firstName"]}} </h4>
+            </li>
+            
+            <li>
+              <button @click="signOut" type="button" class="btn btn-success" v-if="!isLoggedIn">Logout</button>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </nav>
+    <section>
     </section>
-  </nav>
-  <section>
-    
-  
-  <div class="sites-list">
-    <div v-for="site in sitesToPrevFunc">
-      <div class="prev-site">
-        <router-link :to="{path:`main/${site._id}`}">{{site.siteInfo.siteName}}</router-link>
+    <div class="sites-list">
+      <div v-for="site in sitesToPrevFunc">
+        <div class="prev-site">
+          <router-link :to="{path:`main/${site._id}`}">{{site.siteInfo.siteName}}</router-link>
+        </div>
       </div>
     </div>
+    <div class="btn-create-container">
+      <button @click="createNewSite" class="btn btn-info create-Site-btn">  Create New Site</button>
+    </div>
+    <router-link v-if="currSiteId" :to="{path:`main/${currSiteId}`}">{{currSiteId}}</router-link>
   </div>
-  <div class="btn-create-container">
-    <button @click="createNewSite" class="btn btn-info create-Site-btn">  Create New Site</button>
-  </div>
-  
-  <router-link v-if="currSiteId" :to="{path:`main/${currSiteId}`}"><img class="beta-logo" src="http://chromespot.com/wp-content/uploads/2011/06/beta.gif" alt=""> BETA Version - click the link for your new site  {{currSiteId}}</router-link>
-</section>
 </div>

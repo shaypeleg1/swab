@@ -1,10 +1,11 @@
 
 .prev-site{
-    border: 1px solid;
+    border: 1px dashed;
     padding: 10px;
     margin: 10px;
     width: 200px;
     height: 150px;
+    border-radius: 10px;
 
 }
 
@@ -30,6 +31,18 @@ li{
     justify-content: center;
     width: 100%;
 }
+
 .beta-logo {
     width: 5%;
 }
+
+
+h4{
+    color:dimgrey;
+}
+
+.home-container{
+    height: 1500px;
+    background: linear-gradient(#ffffff,#99ffff);
+}
+
