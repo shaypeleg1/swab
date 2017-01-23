@@ -28,7 +28,7 @@ export default {
           this.$store.dispatch('singnIn', res);
 
           this.$router.push('/home');
-        });
+        }).catch(err => {this.error = 'user already exists'});
     }
   }
 }
