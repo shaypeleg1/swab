@@ -9,12 +9,17 @@ import {
 export default {
   name: 'home-component',
   data: () => {
-    return {}
+    return {
+      isGuest : true,
+    }
   },
   methods: {
     makeNewSite() {
       // this dispatch a post request 
       this.$store.dispatch('makeNewSite');
+    },
+    signIn() {
+        this.$router.push({ name: 'signin'});
     },
     signOut() {
       this.$store.dispatch('signOut')
@@ -23,7 +28,6 @@ export default {
         })
     },
     createNewSite() {
-
       this.$store.dispatch('createNewSite', {
         siteId: this.$store.state.defualtSiteId,
         userId: this.$store.state.currUser.user.user._id
@@ -38,11 +42,21 @@ export default {
     ...mapGetters([
       'currUser', 'sitesToPrevFunc', 'getDefaultSiteId', 'isLoggedIn', 'currSiteId'
     ]),
+    userFirstName() {
+      return this.$store.getters.currUser.firstName
+    }
   },
   components: {
 
   },
   created() {
-    this.$store.dispatch('getSites', this.currUser.user.sites);
+      this.$store.dispatch('checkUserLogged',)
+      console.log('isLoggedIn', this.isLoggedIn);      
+    if (this.isLoggedIn) {
+      this.isGuest = false;  
+      this.$store.dispatch('getSites', this.currUser.sites);
+    } else {
+      this.isGuest = true;
+    }
   },
 }

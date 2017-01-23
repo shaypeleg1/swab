@@ -8,11 +8,15 @@
         <div>
           <ul class="nav navbar-nav">
             <li>
-              <h4>Hi {{currUser.user["firstName"]}} </h4>
+              <h4 v-if="isGuest">Hi Guest </h4>
+              <h4 v-else>Hi {{userFirstName}} </h4>
             </li>
             
             <li>
-              <button @click="signOut" type="button" class="btn btn-success" v-if="!isLoggedIn">Logout</button>
+              <button @click="signOut" type="button" class="btn btn-success" v-if="isLoggedIn">Logout</button>
+            </li>
+            <li>
+              <button @click="signIn" type="button" class="btn btn-success" v-if="!isLoggedIn">Sign In</button>
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
@@ -27,7 +31,7 @@
     <div class="sites-list">
       <div v-for="site in sitesToPrevFunc">
         <div class="prev-site">
-          <router-link :to="{path:`main/${site._id}`}">{{site.siteInfo.siteName}}</router-link>
+          <router-link  v-if="!isGuest" :to="{path:`main/${site._id}`}">{{site.siteInfo.siteName}}</router-link>
         </div>
       </div>
     </div>

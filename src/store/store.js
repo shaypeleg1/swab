@@ -19,7 +19,7 @@ export default new Vuex.Store({
 
   },
   modules:{
-    site:CurrentSiteModule,
+    site: CurrentSiteModule,
     currUser : authModule,
     sitesPrev: sitesPrevModule
   },

@@ -13,7 +13,7 @@ export default  {
     }
   },
   methods: {
-    signin( user ) {
+    signin(user) {
       this.$validator.validateAll();
       if( this.errors.any() ) return;
       authService.signin(user).then(res => {
