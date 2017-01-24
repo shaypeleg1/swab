@@ -1,13 +1,13 @@
 <div class="home-container">
   <div>
     <nav class="navbar navbar-default">
-      <router-link to="/" class="navbar-brand" exact><img class="nav-logo" src="../../assets/logos/rsz_24.png" alt="swab logo"></router-link>
       <section class="container">
         <div class="navbar-header nav-header-home" style="margin-top: -4px;">
 </div>
 <div>
   <ul class="nav navbar-nav">
     <li>
+      <router-link to="/" class="logo-router" exact><img class="nav-logo" src="../../assets/logos/rsz_24.png" alt="swab logo"></router-link>
     </li>
     <li>
       <h4 v-if="!isLoggedIn">Welcome Guest </h4>
@@ -146,6 +146,7 @@
     </div>
   </div>
 </section>
+<div class="buttom-section">
 <div class="vue-section">
   <h3>Powerd By</h3>
   <img class="vue-logo" src="https://vuejs.org/images/logo.png" alt="Vuejs">
@@ -166,4 +167,5 @@
     </div>
   </div>
 </footer>
+</div>
 </div>

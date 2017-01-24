@@ -35,20 +35,33 @@ li{
 .navbar{
     padding-top: 10px;
     background-color: white;
-    -webkit-box-shadow: inset 0px -19px 26px -13px rgba(120,192,224,0.48);
-    -moz-box-shadow: inset 0px -19px 26px -13px rgba(120,192,224,0.48);
-    box-shadow: inset 0px -19px 26px -13px rgba(120,192,224,0.48);
+    -webkit-box-shadow: inset 0px -30px 30px -13px rgba(120,192,224,0.48);
+    -moz-box-shadow: inset 0px -30px 30px -13px rgba(120,192,224,0.48);
+    box-shadow: inset 0px -30px 30px -13px rgba(120,192,224,0.48);
+    border-style:hidden;
     // border-bottom-color: black;
+    .container {
+        margin-left: 10px;
+        padding-right: 0px;
+    }
 }
 .nav-header-home{
     
+}
+
+.navbar-brand {
+    padding: 0;
 }
 .nav-logo {
     max-height: 300%;
     top: 0px;
     left: 15px;
+    margin: auto;
     // position: fixed;
-    width: 200px;
+    width: 12em;
+}
+.logo-router {
+    padding: 5px;
 }
 .btn-create-container{
     display: flex;
@@ -62,8 +75,9 @@ li{
 
 
 h4{
+    margin-top: 1em;
 	color: #eb6429;
-	font-size: 35px;
+	font-size: 25px;
     text-shadow:
     -1px -1px 0 #000,
     1px -1px 0 #000,
@@ -84,7 +98,13 @@ h4{
 }
 
 #newsletter {
-    opacity: 0.8;
+    // opacity: 0.8;
+    // -webkit-box-shadow: inset 0px 0px 25px 20px rgba(14,14,82,1);
+    // -moz-box-shadow: inset 0px 0px 25px 20px rgba(14,14,82,1);
+    // box-shadow: inset 0px 0px 25px 20px #1b1b6a;
+    box-shadow: inset 0px -15px 25px 20px #2a2a85, inset 0px 15px 25px 20px #292986;
+    border-radius: 11px 11px 11px 11px;
+    border-style:hidden;
     // background-color: lightgray;
     // display: inline-block;
     font-size: 20px;
@@ -114,6 +134,11 @@ h4{
         1px 1px 0 #000;  
     }
 } 
+.buttom-section {
+-webkit-box-shadow: 0px -23px 15px 7px rgba(26,26,103,1);
+-moz-box-shadow: 0px -23px 15px 7px rgba(26,26,103,1);
+box-shadow: 0px -23px 15px 7px rgba(26,26,103,1);
+}
 .vue-logo {
     width: 70px;
     padding: 5px;

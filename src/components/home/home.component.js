@@ -17,10 +17,14 @@ export default {
       }
     }
   },
+  watch: {
+    userSites: function () {
+     this.$store.dispatch('getSites', this.$store.getters.currUser.sites);
+    }
+  },
   methods: {
     showModal() {
       this.show.signIn = !this.show.signIn
-
     },
     makeNewSite() {
       this.$store.dispatch('makeNewSite');
@@ -40,8 +44,9 @@ export default {
     createNewSite() {
       this.$store.dispatch('createNewSite', {
         siteId: this.$store.state.defualtSiteId,
-        userId: this.$store.state.currUser.user.user._id
+        userId: this.$store.state.currUser.user._id
       })
+      
     }
   },
   computed: {
@@ -50,15 +55,21 @@ export default {
     ]),
     userFirstName() {
       return this.$store.getters.currUser.firstName
-    }
+    },
+    currSiteId() {
+      return this.$store.getters.currSiteId
+    },
+    userSites() {
+      return this.$store.getters.currUser.sites
+    },
   },
 
+  beforeCreate () {
+    this.$store.dispatch('checkUserLogged');
+  },
   created() {
-      this.$store.dispatch('checkUserLogged',)
-      console.log('isLoggedIn', this.isLoggedIn);      
     if (this.isLoggedIn) {
       this.$store.dispatch('getSites', this.currUser.sites);
-    } else {
     }
   },
   components: {

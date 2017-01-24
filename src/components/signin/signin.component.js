@@ -21,9 +21,7 @@ export default  {
       })
       // changing so after singIn router will change
       .then(res => {
-        // this.$router.push('/home');
-        console.log('ok');
-        
+        // this.$router.push('/home');    
            location.reload();
       })
       .catch(err => {

@@ -3,10 +3,11 @@ import authService from '../../../services/auth.service';
 export const SIGN_IN = 'auth/SIGN_IN';
 export const SIGN_OUT = 'auth/SIGN_OUT';
 export const CHECK_USER_LOGGED = 'auth/CHECK_USER_LOGGED';
+export const ADD_USER_SITE = 'auth/ADD_USER_SITE';
 
 const state = {
   isLoggedIn: !!localStorage.getItem('token'),
-  user: JSON.parse(localStorage.getItem('user'))
+  user: JSON.parse(localStorage.getItem('user')),
 };
 
 const mutations = {
@@ -23,7 +24,18 @@ const mutations = {
   [CHECK_USER_LOGGED](state) {
     state.isLoggedIn = !!localStorage.getItem('token');
     state.user = JSON.parse(localStorage.getItem('user'));
+    if (state.user == null) {
+      console.log('user check sites for null is null');
+      state.user = {sites: []};
+    } else {
+      console.log('not null');
+    }
   },
+  [ADD_USER_SITE](state, newSiteId) {
+    state.user.sites.push(newSiteId);
+    localStorage.setItem('user', JSON.stringify(state.user));
+  },
+  
 }
 
 const actions = {
@@ -38,6 +50,7 @@ const actions = {
   checkUserLogged({commit}) {
     commit(CHECK_USER_LOGGED);
   },
+
 };
 
 const getters = {

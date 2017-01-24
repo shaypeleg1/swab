@@ -42,8 +42,6 @@ function signup({
   console.log('sign up in auth service');
   const token = 'JWT';
 
-
-
   // return new Promise(resolve => 
  return Vue.http.post(serverConfig.serverUrl + 'signup', {
       email: email,
