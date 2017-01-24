@@ -1,4 +1,5 @@
 import siteService from '../../../services/site.service';
+import authModule from '../../../store/modules/auth/auth.module';
 
 
 export const CHANGE_NAME = 'current-site/CHANGE_NAME'
@@ -9,6 +10,7 @@ const UPDATE_PROPS = 'UPDATE_PROPS';
 const GET_SINGLE_SITE = 'GET_SINGLE_SITE';
 const GET_SITES_PREV = 'GET_SITES_PREV';
 const GET_NEW_SITE = 'GET_NEW_SITE';
+const ADD_USER_SITE = 'auth/ADD_USER_SITE';
 const UPDATE_NAME = 'UPDATE_NAME';
 
 
@@ -93,7 +95,7 @@ const mutations = {
     state.siteInfo = res.siteInfo;
     state.components = res.components;
     return res._id;
-  }
+  },
 }
 
 const actions = {
@@ -142,10 +144,9 @@ const actions = {
   createNewSite({commit}, newSiteData) {
     siteService.createNewSite(newSiteData)
       .then(res => {
-        commit(GET_NEW_SITE,res);
-        //return commit(GET_NEW_SITE,res);
-        // return res;
-      })
+        commit(GET_NEW_SITE, res);
+        commit(ADD_USER_SITE, res._id);
+        })
   },
   // updateName({commit},name){
   //   commit(CHANGE_NAME,name)

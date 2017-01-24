@@ -2,10 +2,12 @@ import authService from '../../../services/auth.service';
 
 export const SIGN_IN = 'auth/SIGN_IN';
 export const SIGN_OUT = 'auth/SIGN_OUT';
+export const CHECK_USER_LOGGED = 'auth/CHECK_USER_LOGGED';
+export const ADD_USER_SITE = 'auth/ADD_USER_SITE';
 
 const state = {
   isLoggedIn: !!localStorage.getItem('token'),
-  user: JSON.parse(localStorage.getItem('user'))
+  user: JSON.parse(localStorage.getItem('user')),
 };
 
 const mutations = {
@@ -16,28 +18,43 @@ const mutations = {
     state.isLoggedIn = true;
   },
   [SIGN_OUT]( state ) {
-    // console.log('auth.module:signOut -> auth.module:SIGN_OUT, about to change state.isLoggedin to false')
     state.isLoggedIn = false;
-  }
+    state.user = {};
+  },
+  [CHECK_USER_LOGGED](state) {
+    state.isLoggedIn = !!localStorage.getItem('token');
+    state.user = JSON.parse(localStorage.getItem('user'));
+    if (state.user == null) {
+      console.log('user check sites for null is null');
+      state.user = {sites: []};
+    } else {
+      console.log('not null');
+    }
+  },
+  [ADD_USER_SITE](state, newSiteId) {
+    state.user.sites.push(newSiteId);
+    localStorage.setItem('user', JSON.stringify(state.user));
+  },
+  
 }
 
 const actions = {
   singnIn({commit}, user) {
     console.log('user in signIn function',user)
-    commit(SIGN_IN, {
-      user
-    });
+    commit(SIGN_IN, {user});
   },
   signOut({commit}){
-    // console.log('home.component:signOut -> auth.module:signOut =>> auth.service:signout no data to send');
-    let testRes = authService.signout()
-    // console.log('authService -> auth.module:signOut => auth.module:SIGN_OUT',);
+    authService.signout()
     commit(SIGN_OUT);
-  }
+  },
+  checkUserLogged({commit}) {
+    commit(CHECK_USER_LOGGED);
+  },
+
 };
 
 const getters = {
-  isLoggedIn: state => state.user.isLoggedIn,
+  isLoggedIn: state => state.isLoggedIn,
   currUser: state => state.user
 };
 

@@ -1,6 +1,5 @@
 import VueRouter from 'vue-router';
 
-
 import Main from './components/main';
 import PublishPage from './components/publish-page';
 import Home from './components/home';
@@ -10,7 +9,7 @@ import Signup from './components/signup';
 
 const routes = [
   {
-    path     : '/home',
+    path     : '/',
     name     : 'home',
     component: Home
   },
@@ -21,7 +20,7 @@ const routes = [
   },
 
   {
-    path     : '/',
+    path     : '/signin',
     name     : 'signin',
     component: Signin
   },
@@ -35,7 +34,7 @@ const routes = [
     name     : 'published',
     component: PublishPage
   },
-  { path: '*', redirect: { name: 'main' } }];
+  { path: '*', redirect: { name: 'home' } }];
 
 const router = new VueRouter({
   mode: 'history',

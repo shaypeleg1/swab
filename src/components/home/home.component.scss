@@ -1,18 +1,25 @@
 
+
+
 .prev-site{
     border: 1px dashed;
     padding: 10px;
     margin: 10px;
-    width: 200px;
-    height: 150px;
+    // width: 200px;
+    // height: 150px;
     border-radius: 10px;
 
 }
 
 .sites-list{
+    // width: 50%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: center;
+    // justify-content: space-around;
+}
+.padding-box {
+    margin: 20px;
 }
 
 .create-Site-btn{
@@ -22,9 +29,39 @@
 li{
     margin: 10px;
 }
-
+.nav {
+    background-color: transparent;
+}
+.navbar{
+    padding-top: 10px;
+    background-color: white;
+    -webkit-box-shadow: inset 0px -30px 30px -13px rgba(120,192,224,0.48);
+    -moz-box-shadow: inset 0px -30px 30px -13px rgba(120,192,224,0.48);
+    box-shadow: inset 0px -30px 30px -13px rgba(120,192,224,0.48);
+    border-style:hidden;
+    // border-bottom-color: black;
+    .container {
+        margin-left: 10px;
+        padding-right: 0px;
+    }
+}
 .nav-header-home{
+    
+}
 
+.navbar-brand {
+    padding: 0;
+}
+.nav-logo {
+    max-height: 300%;
+    top: 0px;
+    left: 15px;
+    margin: auto;
+    // position: fixed;
+    width: 12em;
+}
+.logo-router {
+    padding: 5px;
 }
 .btn-create-container{
     display: flex;
@@ -38,11 +75,173 @@ li{
 
 
 h4{
-    color:dimgrey;
+    margin-top: 1em;
+	color: #eb6429;
+	font-size: 25px;
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;  
 }
 
 .home-container{
-    height: 1500px;
-    background: linear-gradient(#ffffff,#99ffff);
+    height: 100%;
+    background: #0e0e52;
+    background-image: url("../../assets/ZenBG-1.png"), url("../../assets/ZenBG-2.png");
+    background-repeat: repeat-x, repeat;
+    background: cover;
+    background-size: contain;
+}
+.bold-text {
+    font-weight: 700px;
+}
+.box {
+    .media-content {
+        font-size: 1.5em;
+    }
 }
 
+#newsletter {
+    // opacity: 0.8;
+    // -webkit-box-shadow: inset 0px 0px 25px 20px rgba(14,14,82,1);
+    // -moz-box-shadow: inset 0px 0px 25px 20px rgba(14,14,82,1);
+    // box-shadow: inset 0px 0px 25px 20px #1b1b6a;
+    box-shadow: inset 0px -15px 25px 20px #2a2a85, inset 0px 15px 25px 20px #292986;
+    border-radius: 11px 11px 11px 11px;
+    border-style:hidden;
+    // background-color: lightgray;
+    // display: inline-block;
+    font-size: 20px;
+    // height: auto;
+    padding: 5px;
+    #mce-EMAIL {
+        max-height: 80%;
+    }
+}
+.vue-section{
+    display: flex;
+    // justify-content: space-between;
+    align-items: center;
+    bottom: 10px;
+    // position: fixed;
+    max-width: 25%;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    margin-left: 15px;
+    h3 {
+        color: white;
+        font-size: 20px;
+        text-shadow:
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;  
+    }
+} 
+.buttom-section {
+-webkit-box-shadow: 0px -23px 15px 7px rgba(26,26,103,1);
+-moz-box-shadow: 0px -23px 15px 7px rgba(26,26,103,1);
+box-shadow: 0px -23px 15px 7px rgba(26,26,103,1);
+}
+.vue-logo {
+    width: 70px;
+    padding: 5px;
+}
+#about {
+    	color: #dbdbdb;
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+    padding: 100px;
+}
+.about-logo {
+    display: flex;
+    align-self: center;
+}
+.footer {
+    background-color: transparent;
+    bottom: 0px;
+    // position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+}
+
+/* The Modal (background) */
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: none; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+.modal-trigger {
+    display: block;
+}
+
+/* Modal Content */
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    // width: 50%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+
+/* The Close Button */
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
+}
+
+.modal-body {padding: 2px 16px;}
+
+.modal-footer {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
+}

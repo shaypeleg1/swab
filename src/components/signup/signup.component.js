@@ -3,6 +3,7 @@ import {
   SIGN_IN
 } from '../../store/modules/auth/auth.module';
 export default {
+   name    : 'signup',
   data: () => {
     return {
       user: {
@@ -26,8 +27,7 @@ export default {
           console.log('in sign up', res);
           // this.$store.dispatch(signin), res;
           this.$store.dispatch('singnIn', res);
-
-          this.$router.push('/home');
+          location.reload();
         }).catch(err => {this.error = 'user already exists'});
     }
   }

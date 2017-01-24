@@ -1,3 +1,6 @@
+import signin from '../signin';
+import signup from '../signup';
+
 import {
   mapMutations,
   mapGetters,
@@ -9,12 +12,30 @@ import {
 export default {
   name: 'home-component',
   data: () => {
-    return {}
+    return {
+      show: {
+        signIn: false,
+        signUp: false,
+      }
+    }
+  },
+  watch: {
+    userSites: function () {
+     this.$store.dispatch('getSites', this.$store.getters.currUser.sites);
+    }
   },
   methods: {
+    showModal(event, action) {
+      this.show[action] = !this.show[action];
+    },
     makeNewSite() {
-      // this dispatch a post request 
       this.$store.dispatch('makeNewSite');
+    },
+    signIn() {
+        this.$router.push({ name: 'signin'});
+    },
+    signUp() {
+        this.$router.push({ name: 'signup'});
     },
     signOut() {
       this.$store.dispatch('signOut')
@@ -23,26 +44,38 @@ export default {
         })
     },
     createNewSite() {
-
       this.$store.dispatch('createNewSite', {
         siteId: this.$store.state.defualtSiteId,
-        userId: this.$store.state.currUser.user.user._id
+        userId: this.$store.state.currUser.user._id
       })
-        // .then((res) => {
-        //   console.log('this is the res:', res);
-        //   this.$router.push('/main/' + this.$store.state.site._id)
-        // });
+      
     }
   },
   computed: {
     ...mapGetters([
       'currUser', 'sitesToPrevFunc', 'getDefaultSiteId', 'isLoggedIn', 'currSiteId'
     ]),
+    userFirstName() {
+      return this.$store.getters.currUser.firstName
+    },
+    currSiteId() {
+      return this.$store.getters.currSiteId
+    },
+    userSites() {
+      return this.$store.getters.currUser.sites
+    },
   },
-  components: {
 
+  beforeCreate () {
+    this.$store.dispatch('checkUserLogged');
   },
   created() {
-    this.$store.dispatch('getSites', this.currUser.user.sites);
+    if (this.isLoggedIn) {
+      this.$store.dispatch('getSites', this.currUser.sites);
+    }
+  },
+  components: {
+    signin,
+    signup,
   },
 }

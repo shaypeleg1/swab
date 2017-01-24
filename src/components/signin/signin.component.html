@@ -1,9 +1,8 @@
-<div class="container below-nav">
-  <div class="row">
-    <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4 ">
+<div>
+  <div class="align-text">
+    <!--<div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4 set-margin">-->
       <img class="main-logo" src="../../assets/logos/7.png" alt="">
       <h1 class="text-center login-title">Sign in to continue</h1>
-      <!--<h2>{{user}}</h2>-->
       <div class="account-wall">
         <img class="profile-img" src="https://ccerbal.uottawa.ca/lmirg/sites/ccerbal.uottawa.ca.lmirg/files/image3.png" alt="">
         <form class="form-signin" novalidate @submit.prevent="signin(user)">
@@ -14,16 +13,11 @@
           <div class="form-group" :class="{'has-error': errors.has('user.password') }">
             <input class="form-control" placeholder="Password" type="password" v-model="user.password">
           </div>
-          <button class="btn btn-lg btn-primary btn-block" type="submit">
-            Sign in
-          </button>
+          <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
           <p class="text-danger error" v-if="error">{{error}}</p>
         </form>
-        <button class="btn btn-lg btn-info btn-block">
-             <router-link :to="{ path: '/signup'}" replace>Sign up</router-link>
-          </button>
+             <router-link :to="{ path: '/signup'}" replace>Not A Member? Sign up</router-link>
       </div>
-    </div>
-      
+    <!--</div>-->
   </div>
 </div>

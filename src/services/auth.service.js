@@ -11,11 +11,7 @@ import serverConfig from './services-config.js';
  */
 
 // let userAndSites = [];
-function signin({
-  email,
-  password
-}) {
-
+function signin({email,password}) {
   return Vue.http.post(serverConfig.serverUrl + 'login', {
       email: email,
       pass: password
@@ -45,8 +41,6 @@ function signup({
 }) {
   console.log('sign up in auth service');
   const token = 'JWT';
-
-
 
   // return new Promise(resolve => 
  return Vue.http.post(serverConfig.serverUrl + 'signup', {

@@ -2,6 +2,7 @@ import authService from '../../services/auth.service';
 import {SIGN_IN, SIGN_OUT} from '../../store/modules/auth/auth.module';
 
 export default  {
+  name    : 'signin',
   mounted() {
   },
   data   : () => {
@@ -11,7 +12,7 @@ export default  {
     }
   },
   methods: {
-    signin( user ) {
+    signin(user) {
       this.$validator.validateAll();
       if( this.errors.any() ) return;
       authService.signin(user).then(res => {
@@ -20,7 +21,8 @@ export default  {
       })
       // changing so after singIn router will change
       .then(res => {
-        this.$router.push('/home');
+        // this.$router.push('/home');    
+           location.reload();
       })
       .catch(err => {
         err.json().then(res => this.error = res.error);

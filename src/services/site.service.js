@@ -19,7 +19,6 @@ export default {
   },
   // is called by currentSite.module
   getManySites(siteIdArray) {
-
     return Vue.http.post(serverConfig.serverUrl+'data/sites/', {
         sitesToGet: siteIdArray
       })
