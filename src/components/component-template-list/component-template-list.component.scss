@@ -6,6 +6,9 @@
     outline: 0;
   }
 }
+.nav {
+
+}
 .navbar {
   position: relative;
   background: #449DD1;
@@ -16,4 +19,8 @@
 }
 .siteTitle {
   align-items: center;
+}
+
+.nav {
+  background-color: transparent !important;
 }
