@@ -1,4 +1,5 @@
 import signin from '../signin';
+import signup from '../signup';
 
 import {
   mapMutations,
@@ -14,6 +15,7 @@ export default {
     return {
       show: {
         signIn: false,
+        signUp: false,
       }
     }
   },
@@ -23,8 +25,8 @@ export default {
     }
   },
   methods: {
-    showModal() {
-      this.show.signIn = !this.show.signIn
+    showModal(event, action) {
+      this.show[action] = !this.show[action];
     },
     makeNewSite() {
       this.$store.dispatch('makeNewSite');
@@ -74,5 +76,6 @@ export default {
   },
   components: {
     signin,
+    signup,
   },
 }

@@ -20,8 +20,8 @@
   <ul class="nav navbar-nav navbar-right">
     <li>
       <button @click="signOut" type="button" class="button is-danger is-large" v-if="isLoggedIn">Logout</button>
-      <button @click="signIn" type="button" class="button is-success is-large" v-if="!isLoggedIn">Sign In</button>
-      <button @click="signUp" type="button" class="button is-primary is-large" v-if="!isLoggedIn">Sign Up</button>
+      <button @click="showModal($event,'signIn')" type="button" class="button is-success is-large" v-if="!isLoggedIn">Sign In</button>
+      <button @click="showModal($event,'signUp')" type="button" class="button is-primary is-large" v-if="!isLoggedIn">Sign Up</button>
     </li>
   </ul>
 </div>
@@ -29,12 +29,18 @@
 </nav>
 <section>
 <!-- Trigger/Open The Modal -->
-<button @click="showModal" id="myBtn">Open Modal</button>
+
 <!-- The Modal -->
 <div v-if="show.signIn" v-bind:class="{'modal-trigger': show.signIn }" id="myModal" class="modal">
   <div class="modal-content">
-     <button @click="showModal" class="delete is-large"></button>
+     <button @click="showModal($event,'signIn')" class="delete is-large"></button>
     <signin></signin>
+  </div>
+</div>
+<div v-if="show.signUp" v-bind:class="{'modal-trigger': show.signUp }" id="myModal" class="modal">
+  <div class="modal-content">
+     <button @click="showModal($event,'signUp')" class="delete is-large"></button>
+    <signup></signup>
   </div>
 </div>
 
@@ -49,8 +55,8 @@
       <div class="box padding-box">
   <article class="media">
     <div class="media-left">
-      <figure class="image is-64x64">
-        <img src="https://unsplash.it/128/?random" alt="web site main image">
+      <figure class="image is-94x94">
+        <img src="https://unsplash.it/94/?random?" alt="web site main image">
       </figure>
     </div>
     <div class="media-content">
@@ -82,10 +88,10 @@
 <div class="btn-create-container">
   <button @click="createNewSite" class="button is-info is-large" v-bind:class="{ 'is-disabled': !isLoggedIn }">Create New Site</button>
 </div>
-<router-link v-if="currSiteId" :to="{path:`main/${currSiteId}`}">{{currSiteId}}</router-link>
 </div>
 
 <div class="w3-container" id="about">
+  <img v-if="!isLoggedIn" class="nav-logo about-logo" src="../../assets/logos/rsz_17.png" alt="swab logo">
   <h2 class="w3-center">S.W.A.B - Simple Web App Builder</h2>
   <h3 class="w3-center">As simple as it sounds, SWAB let's you build dynamicly clean sites with a click of a button</h3>
   <div class="w3-row-padding w3-center" style="margin-top:64px">
