@@ -62,10 +62,8 @@ function dbConnect() {
 		// Use connect method to connect to the Server
 		mongodb.MongoClient.connect(url, function (err, db) {
 			if (err) {
-				cl('Cannot connect to DB', err)
 				reject(err);
 			} else {
-				//cl("Connected to DB");
 				resolve(db);
 			}
 		});
@@ -80,12 +78,10 @@ app.get('/data/:objType', function (req, res) {
 
 		collection.find({}).toArray((err, objs) => {
 			if (err) {
-				cl('Cannot get you a list of ', err)
 				res.json(404, {
 					error: 'not found'
 				})
 			} else {
-				cl("Returning list of " + objs.length + " " + objType + "s");
 				res.json(objs);
 			}
 			db.close();
@@ -97,7 +93,6 @@ app.get('/data/:objType', function (req, res) {
 app.get('/data/:objType/:id', function (req, res) {
 	const objType = req.params.objType;
 	const objId = req.params.id;
-	cl(`Getting you an ${objType} with id: ${objId}`);
 	dbConnect()
 		.then((db) => {
 			const collection = db.collection(objType);
@@ -107,12 +102,10 @@ app.get('/data/:objType/:id', function (req, res) {
 				_id: _id
 			}).toArray((err, objs) => {
 				if (err) {
-					cl('Cannot get you that ', err)
 					res.json(404, {
 						error: 'not found'
 					})
 				} else {
-					cl("Returning a single " + objType);
 					res.json(objs[0]);
 				}
 				db.close();
@@ -126,19 +119,16 @@ app.get('/data/:objType/:id', function (req, res) {
 app.delete('/data/:objType/:id', function (req, res) {
 	const objType = req.params.objType;
 	const objId = req.params.id;
-	cl(`Requested to DELETE the ${objType} with id: ${objId}`);
 	dbConnect().then((db) => {
 		const collection = db.collection(objType);
 		collection.deleteOne({
 			_id: new mongodb.ObjectID(objId)
 		}, (err, result) => {
 			if (err) {
-				cl('Cannot Delete', err)
 				res.json(500, {
 					error: 'Delete failed'
 				})
 			} else {
-				cl("Deleted", result);
 				res.json({});
 			}
 			db.close();
@@ -152,9 +142,7 @@ app.delete('/data/:objType/:id', function (req, res) {
 // POST - adds 
 app.post('/data/:objType', upload.single('file'), function (req, res) {
 	const objType = req.params.objType;
-	cl("POST for " + objType);
 	const obj = req.body;
-	cl('there is an array!', req.body);
 	if (req.body.sitesToGet) {
 		// get many sites
 		getManySites(req.body.sitesToGet, res);
@@ -179,12 +167,10 @@ app.post('/data/:objType', upload.single('file'), function (req, res) {
 
 			collection.insert(obj, (err, result) => {
 				if (err) {
-					cl(`Couldnt insert a new ${objType}`, err)
 					res.json(500, {
 						error: 'Failed to add'
 					})
 				} else {
-					cl(objType + " added");
 					res.json(obj);
 					db.close();
 				}
@@ -202,14 +188,11 @@ function queryBuilder(idsOfSites) {
 			_id: ObjectId(siteId)
 		})
 	})
-	cl('this is the query', queryObj);
 	return queryObj;
 }
 // get sites
 function getManySites(sitesToGet, res) {
-	cl('in getManySites', sitesToGet);
 	const query = queryBuilder(sitesToGet);
-	cl('this is th query', query)
 	dbConnect().then((db) => {
 		const collection = db.collection('sites');
 		collection.find(query, {
@@ -217,9 +200,7 @@ function getManySites(sitesToGet, res) {
 			siteInfo: 1
 		}).toArray((err, objs) => {
 			if (err) {
-				cl('cannot get you a list');
 			} else {
-				cl('this are the sites', objs);
 				res.json(objs);
 			}
 			db.close();
@@ -238,7 +219,6 @@ app.put('/data/:objType/', function (req, res) {
 	const objType = req.params.objType;
 	const newObj = req.body;
 	if (newObj._id && typeof newObj._id === 'string') newObj._id = new mongodb.ObjectID(newObj._id);
-	cl(`Requested to UPDATE the ${objType} with id: ${newObj._id}`);
 	dbConnect().then((db) => {
 		const collection = db.collection(objType);
 		collection.updateOne({
@@ -246,7 +226,6 @@ app.put('/data/:objType/', function (req, res) {
 			}, newObj,
 			(err, result) => {
 				if (err) {
-					cl('Cannot Update', err)
 					res.json(500, {
 						error: 'Update failed'
 					})
@@ -267,7 +246,6 @@ app.post('/login', function (req, res) {
 			pass: req.body.pass
 		}, function (err, user) {
 			if (user) {
-				cl('Login Succesful');
 				delete user.pass;
 				req.session.user = user; //refresh the session value
 				res.json({
@@ -275,7 +253,6 @@ app.post('/login', function (req, res) {
 					user
 				});
 			} else {
-				cl('Login NOT Succesful');
 				req.session.user = null;
 				res.json(403, {
 					error: 'Login failed'
@@ -292,7 +269,6 @@ app.get('/logout', function (req, res) {
 
 function requireLogin(req, res, next) {
 	if (!req.session.user) {
-		cl('Login Required');
 		res.json(403, {
 			error: 'Please Login'
 		})
