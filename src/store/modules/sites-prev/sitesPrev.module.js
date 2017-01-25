@@ -19,7 +19,6 @@ const actions = {
     console.log('getting preview sites of: ', idOfSites);
     siteService.getManySites(idOfSites)
       .then(res => {
-
         commit(GET_SITES_PREV,
           res
         )

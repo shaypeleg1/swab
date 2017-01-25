@@ -12,7 +12,8 @@ const isProduction = process.env.NODE_ENV === 'production';
 export default new Vuex.Store({
   state:{
     count:0,
-    defualtSiteId: "587e0e2e9f8d447e4e1cbb54"
+    defualtSiteId: "588090e2734d1d5b7d47b0ff"
+
     // components: [{name: "component-template1", type: "mainArticlePreview", value:"test first component-template comp"},
     //         {name: "component-template2", type: "circlePreview", value:"test secound component-template comp"},
     //         {name: "component-template2", type: "shortArticlePreview", value:"test third component-template comp"}]

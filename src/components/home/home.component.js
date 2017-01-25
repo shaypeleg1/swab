@@ -21,7 +21,7 @@ export default {
   },
   watch: {
     userSites: function () {
-     this.$store.dispatch('getSites', this.$store.getters.currUser.sites);
+      this.$store.dispatch('getSites', this.$store.getters.currUser.sites);
     }
   },
   methods: {
@@ -32,15 +32,23 @@ export default {
       this.$store.dispatch('makeNewSite');
     },
     signIn() {
-        this.$router.push({ name: 'signin'});
+      this.$router.push({ name: 'signin' });
     },
     signUp() {
-        this.$router.push({ name: 'signup'});
+      this.$router.push({ name: 'signup' });
     },
     signOut() {
       this.$store.dispatch('signOut')
         .then(res => {
           this.$router.push('/')
+          this.$root.$refs.toastr.Add({
+          title: "Logged Out", // Toast Title
+          msg: "", // Message
+          clickClose: false, // Click Close Disable
+          timeout: 3000, // Remember defaultTimeout is 5 sec..
+          position: "toast-top-right", // Toast Position.
+          type: "error" // Toast type
+          });
         })
     },
     createNewSite() {
@@ -48,7 +56,6 @@ export default {
         siteId: this.$store.state.defualtSiteId,
         userId: this.$store.state.currUser.user._id
       })
-      
     }
   },
   computed: {
@@ -66,7 +73,7 @@ export default {
     },
   },
 
-  beforeCreate () {
+  beforeCreate() {
     this.$store.dispatch('checkUserLogged');
   },
   created() {
@@ -75,6 +82,7 @@ export default {
     }
   },
   components: {
+
     signin,
     signup,
   },
