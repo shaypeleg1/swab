@@ -32,13 +32,13 @@
 <!-- The Modal -->
 <div v-if="show.signIn" v-bind:class="{'modal-trigger': show.signIn }" id="myModal" class="modal">
   <div class="modal-content">
-     <button @click="showModal($event,'signIn')" class="delete is-large"></button>
+     <button @click="showModal($event,'signIn')" class="delete is-large margin-btn"></button>
     <signin></signin>
   </div>
 </div>
 <div v-if="show.signUp" v-bind:class="{'modal-trigger': show.signUp }" id="myModal" class="modal">
   <div class="modal-content">
-     <button @click="showModal($event,'signUp')" class="delete is-large"></button>
+     <button @click="showModal($event,'signUp')" class="delete is-large margin-btn"></button>
     <signup></signup>
   </div>
 </div>
@@ -122,8 +122,8 @@
       <!-- Begin MailChimp Signup Form -->
       <div id="mc_embed_signup" class="columns is-vcentered">
         <div class="column is-one-third is-left">
-          <h3 class="title">SWAB <strong>Newsletter</strong></h3>
-          <h3 class="title">Get notified when v1 is ready!</h3>
+          <h3 class="title news">SWAB <strong>Newsletter</strong></h3>
+          <h3 class="title news">Get notified when v1 is ready!</h3>
         </div>
 
         <div class="column">

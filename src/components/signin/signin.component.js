@@ -7,7 +7,7 @@ export default  {
   },
   data   : () => {
     return {
-      user : { email: 'puki@gmail.com', password: '1234' },
+      user : { email: '', password: '' },
       error: ""
     }
   },
