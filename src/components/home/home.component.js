@@ -13,10 +13,11 @@ export default {
   name: 'home-component',
   data: () => {
     return {
-      show: {
-        signIn: false,
-        signUp: false,
+      showModalData: {
+        type: '',
+        isActive: false,
       }
+      // showModalType : '',
     }
   },
   watch: {
@@ -25,11 +26,48 @@ export default {
     }
   },
   methods: {
-    showModal(event, action) {
-      this.show[action] = !this.show[action];
+    showModal(event, type) {
+      if (type === '') {
+        this.showModalData.isActive = false;
+      } else {
+        this.showModalData.isActive = true;
+      }
+      this.showModalData.type = type;
+
     },
+
     makeNewSite() {
       this.$store.dispatch('makeNewSite');
+    },
+    deleteSite(event, siteId) {
+      let that = this; // ask how to avoid this
+      swal({
+        title: "Are you sure?",
+        text: "Type DELETE in the text box ,You will not be able to recover this web site",
+        type: "input",
+        showCancelButton: true,
+        confirmButtonColor: "#EB6429",
+        confirmButtonText: "Yes, delete it!",
+        closeOnConfirm: false,
+        showLoaderOnConfirm: true,
+        inputPlaceholder: "Write DELETE here",
+      },
+        function (inputValue) {
+          if (inputValue === false) return false;
+
+          if (inputValue !== "1") {
+            swal.showInputError("You need to write DELETE in the text box");
+            return false
+          }
+          that.$store.dispatch('deleteSite',siteId)
+            .then(res => {
+              swal("Deleted!", "Your site has been deleted.", "success");
+            }).catch(function(error){
+              swal("Error", "There was a problam deleting the site", "error");
+            });
+        },
+      );
+
     },
     signIn() {
       this.$router.push({ name: 'signin' });
@@ -42,12 +80,12 @@ export default {
         .then(res => {
           this.$router.push('/')
           this.$root.$refs.toastr.Add({
-          title: "Logged Out", // Toast Title
-          msg: "", // Message
-          clickClose: false, // Click Close Disable
-          timeout: 3000, // Remember defaultTimeout is 5 sec..
-          position: "toast-top-right", // Toast Position.
-          type: "error" // Toast type
+            title: "Logged Out", // Toast Title
+            msg: "", // Message
+            clickClose: false, // Click Close Disable
+            timeout: 3000, // Remember defaultTimeout is 5 sec..
+            position: "toast-top-right", // Toast Position.
+            type: "error" // Toast type
           });
         })
     },

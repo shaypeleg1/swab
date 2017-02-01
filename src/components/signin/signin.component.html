@@ -15,7 +15,7 @@
           <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
           <p class="text-danger error" v-if="error">{{error}}</p>
         </form>
-             <router-link :to="{ path: '/signup'}" replace>Not A Member? Sign up</router-link>
+             <a @click="switchToSignUp()">Not A Member? Sign up</a>
       </div>
     </div>
 </div>

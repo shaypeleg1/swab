@@ -10,6 +10,12 @@ export default {
         return res;
       })
   },
+  deleteSite(siteId) {
+    return Vue.http.delete(serverConfig.serverUrl+'data/sites/' + siteId)
+      .then((res) => {
+        return res;
+      })
+  },
   getSingleSite(siteId) {
     return Vue.http.get(serverConfig.serverUrl+'data/sites/' + siteId)
       .then(res => res.json())

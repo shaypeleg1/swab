@@ -7,7 +7,7 @@ export default  {
   },
   data   : () => {
     return {
-      user : { email: '', password: '' },
+      user : { email: 'puki@gmail.com', password: '123456' },
       error: ""
     }
   },
@@ -27,6 +27,9 @@ export default  {
       .catch(err => {
         err.json().then(res => this.error = res.error);
       })
+    },
+    switchToSignUp() {
+      this.$emit('switchModal');
     }
   }
 }

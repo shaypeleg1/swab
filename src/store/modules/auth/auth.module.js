@@ -4,6 +4,8 @@ export const SIGN_IN = 'auth/SIGN_IN';
 export const SIGN_OUT = 'auth/SIGN_OUT';
 export const CHECK_USER_LOGGED = 'auth/CHECK_USER_LOGGED';
 export const ADD_USER_SITE = 'auth/ADD_USER_SITE';
+export const DELETE_USER_SITE = 'auth/DELETE_USER_SITE';
+
 
 const state = {
   isLoggedIn: !!localStorage.getItem('token'),
@@ -12,8 +14,6 @@ const state = {
 
 const mutations = {
   [SIGN_IN]( state, user ) {
-    console.log('sinin.components:signin -> auth.modue:SIGN_IN this is user: ', user)
-    console.log('this is the state',state);
     state.user = user;    
     state.isLoggedIn = true;
   },
@@ -25,22 +25,23 @@ const mutations = {
     state.isLoggedIn = !!localStorage.getItem('token');
     state.user = JSON.parse(localStorage.getItem('user'));
     if (state.user == null) {
-      console.log('user check sites for null is null');
       state.user = {sites: []};
     } else {
-      console.log('not null');
     }
   },
   [ADD_USER_SITE](state, newSiteId) {
     state.user.sites.push(newSiteId);
     localStorage.setItem('user', JSON.stringify(state.user));
   },
+  [DELETE_USER_SITE](state, siteId) {
+    let siteIdx = state.user.sites.indexOf(siteId);
+    state.user.sites.splice(siteIdx,1);
+  },
   
 }
 
 const actions = {
   singnIn({commit}, user) {
-    console.log('user in signIn function',user)
     commit(SIGN_IN, {user});
   },
   signOut({commit}){

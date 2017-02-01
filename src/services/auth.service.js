@@ -39,7 +39,6 @@ function signup({
   lastName,
   sites
 }) {
-  console.log('sign up in auth service');
   const token = 'JWT';
 
   // return new Promise(resolve => 
