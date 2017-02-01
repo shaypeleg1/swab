@@ -45,9 +45,7 @@ li{
         padding-right: 0px;
     }
 }
-.nav-header-home{
-    
-}
+
 
 .navbar-brand {
     padding: 0;
@@ -100,6 +98,15 @@ h4{
     .media-content {
         font-size: 1.5em;
     }
+    padding-right: 10px;
+}
+.site-delete-btn {
+    margin-left: 20px;
+    color: #ee1515;
+    :hover {
+        color: red;
+        cursor: pointer;
+    }
 }
 
 #newsletter {
@@ -144,11 +151,7 @@ h4{
         1px 1px 0 #000;  
     }
 } 
-.buttom-section {
-// -webkit-box-shadow: 0px -23px 15px 7px rgba(26,26,103,1);
-// -moz-box-shadow: 0px -23px 15px 7px rgba(26,26,103,1);
-// box-shadow: 0px -23px 15px 7px rgba(26,26,103,1);
-}
+
 .vue-logo {
     width: 70px;
     padding: 5px;
@@ -194,6 +197,7 @@ h4{
 .margin-btn {
     margin: 10px;
 }
+
 .modal-trigger {
     display: block;
 }

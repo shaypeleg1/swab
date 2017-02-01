@@ -1,6 +1,7 @@
 import siteService from '../../../services/site.service';
 
 const GET_SITES_PREV = 'GET_SITES_PREV';
+const DELETE_SITE = 'DELETE_SITE';
 
 const state = {
   sitesPrev: []
@@ -11,12 +12,14 @@ const mutations = {
     state.sitesPrev = [];
     state.sitesPrev.push(...res);
   },
-
+  [DELETE_SITE](state, siteId) {
+    let siteIdx = state.sitesPrev.indexOf(siteId);
+    state.sitesPrev.splice(siteIdx,1);
+  },
 }
 const actions = {
 
   getSites({commit}, idOfSites) {
-    console.log('getting preview sites of: ', idOfSites);
     siteService.getManySites(idOfSites)
       .then(res => {
         commit(GET_SITES_PREV,

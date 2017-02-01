@@ -1,5 +1,6 @@
 import siteService from '../../../services/site.service';
 import authModule from '../../../store/modules/auth/auth.module';
+import sitesPrevModule from '../../../store/modules/sites-prev/sitesPrev.module';
 
 
 export const CHANGE_NAME = 'current-site/CHANGE_NAME'
@@ -12,6 +13,8 @@ const GET_SITES_PREV = 'GET_SITES_PREV';
 const GET_NEW_SITE = 'GET_NEW_SITE';
 const ADD_USER_SITE = 'auth/ADD_USER_SITE';
 const UPDATE_NAME = 'UPDATE_NAME';
+const DELETE_SITE = 'DELETE_SITE';
+const DELETE_USER_SITE = 'auth/DELETE_USER_SITE';
 
 
 const compsTemplatesInterfaces = {
@@ -124,15 +127,11 @@ const actions = {
       newCompValueObj
     );
   },
-  getSite({
-    commit
-  }, siteId) {
+  getSite({commit}, siteId) {    
     siteService.getSingleSite(siteId)
       .then(res => {
-
         commit(GET_SINGLE_SITE, res)
       })
-      // .then()
   },
 
   saveSite() {
@@ -148,9 +147,13 @@ const actions = {
         commit(ADD_USER_SITE, res._id);
         })
   },
-  // updateName({commit},name){
-  //   commit(CHANGE_NAME,name)
-  // }
+  deleteSite({commit}, siteId){
+    return siteService.deleteSite(siteId)
+      .then (res => {
+        commit(DELETE_USER_SITE, siteId);
+        commit(DELETE_SITE, siteId);
+      })
+  },
 }
 
 const getters = {

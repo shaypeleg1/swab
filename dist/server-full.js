@@ -2,7 +2,6 @@
 // Plus support for simple login and session
 // Plus support for file upload
 "use strict";
-var utils = require("./utils.js");
 
 const express = require('express'),
 	bodyParser = require('body-parser'),

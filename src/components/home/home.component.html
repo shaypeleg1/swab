@@ -27,21 +27,21 @@
 </section>
 </nav>
 <section>
-<!-- Trigger/Open The Modal -->
+  <!-- Trigger/Open The Modal -->
 
-<!-- The Modal -->
-<div v-if="show.signIn" v-bind:class="{'modal-trigger': show.signIn }" id="myModal" class="modal">
-  <div class="modal-content">
-     <button @click="showModal($event,'signIn')" class="delete is-large margin-btn"></button>
-    <signin></signin>
+  <!-- The Modal -->
+  <div v-if="showModalData.type == 'signIn'" v-bind:class="{'modal-trigger': showModalData.isActive}" id="myModal" class="modal">
+    <div class="modal-content">
+      <button @click="showModal($event,'')" class="delete is-large margin-btn"></button>
+      <signin v-on:switchModal="showModal($event,'signUp')"></signin>
+    </div>
   </div>
-</div>
-<div v-if="show.signUp" v-bind:class="{'modal-trigger': show.signUp }" id="myModal" class="modal">
-  <div class="modal-content">
-     <button @click="showModal($event,'signUp')" class="delete is-large margin-btn"></button>
-    <signup></signup>
+  <div v-if="showModalData.type == 'signUp'" v-bind:class="{'modal-trigger': showModalData.isActive}" id="myModal" class="modal">
+    <div class="modal-content">
+      <button @click="showModal($event,'')" class="delete is-large margin-btn"></button>
+      <signup v-on:switchModal="showModal($event, 'signIn')"></signup>
+    </div>
   </div>
-</div>
 
 </section>
 
@@ -50,37 +50,40 @@
 <!--old render-->
 <div v-if="isLoggedIn" class="sites-list">
   <div v-for="site in sitesToPrevFunc">
-      <router-link :to="{path:`main/${site._id}`}">
-      <div class="box padding-box">
-  <article class="media">
-    <div class="media-left">
-      <figure class="image is-94x94">
-        <img src="http://lorempixel.com/94/94/" alt="web site main image">
-      </figure>
-    </div>
-    <div class="media-content">
-      <div class="content">
-        <p>
-          <strong>{{site.siteInfo.siteName}}</strong><br> <small>By {{userFirstName}}</small>
-        </p>
-      </div>
-      <nav class="level">
-        <div class="level-left">
-          <a class="level-item">
-            <span class="icon is-small"><i class="fa fa-reply"></i></span>
-          </a>
-          <a class="level-item">
-            <span class="icon is-small"><i class="fa fa-retweet"></i></span>
-          </a>
-          <a class="level-item">
-            <span class="icon is-small"><i class="fa fa-heart"></i></span>
-          </a>
+    <div class="box padding-box">
+      <article class="media">
+          <router-link :to="{path:`main/${site._id}`}">
+        <div class="media-left">
+            <figure class="image is-94x94">
+              <img src="http://lorempixel.com/94/94/" alt="web site main image">
+            </figure>
         </div>
-      </nav>
+        <div class="media-content">
+          <div class="content">
+            <p>
+              <strong>{{site.siteInfo.siteName}}</strong><br> <small>By {{userFirstName}}</small>
+            </p>
+          </div>
+          <nav class="level">
+            <div class="level-left">
+              <a class="level-item">
+                <span class="icon is-small"><i class="fa fa-reply"></i></span>
+              </a>
+              <a class="level-item">
+                <span class="icon is-small"><i class="fa fa-retweet"></i></span>
+              </a>
+              <a class="level-item">
+                <span class="icon is-small"><i class="fa fa-heart"></i></span>
+              </a>
+            </div>
+          </nav>
+        </div>
+          </router-link>
+        <div class="site-delete-btn">
+          <i @click.stop="deleteSite($event, site._id)" class="fa fa-trash-o" aria-hidden="true"></i>
+        </div>
+      </article>
     </div>
-  </article>
-</div>
-      </router-link>
   </div>
 </div>
 
@@ -152,25 +155,25 @@
   </div>
 </section>
 <div class="buttom-section">
-<div class="vue-section">
-  <h3>Powerd By</h3>
-  <img class="vue-logo" src="https://vuejs.org/images/logo.png" alt="Vuejs">
-  <h3>Vue js</h3>
-</div>
-<footer class="footer">
-  <div class="container">
-    <div class="content has-text-centered">
-      <p>
-        <strong>SWAB</strong> by Shay Peleg & Itay Koren. The source code is licensed
-        <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC ANS 4.0</a>.
-      </p>
-      <p>
-        <a class="icon" href="https://github.com/shaypeleg1/swab">
-          <i class="fa fa-github"></i>
-        </a>
-      </p>
-    </div>
+  <div class="vue-section">
+    <h3>Powerd By</h3>
+    <img class="vue-logo" src="https://vuejs.org/images/logo.png" alt="Vuejs">
+    <h3>Vue js</h3>
   </div>
-</footer>
+  <footer class="footer">
+    <div class="container">
+      <div class="content has-text-centered">
+        <p>
+          <strong>SWAB</strong> by Shay Peleg & Itay Koren. The source code is licensed
+          <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC ANS 4.0</a>.
+        </p>
+        <p>
+          <a class="icon" href="https://github.com/shaypeleg1/swab">
+            <i class="fa fa-github"></i>
+          </a>
+        </p>
+      </div>
+    </div>
+  </footer>
 </div>
 </div>
