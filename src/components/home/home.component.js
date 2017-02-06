@@ -55,7 +55,7 @@ export default {
         function (inputValue) {
           if (inputValue === false) return false;
 
-          if (inputValue !== "1") {
+          if (inputValue !== "DELETE") {
             swal.showInputError("You need to write DELETE in the text box");
             return false
           }
