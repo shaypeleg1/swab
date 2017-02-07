@@ -141,10 +141,11 @@ const actions = {
   },
   
   createNewSite({commit}, newSiteData) {
-    siteService.createNewSite(newSiteData)
+   return siteService.createNewSite(newSiteData)
       .then(res => {
         commit(GET_NEW_SITE, res);
         commit(ADD_USER_SITE, res._id);
+        
         })
   },
   deleteSite({commit}, siteId){

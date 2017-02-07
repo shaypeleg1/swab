@@ -2,7 +2,7 @@
 
 .container {
   width: var(--container-width);
-  // margin: 0 auto;
+  margin: 0 auto;
   padding: 0 1em;
 }
 
@@ -48,8 +48,8 @@
 
 /* Breakpoint mixins */
 
-@mixin for-mobile-only {
-  @media (max-width: $mobile-breakpoint) {
-    @content;
-  }
-}
+// @mixin for-mobile-only {
+//   @media (max-width: $mobile-breakpoint) {
+//     @content;
+//   }
+// }

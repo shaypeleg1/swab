@@ -10,13 +10,16 @@ section {
   flex-wrap: wrap;
   flex-direction: row;
    justify-content: space-around;
-  // justify-content: space-around;
   padding: 10px;
 }
 
-#toolContainer  * {
-  text-align:center;
+#toolContainer  {
+  margin-right: 15px;
+  * {
+    text-align:center;
+  }
 }
+
 h1 {
   text-align:center;
   width: 50%;

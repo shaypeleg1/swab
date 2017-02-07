@@ -41,8 +41,12 @@ li{
     border-style:hidden;
     // border-bottom-color: black;
     .container {
-        margin-left: 10px;
-        padding-right: 0px;
+        margin-left: 0px;
+    margin-right: 0px;
+    width: 100%;
+    max-width: 1920px;
+        // margin-left: 10px;
+        // padding-right: 0px;
     }
 }
 

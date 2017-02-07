@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import SiteService from './site.service.js';
-import serverConfig from './services-config.js';
+// import serverConfig from './services-config.js';
 
 
 /**
@@ -12,7 +12,7 @@ import serverConfig from './services-config.js';
 
 // let userAndSites = [];
 function signin({email,password}) {
-  return Vue.http.post(serverConfig.serverUrl + 'login', {
+  return Vue.http.post('login', {
       email: email,
       pass: password
     })
@@ -42,7 +42,10 @@ function signup({
   const token = 'JWT';
 
   // return new Promise(resolve => 
- return Vue.http.post(serverConfig.serverUrl + 'signup', {
+
+  // for coding-academy server
+  // serverConfig.serverUrl + 
+ return Vue.http.post('signup', {
       email: email,
       pass: password,
       firstName: firstName,
@@ -76,7 +79,7 @@ function setSession(token, user) {
 function signout() {
   localStorage.removeItem('token');
   localStorage.removeItem('user');
-  Vue.http.get(serverConfig.serverUrl + 'logout')
+  Vue.http.get('logout')
 }
 
 /**
