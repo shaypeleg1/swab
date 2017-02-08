@@ -15,6 +15,7 @@ section {
 
 #toolContainer  {
   margin-right: 15px;
+  margin-top: 2px;
   * {
     text-align:center;
   }
@@ -27,4 +28,7 @@ h1 {
 }
 input {
   color:darkblue;
+}
+.btn-save {
+  margin-bottom: 2px;
 }

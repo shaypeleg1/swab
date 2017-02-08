@@ -15,7 +15,7 @@
             type    : Object,
             required: false
             }
-        }
+        },
     }
 </script>
 <style scoped lang="scss">

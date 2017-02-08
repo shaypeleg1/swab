@@ -8,9 +8,9 @@ import store from './store/store';
 import router from './routes';
 
 // for coding-academy server
-// Vue.http.options.root="https://coding-academy.net/swab/data";
+Vue.http.options.root="https://coding-academy.net/swab/data";
 
-Vue.http.options.root="http://localhost:3003"
+// Vue.http.options.root="http://localhost:3003"
 
 const app = new Vue({
   router,

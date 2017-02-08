@@ -52,7 +52,7 @@ const compsTemplatesInterfaces = {
 
 const state = {
   _id: '',
-  siteInfo: { // Itay, please change that to a more sutible data name
+  siteInfo: {
     siteUrl: '',
     siteName: '',
   },
@@ -135,7 +135,7 @@ const actions = {
   },
 
   saveSite() {
-    siteService.updateSite(state)
+   return siteService.updateSite(state)
       .then(res => {
       })
   },

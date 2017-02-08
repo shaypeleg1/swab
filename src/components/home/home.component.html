@@ -9,15 +9,16 @@
             <li>
               <router-link to="/" class="logo-router" exact><img class="nav-logo" src="../../assets/logos/rsz_24.png" alt="swab logo"></router-link>
             </li>
-            <li>
-              <h4 v-if="!isLoggedIn">Welcome Guest </h4>
-              <h4 v-else>Hi {{userFirstName}} </h4>
-            </li>
+
             <li>
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li>
+              <h4 v-if="!isLoggedIn">Welcome Guest </h4>
+              <h4 v-else>Hi {{userFirstName}} </h4>
+            </li>
+            <li class="auth-btn">
               <button @click="signOut" type="button" class="button is-danger is-medium" v-if="isLoggedIn">Logout</button>
               <button @click="showModal($event,'signIn')" type="button" class="button is-success is-medium" v-if="!isLoggedIn">Sign In</button>
               <button @click="showModal($event,'signUp')" type="button" class="button is-primary is-medium" v-if="!isLoggedIn">Sign Up</button>

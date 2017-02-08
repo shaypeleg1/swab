@@ -34,6 +34,7 @@
             let that = this;
             swal({
                 title: "Are you sure?",
+                text: "This will delete " + '"' +that.dataProps.title + '"' + " component.",
                 showCancelButton: true,
                 confirmButtonColor: "#EB6429",
                 confirmButtonText: "Yes",
@@ -78,5 +79,6 @@
         outline: 0;
     }
     } 
+
 </style>
 
