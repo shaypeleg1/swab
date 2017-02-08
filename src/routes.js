@@ -27,7 +27,7 @@ const routes = [
   {
     path     :'/signup',
     name     :'signup',
-    component:Signup
+    component: Signup
   },
   {
     path     : '/published/:id',

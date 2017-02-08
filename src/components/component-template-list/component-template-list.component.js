@@ -14,7 +14,8 @@ export default {
   },
   data: () => {
     return {
-      openedDropdownIndex: -1
+      openedDropdownIndex: -1,
+      isDropOpen: false
     }
   },
   created () {
@@ -22,9 +23,11 @@ export default {
   },
   methods   : {
     toggleDropDown(event, index) {
-    if (this.openedDropdownIndex === index) this.openedDropdownIndex = -1;
-    else this.openedDropdownIndex = index;
-      
+    if (this.openedDropdownIndex === index) this.openedDropdownIndex = -1; 
+    else  this.openedDropdownIndex = index;
+    },
+    hideDropdown() {
+      this.openedDropdownIndex = -1;
     },
     addSingleComp($event){ // look at the toggleDropDown function you can use "index" also here insted of event.value
       let compType = $event.target.outerText;

@@ -12,12 +12,35 @@ const clientSessions = require("client-sessions");
 const multer = require('multer')
 const ObjectId = mongodb.ObjectID;
 
-// Main server url's
-const serverRoot = '/';
-const baseUrl = serverRoot + 'data';
-// const DB_URL = 'mongodb://localhost:27017/swab';
-const DB_URL = 'mongodb://swabuser:misterbit@ds117209.mlab.com:17209/swab';
 
+var isProduction = (app.get('env') !== 'development') ? true : false;
+
+var serverRoot = '';
+var DB_URL = '';
+var port = null;
+
+if (isProduction) {
+	// for production
+	// serverRoot = '/';
+	// for production to coding-academy
+	serverRoot = './';
+	// serverRoot = 'http://coding-academy.net/swab/';
+	port = 3020;
+	DB_URL = 'mongodb://swabuser:misterbit@ds117209.mlab.com:17209/swab';
+}
+else {
+	// const app = express();
+	// serverRoot = 'http://localhost:3003/';
+	// port = 3003;
+	port = 3020;
+	// serverRoot = 'http://localhost:5000/';
+	serverRoot = 'https://coding-academy.net/swab/data';
+	// DB_URL = 'mongodb://localhost:27017/swab';
+	DB_URL = 'mongodb://swabuser:misterbit@ds117209.mlab.com:17209/swab';
+}
+
+
+const baseUrl = serverRoot + 'data';
 
 // Configure where uploaded files are going
 const uploadFolder = '/uploads';
@@ -37,7 +60,9 @@ var upload = multer({
 	storage: storage
 })
 
-// const app = express();
+
+
+
 
 var corsOptions = {
 	origin: /http:\/\/localhost:\d+/,
@@ -61,8 +86,7 @@ const io = require('socket.io')(http);
 function dbConnect() {
 	return new Promise((resolve, reject) => {
 		// Connection URL
-		// var DB_URL = 'mongodb://localhost:27017/swab';
-		var DB_URL = 'mongodb://swabuser:misterbit@ds117209.mlab.com:17209/swab';
+		// var DB_URL = 'mongodb://swabuser:misterbit@ds117209.mlab.com:17209/swab';
 		// Use connect method to connect to the Server
 		mongodb.MongoClient.connect(DB_URL, function (err, db) {
 			if (err) {
@@ -142,7 +166,8 @@ app.delete('/data/:objType/:id', function (req, res) {
 					error: 'Delete failed'
 				})
 			} else {
-				res.json({});
+				deleteSiteFromUsers(objId);
+				res.json(200, {msg: 'site deleted'});
 			}
 			db.close();
 		});
@@ -150,6 +175,20 @@ app.delete('/data/:objType/:id', function (req, res) {
 	});
 
 });
+
+// remove site from users sites array
+function deleteSiteFromUsers(siteId) {
+	dbConnect().then((db) => {
+		let usersCollection = db.collection('users');
+		usersCollection.updateMany({},
+		{"$pull": {"sites": ObjectId(siteId)}}
+		)}, (err, result) => {
+			if (err) {
+				return false;
+			}
+			db.close();
+		});
+}
 
 // POST - adds 
 app.post('/data/:objType', upload.single('file'), function (req, res) {
@@ -219,8 +258,8 @@ function makeNewSite(newSiteData, objType, res) {
 	let templateSite = null
 	let templateSiteID = ObjectId(newSiteData.siteId);
 	dbConnect().then((db) => {
-		const sitesCollection = db.collection('sites');
-		const usersCollection = db.collection('users');
+		let sitesCollection = db.collection('sites');
+		let usersCollection = db.collection('users');
 		sitesCollection.find({
 			_id: templateSiteID
 		}).toArray((err, objs) => {
@@ -261,7 +300,6 @@ app.put('/data/:objType/', function (req, res) {
 	const objType = req.params.objType;
 	const newObj = req.body;
 	if (newObj._id && typeof newObj._id === 'string') newObj._id = new mongodb.ObjectID(newObj._id);
-	cl(`Requested to UPDATE the ${objType} with id: ${newObj._id}`);
 	dbConnect().then((db) => {
 		const collection = db.collection(objType);
 		collection.updateOne({
@@ -316,25 +354,21 @@ app.post('/signup', function (req, res) {
 	const newUserObj = req.body;
 	dbConnect().then((db) => {
 		const collection = db.collection('users');
-		cl('user', newUserObj)
 		collection.findOne({
 			email: req.body.email,
 			pass: req.body.pass
 		}, function (err, user) {
 			if (user) {
-				cl('Login Succesful');
 				res.json(403, {
 					error: 'user allready exists'
 				});
 			} else {
 				collection.insert(newUserObj, (err, result) => {
 					if (err) {
-						cl(`Couldnt insert a new user`)
 						res.json(500, {
 							error: 'Failed to add'
 						})
 					} else {
-						cl(newUserObj + " added");
 						login(req, res);
 					}
 				});
@@ -368,7 +402,7 @@ app.get('/protected', requireLogin, function (req, res) {
 // Kickup our server 
 // Note: app.listen will not work with cors and the socket
 // app.listen(3003, function () {
-http.listen(3003, function () {
+http.listen(port, function () {
 	console.log(`misterREST server is ready at ${baseUrl}`);
 	console.log(`GET (list): \t\t ${baseUrl}/{entity}`);
 	console.log(`GET (single): \t\t ${baseUrl}/{entity}/{id}`);

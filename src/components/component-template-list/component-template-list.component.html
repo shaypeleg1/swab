@@ -1,4 +1,4 @@
-<div class="container">
+<div @click="hideDropdown" class="container">
   <div class="row">
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
@@ -19,31 +19,53 @@
         </div>
       </div>
     </nav>
+    <!--loading element-->
+    <div v-if="!currSiteName" class="main">
+      <div class="s1">
+        <div class="s b sb1"></div>
+        <div class="s b sb2"></div>
+        <div class="s b sb3"></div>
+        <div class="s b sb4"></div>
+      </div>
+      <div class="s2">
+        <div class="s b sb5"></div>
+        <div class="s b sb6"></div>
+        <div class="s b sb7"></div>
+        <div class="s b sb8"></div>
+      </div>
+      <div class="bigcon">
+        <div class="big b"></div>
+      </div>
+    </div>
+    <!--end of loading element-->
     <div class="siteTitle">
-     <h1> {{currSiteName}} <h1>
+      <h1> {{currSiteName}}
+        <h1>
     </div>
     <div v-for="(component,index) in components">
       <component :editable="editable" :is="component.type" :dataProps="component.props" :componentIdx="index"></component>
-
-      <div v-bind:id="index" v-bind:class="{ open: openedDropdownIndex === index }" class="dropdown">
-        <button v-if="editable" @click="toggleDropDown($event,index)" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Add
+      <div v-bind:id="index" v-bind:class="{ open: openedDropdownIndex === index }" class="dropdown btn-margin">
+        <button v-if="editable" @click.stop="toggleDropDown($event,index)" class="btn btn-primary dropdown-toggle" type="button"
+          data-toggle="dropdown">Add
           <span class="caret"></span></button>
-        <ul class="dropdown-menu">
-          <li><button :value="index" v-on:click="addSingleComp($event,0)" type="button" class="btn btn-default">{{templatesList[0]}}</button></li>
-          <li><button :value="index" v-on:click="addSingleComp($event,1)" type="button" class="btn btn-default">{{templatesList[1]}}</button></li>
-          <li><button :value="index" v-on:click="addSingleComp($event,2)" type="button" class="btn btn-default">{{templatesList[2]}}</button></li>
-        </ul>
+          <ul class="dropdown-menu">
+            <li><button :value="index" v-on:click="addSingleComp($event,0)" type="button" class="btn btn-default">{{templatesList[0]}}</button></li>
+            <li><button :value="index" v-on:click="addSingleComp($event,1)" type="button" class="btn btn-default">{{templatesList[1]}}</button></li>
+            <li><button :value="index" v-on:click="addSingleComp($event,2)" type="button" class="btn btn-default">{{templatesList[2]}}</button></li>
+          </ul>
       </div>
     </div>
 
-    <div v-if="components.length === 0" v-bind:id="index" v-bind:class="{ open: openedDropdownIndex === index }" class="dropdown">
-      <button v-if="editable" @click="toggleDropDown($event,index)" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Add
-  <span class="caret"></span></button>
-      <ul class="dropdown-menu">
-        <li><button v-on:click="addSingleComp($event,0)" type="button" class="btn btn-default">{{templatesList[0]}}</button></li>
-        <li><button v-on:click="addSingleComp($event,1)" type="button" class="btn btn-default">{{templatesList[1]}}</button></li>
-        <li><button v-on:click="addSingleComp($event,2)" type="button" class="btn btn-default">{{templatesList[2]}}</button></li>
-      </ul>
+    <div v-if="components.length === 0" v-bind:id="index" v-bind:class="{ open: openedDropdownIndex === index }" class="dropdown btn-margin">
+      <button v-if="editable" @click.stop="toggleDropDown($event,index)" class="btn btn-primary dropdown-toggle" type="button"
+        data-toggle="dropdown">Add
+        <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          <li><button v-on:click="addSingleComp($event,0)" type="button" class="btn btn-default">{{templatesList[0]}}</button></li>
+          <li><button v-on:click="addSingleComp($event,1)" type="button" class="btn btn-default">{{templatesList[1]}}</button></li>
+          <li><button v-on:click="addSingleComp($event,2)" type="button" class="btn btn-default">{{templatesList[2]}}</button></li>
+        </ul>
     </div>
+
   </div>
 </div>

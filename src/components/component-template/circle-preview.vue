@@ -31,8 +31,23 @@
             this.$store.dispatch('updateProps', {compIdx, textValue, propToChange});
         },
         deleteSingleComp() {
-            let type = this.componentIdx;
-            this.$store.dispatch('deleteComp', type);
+            let that = this;
+            swal({
+                title: "Are you sure?",
+                text: "This will delete " + '"' +that.dataProps.title + '"' + " component.",
+                showCancelButton: true,
+                confirmButtonColor: "#EB6429",
+                confirmButtonText: "Yes",
+                cancelButtonText: "No",
+                closeOnConfirm: true,
+                closeOnCancel: true
+                },
+                function(isConfirm){
+                if (isConfirm) {
+                    let type = that.componentIdx;
+                    that.$store.dispatch('deleteComp', type);
+                }
+            });
         }
     }
     }
@@ -56,6 +71,7 @@
         }
     }
     .btn-delete {
+        margin: 10px;
         border-radius: 30%;
         float: right;
     &:focus,
@@ -63,5 +79,6 @@
         outline: 0;
     }
     } 
+
 </style>
 

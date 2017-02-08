@@ -73,12 +73,17 @@ ul.nav li.dropdown:hover > ul.dropdown-menu {
     background-color: #0E0E52;
   }
 }
+.navbar-brand {
+  margin-top: 10px;
+}
+.navbar-nav {
+  margin-top: 5px;
+}
 .nav-logo {
-  // position: absolute;
-  // width: 12%;
+
   padding-bottom: 10px;
   margin-left: 15px;
-  width: 90px;
+  width: 30%;
 }
 
 .navbar-default .navbar-nav > li > a {
@@ -99,4 +104,8 @@ ul.nav li.dropdown:hover > ul.dropdown-menu {
 .margin-btn {
   margin: 5px;
   position: relative;
+}
+.container {
+  margin-right: 0px;
+  max-width: 920px;
 }

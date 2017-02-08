@@ -6,9 +6,11 @@
              src="https://randomuser.me/api/portraits/lego/7.jpg"
              alt="">
         <form class="form-signin" novalidate @submit.prevent="signup(user)">
+          
           <div class="form-group" :class="{'has-error': errors.has('user.email') }">
             <input type="email" class="form-control" placeholder="Email" autofocus v-model="user.email"
                    v-validate.initial="user.email" data-vv-rules="required|email">
+                   
             <span class="text-danger"
                   v-if="errors.has('user.email')">Email please</span>
           </div>
@@ -33,6 +35,7 @@
           <p class="text-danger error"
              v-if="error">{{error}}</p>
         </form>
+        
         <a @click="switchToSignIn()">Already have an account? Sign in</a>
       </div>
   </div>

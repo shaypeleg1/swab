@@ -16,7 +16,8 @@ export default {
       showModalData: {
         type: '',
         isActive: false,
-      }
+      },
+      createNewLoad: false,
       // showModalType : '',
     }
   },
@@ -90,10 +91,20 @@ export default {
         })
     },
     createNewSite() {
+      if (this.isLoggedIn) {
+      this.createNewLoad = true;
       this.$store.dispatch('createNewSite', {
         siteId: this.$store.state.defualtSiteId,
         userId: this.$store.state.currUser.user._id
       })
+      .then(res => {
+        let that = this;
+        setTimeout(function(){ that.createNewLoad = false;}, 0);
+
+      });
+      } else {
+        this.showModal('','signIn');
+      }
     }
   },
   computed: {

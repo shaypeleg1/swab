@@ -18,6 +18,7 @@
     justify-content: center;
     // justify-content: space-around;
 }
+
 .padding-box {
     margin: 20px;
 }
@@ -41,8 +42,12 @@ li{
     border-style:hidden;
     // border-bottom-color: black;
     .container {
-        margin-left: 10px;
-        padding-right: 0px;
+        margin-left: 0px;
+    margin-right: 0px;
+    width: 100%;
+    max-width: 1920px;
+        // margin-left: 10px;
+        // padding-right: 0px;
     }
 }
 
@@ -58,8 +63,11 @@ li{
     // position: fixed;
     width: 12em;
 }
+.auth-btn {
+    margin-top: 22px;
+}
 .logo-router {
-    padding: 5px;
+    padding: 0px 5px 10px 5px;
 }
 .btn-create-container{
     display: flex;
@@ -73,7 +81,7 @@ li{
 
 
 h4{
-    margin-top: 1em;
+    margin-top: 22px;
 	color: #eb6429;
 	font-size: 25px;
     text-shadow:

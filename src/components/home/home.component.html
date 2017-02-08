@@ -3,177 +3,145 @@
     <nav class="navbar navbar-default">
       <section class="container">
         <div class="navbar-header nav-header-home" style="margin-top: -4px;">
-</div>
-<div>
-  <ul class="nav navbar-nav">
-    <li>
-      <router-link to="/" class="logo-router" exact><img class="nav-logo" src="../../assets/logos/rsz_24.png" alt="swab logo"></router-link>
-    </li>
-    <li>
-      <h4 v-if="!isLoggedIn">Welcome Guest </h4>
-      <h4 v-else>Hi {{userFirstName}} </h4>
-    </li>
-    <li>
-    </li>
-  </ul>
-  <ul class="nav navbar-nav navbar-right">
-    <li>
-      <button @click="signOut" type="button" class="button is-danger is-large" v-if="isLoggedIn">Logout</button>
-      <button @click="showModal($event,'signIn')" type="button" class="button is-success is-large" v-if="!isLoggedIn">Sign In</button>
-      <button @click="showModal($event,'signUp')" type="button" class="button is-primary is-large" v-if="!isLoggedIn">Sign Up</button>
-    </li>
-  </ul>
-</div>
-</section>
-</nav>
-<section>
-  <!-- Trigger/Open The Modal -->
-
-  <!-- The Modal -->
-  <div v-if="showModalData.type == 'signIn'" v-bind:class="{'modal-trigger': showModalData.isActive}" id="myModal" class="modal">
-    <div class="modal-content">
-      <button @click="showModal($event,'')" class="delete is-large margin-btn"></button>
-      <signin v-on:switchModal="showModal($event,'signUp')"></signin>
-    </div>
-  </div>
-  <div v-if="showModalData.type == 'signUp'" v-bind:class="{'modal-trigger': showModalData.isActive}" id="myModal" class="modal">
-    <div class="modal-content">
-      <button @click="showModal($event,'')" class="delete is-large margin-btn"></button>
-      <signup v-on:switchModal="showModal($event, 'signIn')"></signup>
-    </div>
-  </div>
-
-</section>
-
-<!--render saved sites-->
-
-<!--old render-->
-<div v-if="isLoggedIn" class="sites-list">
-  <div v-for="site in sitesToPrevFunc">
-    <div class="box padding-box">
-      <article class="media">
-          <router-link :to="{path:`main/${site._id}`}">
-        <div class="media-left">
-            <figure class="image is-94x94">
-              <img src="http://lorempixel.com/94/94/" alt="web site main image">
-            </figure>
         </div>
-        <div class="media-content">
-          <div class="content">
-            <p>
-              <strong>{{site.siteInfo.siteName}}</strong><br> <small>By {{userFirstName}}</small>
-            </p>
-          </div>
-          <nav class="level">
-            <div class="level-left">
-              <a class="level-item">
-                <span class="icon is-small"><i class="fa fa-reply"></i></span>
-              </a>
-              <a class="level-item">
-                <span class="icon is-small"><i class="fa fa-retweet"></i></span>
-              </a>
-              <a class="level-item">
-                <span class="icon is-small"><i class="fa fa-heart"></i></span>
-              </a>
-            </div>
-          </nav>
-        </div>
-          </router-link>
-        <div class="site-delete-btn">
-          <i @click.stop="deleteSite($event, site._id)" class="fa fa-trash-o" aria-hidden="true"></i>
-        </div>
-      </article>
-    </div>
-  </div>
-</div>
+        <div>
+          <ul class="nav navbar-nav">
+            <li>
+              <router-link to="/" class="logo-router" exact><img class="nav-logo" src="../../assets/logos/rsz_24.png" alt="swab logo"></router-link>
+            </li>
 
-<div class="btn-create-container">
-  <button @click="createNewSite" class="button is-info is-large" v-bind:class="{ 'is-disabled': !isLoggedIn }">Create New Site</button>
-</div>
-</div>
-
-<div class="w3-container" id="about">
-  <img v-if="!isLoggedIn" class="nav-logo about-logo" src="../../assets/logos/rsz_17.png" alt="swab logo">
-  <h2 class="w3-center">S.W.A.B - Simple Web App Builder</h2>
-  <h3 class="w3-center">As simple as it sounds, SWAB let's you build dynamicly clean sites with a click of a button</h3>
-  <div class="w3-row-padding w3-center" style="margin-top:64px">
-<div class="w3-quarter">
-  <i class="fa fa-desktop w3-margin-bottom w3-jumbo w3-center"></i>
-  <p class="w3-large">Responsive</p>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-</div>
-<div class="w3-quarter">
-  <i class="fa fa-hand-o-right w3-margin-bottom w3-jumbo"></i>
-  <p class="w3-large">Easy To Use</p>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-</div>
-<div class="w3-quarter">
-  <i class="fa fa-diamond w3-margin-bottom w3-jumbo"></i>
-  <p class="w3-large">Design</p>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-</div>
-<div class="w3-quarter">
-  <i class="fa fa-server w3-margin-bottom w3-jumbo"></i>
-  <p class="w3-large">Reliable</p>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-</div>
-</div>
-</div>
-<section id="newsletter" class="hero is-bold">
-  <div class="hero-body">
-    <div class="container">
-      <!-- Begin MailChimp Signup Form -->
-      <div id="mc_embed_signup" class="columns is-vcentered">
-        <div class="column is-one-third is-left">
-          <h3 class="title news">SWAB <strong>Newsletter</strong></h3>
-          <h3 class="title news">Get notified when v1 is ready!</h3>
+            <li>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <h4 v-if="!isLoggedIn">Welcome Guest </h4>
+              <h4 v-else>Hi {{userFirstName}} </h4>
+            </li>
+            <li class="auth-btn">
+              <button @click="signOut" type="button" class="button is-danger is-medium" v-if="isLoggedIn">Logout</button>
+              <button @click="showModal($event,'signIn')" type="button" class="button is-success is-medium" v-if="!isLoggedIn">Sign In</button>
+              <button @click="showModal($event,'signUp')" type="button" class="button is-primary is-medium" v-if="!isLoggedIn">Sign Up</button>
+            </li>
+          </ul>
         </div>
+      </section>
+    </nav>
+    <section>
+      <!-- Trigger/Open The Modal -->
 
-        <div class="column">
-          <form action="" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank"
-            novalidate="novalidate">
-            <div id="mc_embed_signup_scroll">
-              <div class="control is-grouped">
-                <div class="control has-icon is-expanded">
-                  <input type="email" value="" name="EMAIL" class="is-flat required email" id="mce-EMAIL" placeholder="email address" required=""
-                    aria-required="true">
-                  <!--<span class="icon ">
-                    <i class="fa fa-envelope"></i>
-                  </span>-->
-                </div>
-                <div class="control">
-                  <input type="" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button is-info is-outlined is-large">
-                </div>
+      <!-- The Modal -->
+      <div v-if="showModalData.type == 'signIn'" v-bind:class="{'modal-trigger': showModalData.isActive}" id="myModal" class="modal">
+        <div class="modal-content">
+          <button @click="showModal($event,'')" class="delete is-large margin-btn"></button>
+          <signin v-on:switchModal="showModal($event,'signUp')"></signin>
+        </div>
+      </div>
+      <div v-if="showModalData.type == 'signUp'" v-bind:class="{'modal-trigger': showModalData.isActive}" id="myModal" class="modal">
+        <div class="modal-content">
+          <button @click="showModal($event,'')" class="delete is-large margin-btn"></button>
+          <signup v-on:switchModal="showModal($event, 'signIn')"></signup>
+        </div>
+      </div>
+
+    </section>
+
+    <!--render saved sites-->
+
+    <!--old render-->
+    <div v-if="isLoggedIn" class="sites-list">
+      <div v-for="site in sitesToPrevFunc">
+        <div class="box padding-box">
+          <article class="media">
+            <router-link :to="{path:`main/${site._id}`}">
+              <div class="media-left">
+                <figure class="image is-94x94">
+                  <img src="http://lorempixel.com/94/94/" alt="web site main image">
+                </figure>
               </div>
-              <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+              <div class="media-content">
+                <div class="content">
+                  <p>
+                    <strong>{{site.siteInfo.siteName}}</strong><br> <small>By {{userFirstName}}</small>
+                  </p>
+                </div>
+                <nav class="level">
+                  <!--<div class="level-left">
+                    <a class="level-item">
+                      <span class="icon is-small"><i class="fa fa-reply"></i></span>
+                    </a>
+                    <a class="level-item">
+                      <span class="icon is-small"><i class="fa fa-retweet"></i></span>
+                    </a>
+                    <a class="level-item">
+                      <span class="icon is-small"><i class="fa fa-heart"></i></span>
+                    </a>
+                  </div>-->
+                </nav>
+              </div>
+            </router-link>
+            <div class="site-delete-btn">
+              <i @click.stop="deleteSite($event, site._id)" class="fa fa-trash-o" aria-hidden="true"></i>
             </div>
-          </form>
+          </article>
         </div>
       </div>
-      <!--End mc_embed_signup-->
+    </div>
+
+    <div class="btn-create-container">
+      <button @click="createNewSite" class="button is-info is-large" v-bind:class="{ 'is-loading': createNewLoad}">Create New Site</button>
+      <!--v-bind:class="{ 'is-disabled': !isLoggedIn }"-->
     </div>
   </div>
-</section>
-<div class="buttom-section">
-  <div class="vue-section">
-    <h3>Powerd By</h3>
-    <img class="vue-logo" src="https://vuejs.org/images/logo.png" alt="Vuejs">
-    <h3>Vue js</h3>
-  </div>
-  <footer class="footer">
-    <div class="container">
-      <div class="content has-text-centered">
-        <p>
-          <strong>SWAB</strong> by Shay Peleg & Itay Koren. The source code is licensed
-          <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC ANS 4.0</a>.
-        </p>
-        <p>
-          <a class="icon" href="https://github.com/shaypeleg1/swab">
-            <i class="fa fa-github"></i>
-          </a>
-        </p>
+
+  <div class="w3-container" id="about">
+    <img v-if="!isLoggedIn" class="nav-logo about-logo" src="../../assets/logos/rsz_17.png" alt="swab logo">
+    <h2 class="w3-center">S.W.A.B - Simple Web App Builder</h2>
+    <h3 class="w3-center">As simple as it sounds, SWAB let's you build dynamicly clean sites with a click of a button</h3>
+    <div class="w3-row-padding w3-center" style="margin-top:64px">
+      <div class="w3-quarter">
+        <i class="fa fa-desktop w3-margin-bottom w3-jumbo w3-center"></i>
+        <p class="w3-large">Responsive</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+      </div>
+      <div class="w3-quarter">
+        <i class="fa fa-hand-o-right w3-margin-bottom w3-jumbo"></i>
+        <p class="w3-large">Easy To Use</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+      </div>
+      <div class="w3-quarter">
+        <i class="fa fa-diamond w3-margin-bottom w3-jumbo"></i>
+        <p class="w3-large">Design</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+      </div>
+      <div class="w3-quarter">
+        <i class="fa fa-server w3-margin-bottom w3-jumbo"></i>
+        <p class="w3-large">Reliable</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
       </div>
     </div>
-  </footer>
-</div>
+  </div>
+
+  <div class="buttom-section">
+    <div class="vue-section">
+      <h3>Powerd By</h3>
+      <img class="vue-logo" src="https://vuejs.org/images/logo.png" alt="Vuejs">
+      <h3>Vue js</h3>
+    </div>
+    <footer class="footer">
+      <div class="container">
+        <div class="content has-text-centered">
+          <p>
+            <strong>SWAB</strong> by Shay Peleg & Itay Koren. The source code is licensed
+            <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC ANS 4.0</a>.
+          </p>
+          <p>
+            <a class="icon" href="https://github.com/shaypeleg1/swab">
+              <i class="fa fa-github"></i>
+            </a>
+          </p>
+        </div>
+      </div>
+    </footer>
+  </div>
 </div>

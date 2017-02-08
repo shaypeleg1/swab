@@ -1,23 +1,23 @@
 import Vue from 'vue';
-import serverConfig from './services-config.js';
+// import serverConfig from './services-config.js';
 
 
 export default {
   updateSite(data) {
     let dataJson = JSON.stringify(data);
-    return Vue.http.put(serverConfig.serverUrl+'data/sites', dataJson)
+    return Vue.http.put('data/sites/', dataJson)
       .then((res) => {
         return res;
       })
   },
   deleteSite(siteId) {
-    return Vue.http.delete(serverConfig.serverUrl+'data/sites/' + siteId)
+    return Vue.http.delete('data/sites/' + siteId)
       .then((res) => {
         return res;
       })
   },
   getSingleSite(siteId) {
-    return Vue.http.get(serverConfig.serverUrl+'data/sites/' + siteId)
+    return Vue.http.get('data/sites/' + siteId)
       .then(res => res.json())
       .then((currSite) => {
         return currSite;
@@ -25,7 +25,7 @@ export default {
   },
   // is called by currentSite.module
   getManySites(siteIdArray) {
-    return Vue.http.post(serverConfig.serverUrl+'data/sites/', {
+    return Vue.http.post('data/sites/', {
         sitesToGet: siteIdArray
       })
       .then(res => res.json())
@@ -37,7 +37,7 @@ export default {
   /*recives: id of tempalte sites */
   createNewSite(newSiteData) {
       // getting new site based on id
-    return Vue.http.post(serverConfig.serverUrl+'data/sites/', {
+    return Vue.http.post('data/sites/', {
         newSiteData 
       })
       .then(res => {
