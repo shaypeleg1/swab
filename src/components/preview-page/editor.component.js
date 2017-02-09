@@ -8,7 +8,7 @@ export default {
       type: Array
     }
   },
-  created() {},
+  created() { },
   methods: {
   },
   computed: {

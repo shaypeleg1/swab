@@ -1,7 +1,6 @@
 import Vuex from 'vuex';
 import CurrentSiteModule from './modules/current-site/currentSite.module.js'
 import authModule from './modules/auth/auth.module';
-
 import sitesPrevModule from './modules/sites-prev/sitesPrev.module'
 
 const isProduction = process.env.NODE_ENV === 'production';

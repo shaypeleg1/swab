@@ -30,7 +30,7 @@ const routes = [
     component: Signup
   },
   {
-    path     : '/published/:id',
+    path     : '/published/:id ',
     name     : 'published',
     component: PublishPage
   },

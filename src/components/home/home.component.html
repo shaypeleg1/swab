@@ -50,42 +50,33 @@
 
     <!--old render-->
     <div v-if="isLoggedIn" class="sites-list">
-      <div v-for="site in sitesToPrevFunc">
-        <div class="box padding-box">
-          <article class="media">
-            <router-link :to="{path:`main/${site._id}`}">
-              <div class="media-left">
-                <figure class="image is-94x94">
-                  <img src="http://lorempixel.com/94/94/" alt="web site main image">
-                </figure>
-              </div>
-              <div class="media-content">
-                <div class="content">
-                  <p>
-                    <strong>{{site.siteInfo.siteName}}</strong><br> <small>By {{userFirstName}}</small>
-                  </p>
+      <transition-group name="list" tag="p">
+        <div v-for="site in sitesToPrevFunc" v-bind:key="site._id" class="list-item">
+          <div v-if="site" class="box padding-box">
+            <article class="media">
+              <router-link :to="{path:`main/${site._id}`}">
+                <div class="media-left">
+                  <figure class="image is-94x94">
+                    <img src="http://lorempixel.com/94/94/" alt="web site main image">
+                  </figure>
                 </div>
-                <nav class="level">
-                  <!--<div class="level-left">
-                    <a class="level-item">
-                      <span class="icon is-small"><i class="fa fa-reply"></i></span>
-                    </a>
-                    <a class="level-item">
-                      <span class="icon is-small"><i class="fa fa-retweet"></i></span>
-                    </a>
-                    <a class="level-item">
-                      <span class="icon is-small"><i class="fa fa-heart"></i></span>
-                    </a>
-                  </div>-->
-                </nav>
+                <div class="media-content">
+                  <div class="content">
+                    <p>
+                      <strong>{{site.siteInfo.siteName}}</strong><br> <small>By {{userFirstName}}</small>
+                    </p>
+                  </div>
+                  <nav class="level">
+                  </nav>
+                </div>
+              </router-link>
+              <div class="site-delete-btn">
+                <i @click.stop="deleteSite($event, site._id)" class="fa fa-trash-o" aria-hidden="true"></i>
               </div>
-            </router-link>
-            <div class="site-delete-btn">
-              <i @click.stop="deleteSite($event, site._id)" class="fa fa-trash-o" aria-hidden="true"></i>
-            </div>
-          </article>
+            </article>
+          </div>
         </div>
-      </div>
+      </transition-group>
     </div>
 
     <div class="btn-create-container">
@@ -131,7 +122,7 @@
     <footer class="footer">
       <div class="container">
         <div class="content has-text-centered">
-          <p>
+          <p style="color:white;">
             <strong>SWAB</strong> by Shay Peleg & Itay Koren. The source code is licensed
             <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC ANS 4.0</a>.
           </p>

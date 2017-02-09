@@ -2,13 +2,13 @@ import ComponentTemplateList from '../component-template-list';
 
 export default {
   props: {
-    editable:'',
+    editable: '',
     components: {
       require: true,
       type: Array
     }
   },
-  created() {},
+  created() { },
   methods: {
   },
   computed: {

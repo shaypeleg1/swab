@@ -116,7 +116,23 @@ h4{
         cursor: pointer;
     }
 }
-
+// animate box sites
+.list-item {
+  display: inline-block;
+}
+.list-enter-active, .list-leave-active {
+  transition: all 1.5s;
+}
+.list-leave-active {
+    position: absolute;
+}
+.list-enter, .list-leave-to /* .list-leave-active for <2.1.8 */ {
+  opacity: 0;
+  transform: translateY(30px);
+}
+.list-move {
+  transition: transform 1s;
+}
 #newsletter {
     // opacity: 0.8;
     // -webkit-box-shadow: inset 0px 0px 25px 20px rgba(14,14,82,1);
@@ -180,6 +196,7 @@ h4{
 .footer {
     background-color: transparent;
     bottom: 0px;
+    
     // position: fixed;
     right: 0;
     bottom: 0;

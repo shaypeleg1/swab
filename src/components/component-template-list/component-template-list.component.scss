@@ -37,7 +37,23 @@
 .btn-margin {
   margin: 15px;
 }
+// comps transition
 
+
+
+.comps-enter-active, .comps-leave-active {
+  transition: all 2s;
+}
+.comps-leave-active {
+    position: absolute;
+}
+.comps-enter, .comps-leave-to /* .list-leave-active for <2.1.8 */ {
+  opacity: 0;
+  transform: translateY(30px);
+}
+.comps-move {
+  transition: transform 1s;
+}
 // loading element
 
 .s2 {

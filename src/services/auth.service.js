@@ -1,7 +1,5 @@
 import Vue from 'vue';
 import SiteService from './site.service.js';
-// import serverConfig from './services-config.js';
-
 
 /**
  *
@@ -10,19 +8,17 @@ import SiteService from './site.service.js';
  * @returns {Promise}
  */
 
-// let userAndSites = [];
-function signin({email,password}) {
+function signin({email, password}) {
   return Vue.http.post('login', {
-      email: email,
-      pass: password
-    })
+    email: email,
+    pass: password
+  })
     .then(res => res.json())
     .then(({
       token,
       user
     }) => {
       setSession(token, user);
-      // userAndSites.push(user);
       return user;
     })
 }
@@ -41,17 +37,15 @@ function signup({
 }) {
   const token = 'JWT';
 
-  // return new Promise(resolve => 
-
   // for coding-academy server
   // serverConfig.serverUrl + 
- return Vue.http.post('signup', {
-      email: email,
-      pass: password,
-      firstName: firstName,
-      lastName: lastName,
-      sites: sites
-    })
+  return Vue.http.post('signup', {
+    email: email,
+    pass: password,
+    firstName: firstName,
+    lastName: lastName,
+    sites: sites
+  })
     .then(res => res.json())
     .then(({
       token,
@@ -61,7 +55,7 @@ function signup({
       setSession(token, user);
       return user;
     });
-    // );
+  // );
 }
 
 /**

@@ -1,6 +1,5 @@
 <template>
-  <li><a v-bind:href="'#'+componentIdx">{{dataProps.title}}</a></li>
-
+<li><router-link :to="{path:`#`+componentIdx}">{{dataProps.title}}</router-link></li>
 </template>
 
 <script>
@@ -16,6 +15,17 @@
             required: false
             }
         },
+        computed: {
+            publishedSiteIdhref() {
+            return this.$route.params.id;
+            },
+        },
+        methods: {
+            navTo() {
+                let publishedSiteId = this.$route.params.id;
+                this.$router.push('/published/'+publishedSiteId+'/#'+this.componentIdx);
+            }
+        }
     }
 </script>
 <style scoped lang="scss">

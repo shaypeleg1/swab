@@ -13,11 +13,11 @@ const state = {
 };
 
 const mutations = {
-  [SIGN_IN]( state, user ) {
-    state.user = user;    
+  [SIGN_IN](state, user) {
+    state.user = user;
     state.isLoggedIn = true;
   },
-  [SIGN_OUT]( state ) {
+  [SIGN_OUT](state) {
     state.isLoggedIn = false;
     state.user = {};
   },
@@ -25,7 +25,7 @@ const mutations = {
     state.isLoggedIn = !!localStorage.getItem('token');
     state.user = JSON.parse(localStorage.getItem('user'));
     if (state.user == null) {
-      state.user = {sites: []};
+      state.user = { sites: [] };
     } else {
     }
   },
@@ -35,16 +35,16 @@ const mutations = {
   },
   [DELETE_USER_SITE](state, siteId) {
     let siteIdx = state.user.sites.indexOf(siteId);
-    state.user.sites.splice(siteIdx,1);
+    state.user.sites.splice(siteIdx, 1);
   },
-  
+
 }
 
 const actions = {
   singnIn({commit}, user) {
-    commit(SIGN_IN, {user});
+    commit(SIGN_IN, { user });
   },
-  signOut({commit}){
+  signOut({commit}) {
     authService.signout()
     commit(SIGN_OUT);
   },

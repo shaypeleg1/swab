@@ -1,18 +1,18 @@
-import {mapMutations, mapGetters} from 'vuex';
+import { mapMutations, mapGetters } from 'vuex';
 import authService from '../../services/auth.service';
-import {SIGN_OUT} from '../../store/modules/auth/auth.module';
+import { SIGN_OUT } from '../../store/modules/auth/auth.module';
 
 export default {
   name: 'main-nav',
-  props : {
-    editable:'',
+  props: {
+    editable: '',
     siteInfo: {
-    require: true,
-    type: Object
+      require: true,
+      type: Object
     }
   },
   data: function () {
-    return{
+    return {
     }
   },
   created() {
@@ -20,7 +20,7 @@ export default {
     let EditSiteId = this.$route.params.id;
     this.$store.dispatch('getSite', EditSiteId);
   },
-  methods : {
+  methods: {
     signout() {
       authService.signout();
       this.$store.commit(SIGN_OUT);
@@ -39,7 +39,7 @@ export default {
       this.$emit('changeEditMode', enableEdit);
     },
     showPublishMode() {
-       this.$router.push({ name: 'published', params: { id: this.siteId }})
+      this.$router.push({ name: 'published', params: { id: this.siteId } })
     },
     ...mapMutations({
 
@@ -47,8 +47,6 @@ export default {
   },
   computed: {
     ...mapGetters([
-      // 'currSiteId',
-      // 'cart'
     ]),
     siteId() {
       return this.$store.state.site._id

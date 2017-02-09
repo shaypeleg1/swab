@@ -14,7 +14,7 @@ const mutations = {
   },
   [DELETE_SITE](state, siteId) {
     let siteIdx = state.sitesPrev.indexOf(siteId);
-    state.sitesPrev.splice(siteIdx,1);
+    state.sitesPrev.splice(siteIdx, 1);
   },
 }
 const actions = {

@@ -60,10 +60,10 @@ export default {
             swal.showInputError("You need to write DELETE in the text box");
             return false
           }
-          that.$store.dispatch('deleteSite',siteId)
+          that.$store.dispatch('deleteSite', siteId)
             .then(res => {
               swal("Deleted!", "Your site has been deleted.", "success");
-            }).catch(function(error){
+            }).catch(function (error) {
               swal("Error", "There was a problam deleting the site", "error");
             });
         },
@@ -81,29 +81,29 @@ export default {
         .then(res => {
           this.$router.push('/')
           this.$root.$refs.toastr.Add({
-            title: "Logged Out", // Toast Title
-            msg: "", // Message
-            clickClose: false, // Click Close Disable
-            timeout: 3000, // Remember defaultTimeout is 5 sec..
-            position: "toast-top-right", // Toast Position.
-            type: "error" // Toast type
+            title: "Logged Out",
+            msg: "",
+            clickClose: false,
+            timeout: 3000,
+            position: "toast-top-right",
+            type: "error"
           });
         })
     },
     createNewSite() {
       if (this.isLoggedIn) {
-      this.createNewLoad = true;
-      this.$store.dispatch('createNewSite', {
-        siteId: this.$store.state.defualtSiteId,
-        userId: this.$store.state.currUser.user._id
-      })
-      .then(res => {
-        let that = this;
-        setTimeout(function(){ that.createNewLoad = false;}, 0);
+        this.createNewLoad = true;
+        this.$store.dispatch('createNewSite', {
+          siteId: this.$store.state.defualtSiteId,
+          userId: this.$store.state.currUser.user._id
+        })
+          .then(res => {
+            let that = this;
+            setTimeout(function () { that.createNewLoad = false; }, 0);
 
-      });
+          });
       } else {
-        this.showModal('','signIn');
+        this.showModal('', 'signIn');
       }
     }
   },

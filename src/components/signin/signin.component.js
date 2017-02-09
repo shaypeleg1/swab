@@ -19,9 +19,7 @@ export default  {
         console.log('signin in after auth service',res)
         this.$store.dispatch('singnIn', res);
       })
-      // changing so after singIn router will change
-      .then(res => {
-        // this.$router.push('/home');    
+      .then(res => { 
            location.reload();
       })
       .catch(err => {

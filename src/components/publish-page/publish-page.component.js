@@ -14,8 +14,8 @@ export default {
   },
 
   created() {
-      let publishedSiteId = this.$route.params.id;
-      this.$store.dispatch('getSite', publishedSiteId);
+    let publishedSiteId = this.$route.params.id;
+    this.$store.dispatch('getSite', publishedSiteId);
   },
   methods: {
 

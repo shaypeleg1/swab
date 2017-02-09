@@ -1,5 +1,4 @@
 import Vue from 'vue';
-// import serverConfig from './services-config.js';
 
 
 export default {
@@ -26,20 +25,19 @@ export default {
   // is called by currentSite.module
   getManySites(siteIdArray) {
     return Vue.http.post('data/sites/', {
-        sitesToGet: siteIdArray
-      })
+      sitesToGet: siteIdArray
+    })
       .then(res => res.json())
       .then(res => {
-        // console.log('server-full -> [site.service -> F:getManySites] this is the server res', res)
         return res
       });
   },
   /*recives: id of tempalte sites */
   createNewSite(newSiteData) {
-      // getting new site based on id
+    // getting new site based on id
     return Vue.http.post('data/sites/', {
-        newSiteData 
-      })
+      newSiteData
+    })
       .then(res => {
         return res.json()
       })

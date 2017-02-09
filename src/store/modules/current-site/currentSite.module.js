@@ -127,7 +127,7 @@ const actions = {
       newCompValueObj
     );
   },
-  getSite({commit}, siteId) {    
+  getSite({commit}, siteId) {
     siteService.getSingleSite(siteId)
       .then(res => {
         commit(GET_SINGLE_SITE, res)
@@ -135,22 +135,22 @@ const actions = {
   },
 
   saveSite() {
-   return siteService.updateSite(state)
+    return siteService.updateSite(state)
       .then(res => {
       })
   },
-  
+
   createNewSite({commit}, newSiteData) {
-   return siteService.createNewSite(newSiteData)
+    return siteService.createNewSite(newSiteData)
       .then(res => {
         commit(GET_NEW_SITE, res);
         commit(ADD_USER_SITE, res._id);
-        
-        })
+
+      })
   },
-  deleteSite({commit}, siteId){
+  deleteSite({commit}, siteId) {
     return siteService.deleteSite(siteId)
-      .then (res => {
+      .then(res => {
         commit(DELETE_USER_SITE, siteId);
         commit(DELETE_SITE, siteId);
       })

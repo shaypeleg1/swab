@@ -9,7 +9,7 @@ export default {
     editable: '',
     components: {
       require: true,
-      type:Array
+      type: Array
     }
   },
   data: () => {
@@ -18,28 +18,28 @@ export default {
       isDropOpen: false
     }
   },
-  created () {
+  created() {
 
   },
-  methods   : {
+  methods: {
     toggleDropDown(event, index) {
-    if (this.openedDropdownIndex === index) this.openedDropdownIndex = -1; 
-    else  this.openedDropdownIndex = index;
+      if (this.openedDropdownIndex === index) this.openedDropdownIndex = -1;
+      else this.openedDropdownIndex = index;
     },
     hideDropdown() {
       this.openedDropdownIndex = -1;
     },
-    addSingleComp($event){ // look at the toggleDropDown function you can use "index" also here insted of event.value
+    addSingleComp($event) { // look at the toggleDropDown function you can use "index" also here insted of event.value
       let compType = $event.target.outerText;
       let indexToInsert = +event.target.value + 1;
-      this.$store.dispatch('addComp', {compType,indexToInsert});
+      this.$store.dispatch('addComp', { compType, indexToInsert });
     }
   },
-  computed  : {
+  computed: {
     ...mapGetters([
-          'templatesList','currSiteName'
-        ])
-      
+      'templatesList', 'currSiteName'
+    ])
+
   },
   components: {
     NavSections,

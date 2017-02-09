@@ -42,28 +42,30 @@
       <h1> {{currSiteName}}
         <h1>
     </div>
-    <div v-for="(component,index) in components">
-      <component :editable="editable" :is="component.type" :dataProps="component.props" :componentIdx="index"></component>
-      <div v-bind:id="index" v-bind:class="{ open: openedDropdownIndex === index }" class="dropdown btn-margin">
-        <button v-if="editable" @click.stop="toggleDropDown($event,index)" class="btn btn-primary dropdown-toggle" type="button"
-          data-toggle="dropdown">Add
-          <span class="caret"></span></button>
-          <ul class="dropdown-menu">
-            <li><button :value="index" v-on:click="addSingleComp($event,0)" type="button" class="btn btn-default">{{templatesList[0]}}</button></li>
-            <li><button :value="index" v-on:click="addSingleComp($event,1)" type="button" class="btn btn-default">{{templatesList[1]}}</button></li>
-            <li><button :value="index" v-on:click="addSingleComp($event,2)" type="button" class="btn btn-default">{{templatesList[2]}}</button></li>
-          </ul>
+    <transition-group name="comps">
+      <div v-for="(component,index) in components" v-bind:key="index">
+        <component :editable="editable" :is="component.type" :dataProps="component.props" :componentIdx="index"></component>
+        <div v-bind:id="index" v-bind:class="{ open: openedDropdownIndex === index }" class="dropdown btn-margin">
+          <button v-if="editable" @click.stop="toggleDropDown($event,index)" class="btn btn-primary dropdown-toggle" type="button"
+            data-toggle="dropdown">Add
+            <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <li><button :value="index" v-on:click="addSingleComp($event,0)" type="button" class="button is-white">{{templatesList[0]}}</button></li>
+              <li><button :value="index" v-on:click="addSingleComp($event,1)" type="button" class="button is-white">{{templatesList[1]}}</button></li>
+              <li><button :value="index" v-on:click="addSingleComp($event,2)" type="button" class="button is-white">{{templatesList[2]}}</button></li>
+            </ul>
+        </div>
       </div>
-    </div>
+    </transition-group>
 
     <div v-if="components.length === 0" v-bind:id="index" v-bind:class="{ open: openedDropdownIndex === index }" class="dropdown btn-margin">
       <button v-if="editable" @click.stop="toggleDropDown($event,index)" class="btn btn-primary dropdown-toggle" type="button"
         data-toggle="dropdown">Add
         <span class="caret"></span></button>
         <ul class="dropdown-menu">
-          <li><button v-on:click="addSingleComp($event,0)" type="button" class="btn btn-default">{{templatesList[0]}}</button></li>
-          <li><button v-on:click="addSingleComp($event,1)" type="button" class="btn btn-default">{{templatesList[1]}}</button></li>
-          <li><button v-on:click="addSingleComp($event,2)" type="button" class="btn btn-default">{{templatesList[2]}}</button></li>
+          <li><button v-on:click="addSingleComp($event,0)" type="button" class="button is-white">{{templatesList[0]}}</button></li>
+          <li><button v-on:click="addSingleComp($event,1)" type="button" class="button is-white">{{templatesList[1]}}</button></li>
+          <li><button v-on:click="addSingleComp($event,2)" type="button" class="button is-white">{{templatesList[2]}}</button></li>
         </ul>
     </div>
 
